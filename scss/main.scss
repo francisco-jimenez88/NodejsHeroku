@@ -1,4 +1,14 @@
-body {
-    background: #333;
-    color: #fff;
+#header {
+    background-color: #1c1c1c;
+    
+    #headerTitle {
+            font-family: 'Mansalva';
+            font-size: 40px;
+            margin-left: 10px;
+            color: white;
+    }
+    #slogan {
+            font-family: 'Mansalva';
+            color: rgb(216, 216, 129);
+    }
 }
