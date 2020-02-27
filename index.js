@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => res.render("public/index"))
+app.get("/", (req, res) => res.render("public/index", { title: "Lasses Lakrits" }))
 
 app.get("*", (req, res) => res.send("404"));
 
