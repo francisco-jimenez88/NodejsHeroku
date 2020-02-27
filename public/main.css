@@ -1,3 +1,10 @@
-body {
-  background: #333;
-  color: #fff; }
+#header {
+  background-color: #1c1c1c; }
+  #header #headerTitle {
+    font-family: 'Mansalva';
+    font-size: 40px;
+    margin-left: 10px;
+    color: white; }
+  #header #slogan {
+    font-family: 'Mansalva';
+    color: #d8d881; }
