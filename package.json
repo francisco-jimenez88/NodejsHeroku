@@ -1,0 +1,37 @@
+{
+  "name": "gruppuppgift_nodejs",
+  "version": "1.0.0",
+  "description": "Gruppuppgift 2, Hanna, Julia, Magnus, Marcus och Franco",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon index.js",
+    "sass": "node-sass --watch scss -o css",
+    "dev": "npm-run-all --parallel start sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julia-Nilsson/Gruppuppgift_NodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Julia-Nilsson/Gruppuppgift_NodeJS/issues"
+  },
+  "homepage": "https://github.com/Julia-Nilsson/Gruppuppgift_NodeJS#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cypress": "^4.0.2",
+    "mocha": "^7.1.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2",
+    "node-sass-middleware": "^0.11.0"
+  }
+}
