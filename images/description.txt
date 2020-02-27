@@ -1,0 +1,34 @@
+Product 1: 
+name: Twisted Banana
+img: twisted_banana_png, twisted banana_2.jpg
+category: chocolate
+description: Chocolate covered liquorice
+ Gå bananas över denna kombination av banan, salt lakrits, vitchoklad och rålakritspulver.
+
+Vi har tagit den välkända smaken av banan och satt en unik dansk prägel på den. Det var enkelt att hitta en partner till vår salta lakrits, vi upptäckte att den fantastiska cavendish-bananen var den perfekta matchen med vår klassiska nr. 2. Kom ihåg att det är okej att gå bananas, så länge man inte glömmer sina rötter.
+
+Upplev hur en enkel bit vill få dig till att dagdrömma om tropiskt klimat med palmer och vita sandstränder.
+
+vikt: 295 g pris: 145 kr
+
+Product 2: 
+name: Salty Liquorice
+img: salty_liqourice.png
+category: liquorice
+description: Saltlakrits
+När ögonen sluter sig efter en tugga av den starka, salta lakritsen med salmiak, exploderar smaken av rå, nordisk styrka. Som av hav, tjära, rök från ett bål och doft av harts. Detta är den absoluta favoriten i de nordiska länderna.
+vikt: 360 g pris: 135 kr
+
+Product 3: 
+name: Coffee Kieni
+img: coffe_chocolate.png, coffe_chocolate_2.png
+category: chocolate
+description: För en livsnjutare är ett gott kaffe ofta en del av vardagen. Lakrids C är en söt lakrits dragérad i len mjölkchoklad och Coffee Collectives kaffebönor från det lilla samhället "Kieni", mitt i hjärtat av Kenya. Rostningen är noga utvald för Lakrids C, på grund av sina sina fruktiga och blommiga toner. För att garantera den unika produktkvaliteten, levereras kaffet färskrostat till vår fabrik, precis innan vi producerar – en extraordinär kaffeupplevelse för verkliga connoisseurer.
+vikt: 295 g pris: 135 kr
+
+Product 4
+name:
+img: passion_fruit.png , passion_fruit_2.png
+category: chocolate
+description: Söt lakrits i noga utvald vit choklad och förförande passionsfrukt. Chokladens sötma, passionsfruktens syra och lakritsens förmåga att förena smakupplevelserna skapar den perfekta munsbiten. Sött, syrligt och suveränt – inbäddat i ett delikat, sprött skal av socker.
+vikt: 295g pris: 135 kr
