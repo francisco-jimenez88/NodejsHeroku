@@ -7,10 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
     "start": "nodemon index.js",
-    "sass": "node-sass --watch scss -o css",
-    "dev": "npm-run-all --parallel start sass"
+    "sass": "node-sass --watch scss -o public",
+    "dev": "npm-run-all --parallel start sass",
+    "cypress": "cypress open",
+    "cy:run": "cypress run -- --record --spec 'cypress/integration/todo_ui_spec.js'",
+    "unittest": "mocha",
+    "test": "npm-run-all --parallel unittest cy:run"
   },
   "repository": {
     "type": "git",
