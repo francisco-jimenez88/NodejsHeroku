@@ -1,7 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/config");
+const newCandy = require("./model/productSchema");
 const sassMiddleware = require("node-sass-middleware");
+const multer = require("multer")
+const upload = multer({ dest: "images/" })
+const fs = require('fs');
 const path = require("path");
 const app = express();
 
@@ -14,7 +18,32 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => res.render("public/index", { title: "Lasses Lakrits" }))
+
+app.route("/")
+    .get(async (req, res) => {
+        const findCandy = await newCandy.find();
+        res.render("public/index", { findCandy, title: "Lasses Lakrits" })
+    })
+    .post(upload.single('img'), async (req, res) => {
+        console.log(req.file)
+        await new newCandy({
+            category: req.body.category,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            createdByAdmin: req.body.createdByAdmin,
+            img: req.file
+
+        }).save((error, success) => {
+            if (error) {
+                res.send(error.message);
+            }
+            else {
+                res.redirect("/");
+            }
+        });
+
+    });
 
 app.get("*", (req, res) => res.send("404"));
 

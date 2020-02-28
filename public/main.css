@@ -1,3 +1,11 @@
+body {
+  background: #333;
+  color: #fff; }
+  body ul li {
+    padding: 5px; }
+  body ul .noListType {
+    list-style-type: none; }
+
 #header {
   background-color: #1c1c1c;
   text-align: center; }
