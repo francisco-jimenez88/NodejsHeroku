@@ -1,0 +1,23 @@
+<%- include("./header.ejs") %>
+
+<body>
+    <div>
+        <table style="width: 90%; margin: 10px;">
+            <tr>
+            <th style="width: 200px;">Name</th>
+            <th>Description</th>
+            <th style="width: 100px; text-align: right;">Price</th>
+            <th></th>
+            </tr>
+
+            <% allCandy.forEach(item => { %>
+                <tr>
+                    <td><a href="/allproducts/<%= item.name %>"> <%= item.name %></a> </td>
+                    <td><%= item.description %> </td>
+                    <td style="text-align: right;"><%= item.price %> </td>
+                    <td><button type="button">Add to cart</button></td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>

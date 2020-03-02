@@ -8,16 +8,22 @@ const upload = multer({ dest: "images/" })
 const fs = require('fs');
 const path = require("path");
 const app = express();
+const lassesLakritsRouter = require("./router/router")
 
 app.use(express.urlencoded({ extended: true }));
+
 app.use(sassMiddleware({
     src: path.join(__dirname, "scss"),
     dest: path.join(__dirname, "public")
 }));
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 
+app.set('views',  [path.join(__dirname, 'views'),path.join(__dirname, 'views/public')]);
+
+app.use(lassesLakritsRouter);
 
 app.route("/")
     .get(async (req, res) => {
