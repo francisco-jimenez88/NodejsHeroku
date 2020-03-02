@@ -51,10 +51,7 @@ body {
         text-decoration: none;
         font-family: 'Mansalva';
         color: #d8d881; }
-  body .oneProductMainDiv {
-    width: 92%;
-    background-color: red;
-    margin: auto;
-    justify-content: center; }
-    body .oneProductMainDiv .oneProductInnerDiv {
-      background-color: green; }
+  body .oneProductWrappingDiv {
+    background-color: blue; }
+  body .oneProductDescriptionDiv {
+    background-color: green; }

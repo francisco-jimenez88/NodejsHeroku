@@ -60,14 +60,11 @@ body {
             }
         }
     }
-    .oneProductMainDiv{
-        width: 92%;
-        background-color: red;
-        margin: auto;
-        justify-content: center;
-        .oneProductInnerDiv{
-            background-color: green;
-            
-        }
-    }    
+    .oneProductWrappingDiv{
+        background-color: blue;
+    }
+    .oneProductDescriptionDiv{
+        background-color: green; 
+        
+    }  
 }
