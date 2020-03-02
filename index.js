@@ -27,10 +27,11 @@ app.route("/")
     .post(upload.single('img'), async (req, res) => {
         console.log(req.file)
         await new newCandy({
-            category: req.body.category,
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
+            lakrits: req.body.lakrits = Boolean(req.body.lakrits),
+            chokladlakrits: req.body.chokladlakrits = Boolean(req.body.chokladlakrits),
             createdByAdmin: req.body.createdByAdmin,
             img: req.file
 
