@@ -26,12 +26,14 @@ body {
 
     .footer {
         background-color: #1c1c1c;
-
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         .footer-title , .footer-text {
                 color: white; 
         }
     }
-    
+
     nav {
         background-color: #1c1c1c;
         #brand {
