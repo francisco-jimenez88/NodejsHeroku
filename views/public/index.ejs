@@ -1,31 +1,7 @@
 <%- include("header.ejs") %>
+
 <body>
-    <p>hej</p>
-
-    <div>
-        <% findCandy.forEach( (candy) => { %>
-            <ul>
-                <li> Namn: <b><%= candy.name %></b> Pris: <b><%= candy.price %> kr</b> Beskrivning: <b><%= candy.description %></b> Skapad av: <b><%= candy.createdByAdmin %></b> Bild: <%= candy.img %> </li>
-            </ul>
-        <% }); %>
-    </div>
-
-    <div>
-        <form method="POST" enctype="multipart/form-data">
-            <ul>
-                <li class="noListType"><input type="text" name="name" placeholder="name" required></li>
-                <li class="noListType"><input type="text" name="price" placeholder="price" required></li>
-                <li class="noListType"><input type="text" name="description" placeholder="description" required></li>
-                <li class="noListType"><input type="checkbox" name="lakrits" value="lakrits"></li><label for="lakrits"> Lakrits</label>
-                <li class="noListType"><input type="checkbox" name="chokladlakrits" value="chokladlakrits"></li><label for="chokladlakrits"> Chokladlakrits</label>
-                <li class="noListType"><input type="text" name="createdByAdmin" placeholder="createdByAdmin" required></li>
-                <li class="noListType"><input type="file" name="img" required></li>
-            </ul>
-
-            <button type="submit">Add</button>
-            
-        </form>
-    </div>
+    <p> test</p>
 </body>
 
 <%- include("footer.ejs") %>
