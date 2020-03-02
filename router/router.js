@@ -1,27 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const newCandy = require("./model/productSchema");
+const databaseCandy = require("../model/productSchema");
+
 
 router.route("/")
     .get(async (req, res) => {
 
-        const allCandy = await newCandy.find();
+        const item = await databaseCandy.find();
 
-        res.render("index.ejs")
+        res.render("index.ejs", {item})
     })
 
 
-router.route("/categories")
+router.route("/allproducts")
+    .get(async (req, res) => { 
+
+        const allCandy = await databaseCandy.find();
+        
+        
+        
+        res.render("allproducts.ejs", { allCandy })
+    })
+
+
+router.route("/allproducts/:id")
     .get(async (req, res) => {
+        console.log(req.params.id);
+        const selectedCandy = await databaseCandy.findOne({name: req.params.id})
+        res.render("oneproduct.ejs", {selectedCandy})
+    }) 
 
-        const allCandy = await newCandy.find();
-        res.render("allproducts.ejs")
-    })
-
-
-router.route("/categories/:name")
-    .get(async (req, res) => {
-
-        const selectedCandy = await newCandy.findById({_id: req.params.name})
-        res.render("oneproduct", {selectedCandy})
-    })
+module.exports = router;

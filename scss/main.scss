@@ -9,45 +9,55 @@ body {
             list-style-type: none;
         }
     }
-}
-#header {
-    background-color: #1c1c1c;
-    text-align: center;
-    #headerTitle {
-            font-family: 'Mansalva';
-            font-size: 40px;
-            margin-left: 10px;
+    #header {
+        background-color: #1c1c1c;
+        text-align: center;
+        #headerTitle {
+                font-family: 'Mansalva';
+                font-size: 40px;
+                margin-left: 10px;
+                color: white;
+        }
+        #slogan {
+                font-family: 'Mansalva';
+                color: rgb(216, 216, 129);
+        }
+    }
+    
+    nav {
+        background-color: #1c1c1c;
+        #brand {
+            font-family: 'Mansalva' ;
             color: white;
-    }
-    #slogan {
-            font-family: 'Mansalva';
-            color: rgb(216, 216, 129);
-    }
-}
-
-nav {
-    background-color: #1c1c1c;
-    #brand {
-        font-family: 'Mansalva' ;
-        color: white;
-    }
-    #navbarNav {
-        margin-top: 12px;
-        position: relative;
-        justify-content: space-evenly;
-        ul {
-            list-style-type: none;
         }
-        a {
-            text-decoration: none;
-            color: rgb(216, 216, 129);
-            font-size: 16px;
-        }
-        .nav-item {
-            margin-left: 150px;
-            text-decoration: none;
-            font-family: 'Mansalva';
-            color: rgb(216, 216, 129);
+        #navbarNav {
+            margin-top: 12px;
+            position: relative;
+            justify-content: space-evenly;
+            ul {
+                list-style-type: none;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(216, 216, 129);
+                font-size: 16px;
+            }
+            .nav-item {
+                margin-left: 150px;
+                text-decoration: none;
+                font-family: 'Mansalva';
+                color: rgb(216, 216, 129);
+            }
         }
     }
+    .oneProductMainDiv{
+        width: 92%;
+        background-color: red;
+        margin: auto;
+        justify-content: center;
+        .oneProductInnerDiv{
+            background-color: green;
+            
+        }
+    }    
 }
