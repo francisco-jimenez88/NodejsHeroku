@@ -1,0 +1,12 @@
+// allproducts page
+
+
+.lakritsDiv{
+    width: 80%;
+    margin: auto;
+    background-color: green;
+    @include tablet{
+        flex-direction: row;
+        width: 45%;
+    }
+}

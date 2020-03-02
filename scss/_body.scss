@@ -1,0 +1,13 @@
+// Body föralla sidor 
+body {
+    background: #333;
+    color: #fff;
+    ul {
+        li {
+            padding: 5px;
+        }
+        .noListType {
+            list-style-type: none;
+        }
+    }   
+} 

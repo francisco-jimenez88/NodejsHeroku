@@ -10,14 +10,17 @@
             <th></th>
             </tr>
 
-            <% allCandy.forEach( item => { %>
-                <tr>
-                    <td><a href="/allproducts/<%= item.name %>"> <%= item.name %></a> </td>
-                    <td><%= item.description %> </td>
-                    <td style="text-align: right;"><%= item.price %> </td>
-                    <td><button type="button">Add to cart</button></td>
-                </tr>
-            <% }); %>
+            
         </table>
+    </div>
+    <div>
+        <% allCandy.forEach( item => { %>
+            <div class="lakritsDiv">
+                <a href="/allproducts/<%= item.name %>"> <%= item.name %></a>
+                <p><%= item.description %> </p>
+                <p style="text-align: right;"><%= item.price %> </p>
+                <button type="button">Add to cart</button>
+            </div>
+        <% }); %>
     </div>
 </body>

@@ -1,3 +1,47 @@
+#header {
+  background-color: #1c1c1c;
+  text-align: center; }
+  #header #headerTitle {
+    font-family: 'Mansalva';
+    font-size: 40px;
+    margin-left: 10px;
+    color: white; }
+  #header #slogan {
+    font-family: 'Mansalva';
+    color: #d8d881; }
+
+nav {
+  background-color: #1c1c1c; }
+  nav #brand {
+    font-family: 'Mansalva';
+    color: white; }
+  nav #navbarNav {
+    margin-top: 12px;
+    position: relative;
+    justify-content: space-evenly; }
+    nav #navbarNav ul {
+      list-style-type: none; }
+    nav #navbarNav a {
+      text-decoration: none;
+      color: #d8d881;
+      font-size: 16px; }
+    nav #navbarNav .nav-item {
+      margin-left: 150px;
+      text-decoration: none;
+      font-family: 'Mansalva';
+      color: #d8d881; }
+
+.lakritsDiv {
+  width: 80%;
+  margin: auto;
+  background-color: green; }
+
+.oneProductWrappingDiv {
+  background-color: blue; }
+
+.oneProductDescriptionDiv {
+  background-color: green; }
+
 body {
   background: #333;
   color: #fff; }
@@ -5,38 +49,3 @@ body {
     padding: 5px; }
   body ul .noListType {
     list-style-type: none; }
-  body #header {
-    background-color: #1c1c1c;
-    text-align: center; }
-    body #header #headerTitle {
-      font-family: 'Mansalva';
-      font-size: 40px;
-      margin-left: 10px;
-      color: white; }
-    body #header #slogan {
-      font-family: 'Mansalva';
-      color: #d8d881; }
-  body nav {
-    background-color: #1c1c1c; }
-    body nav #brand {
-      font-family: 'Mansalva';
-      color: white; }
-    body nav #navbarNav {
-      margin-top: 12px;
-      position: relative;
-      justify-content: space-evenly; }
-      body nav #navbarNav ul {
-        list-style-type: none; }
-      body nav #navbarNav a {
-        text-decoration: none;
-        color: #d8d881;
-        font-size: 16px; }
-      body nav #navbarNav .nav-item {
-        margin-left: 150px;
-        text-decoration: none;
-        font-family: 'Mansalva';
-        color: #d8d881; }
-  body .oneProductWrappingDiv {
-    background-color: blue; }
-  body .oneProductDescriptionDiv {
-    background-color: green; }
