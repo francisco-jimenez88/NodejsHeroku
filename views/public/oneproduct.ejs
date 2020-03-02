@@ -2,14 +2,17 @@
 
 
 <div class="container">
+    <div class="oneProductWrappingDiv col-6"> 
+        <%= selectedCandy.img %> <br>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-3"> 
+        <div class="oneProductDescriptionDiv col-3"> 
             Name: <%= selectedCandy.name %> <br>
         </div>
-        <div class="col-7">
+        <div class="oneProductDescriptionDiv col-7">
             Description: <%= selectedCandy.description %> <br>
         </div>
-        <div class="col-2">
+        <div class="oneProductDescriptionDiv col-2">
             Price: <%= selectedCandy.price %> 
         </div>
     </div>
