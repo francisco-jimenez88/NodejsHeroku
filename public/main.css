@@ -1,6 +1,10 @@
 #header {
+<<<<<<< HEAD
   background-color: #1c1c1c;
   text-align: center; }
+=======
+  background-color: #1c1c1c; }
+>>>>>>> 38dbb088082b8c3e55af0573812d040f571411d4
   #header #headerTitle {
     font-family: 'Mansalva';
     font-size: 40px;
@@ -10,6 +14,7 @@
     font-family: 'Mansalva';
     color: #d8d881; }
 
+<<<<<<< HEAD
 nav {
   background-color: #1c1c1c; }
   nav #brand {
@@ -42,6 +47,12 @@ nav {
 .oneProductDescriptionDiv {
   background-color: green; }
 
+=======
+.footer {
+  background-color: #1c1c1c; }
+  .footer .footer-title, .footer .footer-text {
+    color: white; }
+>>>>>>> 38dbb088082b8c3e55af0573812d040f571411d4
 body {
   background: #333;
   color: #fff; }
