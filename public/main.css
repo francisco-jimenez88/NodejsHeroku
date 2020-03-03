@@ -1,10 +1,5 @@
 #header {
-<<<<<<< HEAD
-  background-color: #1c1c1c;
-  text-align: center; }
-=======
   background-color: #1c1c1c; }
->>>>>>> 38dbb088082b8c3e55af0573812d040f571411d4
   #header #headerTitle {
     font-family: 'Mansalva';
     font-size: 40px;
@@ -14,45 +9,10 @@
     font-family: 'Mansalva';
     color: #d8d881; }
 
-<<<<<<< HEAD
-nav {
-  background-color: #1c1c1c; }
-  nav #brand {
-    font-family: 'Mansalva';
-    color: white; }
-  nav #navbarNav {
-    margin-top: 12px;
-    position: relative;
-    justify-content: space-evenly; }
-    nav #navbarNav ul {
-      list-style-type: none; }
-    nav #navbarNav a {
-      text-decoration: none;
-      color: #d8d881;
-      font-size: 16px; }
-    nav #navbarNav .nav-item {
-      margin-left: 150px;
-      text-decoration: none;
-      font-family: 'Mansalva';
-      color: #d8d881; }
-
-.lakritsDiv {
-  width: 80%;
-  margin: auto;
-  background-color: green; }
-
-.oneProductWrappingDiv {
-  background-color: blue; }
-
-.oneProductDescriptionDiv {
-  background-color: green; }
-
-=======
 .footer {
   background-color: #1c1c1c; }
   .footer .footer-title, .footer .footer-text {
     color: white; }
->>>>>>> 38dbb088082b8c3e55af0573812d040f571411d4
 body {
   background: #333;
   color: #fff; }
