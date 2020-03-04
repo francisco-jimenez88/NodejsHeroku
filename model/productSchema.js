@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const schemaProduct = new mongoose.Schema({
-    lakrits: { type: Boolean },
-    chokladlakrits: { type: Boolean },
+    category: { type: String },
     name: { type: String, minlength: 3, required: true },
     price: { type: Number, required: true },
     img: { data: Buffer, contentType: String },

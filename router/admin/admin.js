@@ -3,7 +3,7 @@ const newCandy = require("../../model/productSchema");
 const router = express.Router();
 
 const multer = require("multer")
-const upload = multer({ dest: "images/" })
+const upload = multer({ dest: "/images" })
 const fs = require('fs');
 
 router.route("/admin")
@@ -13,12 +13,12 @@ router.route("/admin")
     })
     .post(upload.single('img'), async (req, res) => {
         console.log(req.file)
+
         await new newCandy({
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
-            lakrits: req.body.lakrits = Boolean(req.body.lakrits),
-            chokladlakrits: req.body.chokladlakrits = Boolean(req.body.chokladlakrits),
+            category: req.body.category,
             createdByAdmin: req.body.createdByAdmin,
             img: req.file
 
