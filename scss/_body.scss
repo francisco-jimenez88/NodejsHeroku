@@ -1,0 +1,15 @@
+// Body föralla sidor 
+@import "mixins.scss"; 
+
+body {
+    background: #333;
+    color: #fff;
+    ul {
+        li {
+            padding: 5px;
+        }
+        .noListType {
+            list-style-type: none;
+        }
+    }   
+} 

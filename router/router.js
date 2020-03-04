@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const databaseCandy = require("../model/productSchema");
 
+
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
@@ -9,6 +10,9 @@ router.route("/")
 
         res.render("index", { item, title: "Lasses Lakrits"})
     })
+    // .post(async (req, res) => {
+
+    // })
     
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
