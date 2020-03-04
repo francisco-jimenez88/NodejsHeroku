@@ -1,14 +1,12 @@
-<<<<<<< HEAD
-html{
+html body{
     height: 100%;
 }
 body {
     background: #333;
     color: #fff;
-    //sticky footer
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     ul {
         li {
             padding: 5px;
@@ -16,7 +14,13 @@ body {
         .noListType {
             list-style-type: none;
         }
+        
     }
+
+    .container {
+        flex: 1;    /* same as flex-grow: 1; */
+    }
+    
     #header {
         background-color: #1c1c1c;
         text-align: center;
@@ -32,22 +36,37 @@ body {
         }
     }
 
-    .footer {
+    nav {
         background-color: #1c1c1c;
-        grid-row-start: 2;
-        grid-row-end: 3;
-        .footer-title , .footer-text {
-                color: white; 
+        #brand {
+            font-family: 'Mansalva' ;
+            color: white;
+        }
+        #navbarNav {
+            margin-top: 12px;
+            position: relative;
+            justify-content: space-evenly;
+            ul {
+                list-style-type: none;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(216, 216, 129);
+                font-size: 16px;
+            }
+            .nav-item {
+                margin-left: 150px;
+                text-decoration: none;
+                font-family: 'Mansalva';
+                color: rgb(216, 216, 129);
+            }
         }
     }
-=======
-// Alla SCSS imports
-@import "header.scss";
-@import "navbar.scss";
-@import "allproducts.scss";
-@import "oneproduct.scss";
-@import "body.scss";
-@import "mixins.scss";
-
->>>>>>> 1d1434e45d2b5e02e5c077dcc8dec379e6199ecd
-
+    .oneProductWrappingDiv{
+        background-color: blue;
+    }
+    .oneProductDescriptionDiv{
+        background-color: green; 
+        
+    }  
+}
