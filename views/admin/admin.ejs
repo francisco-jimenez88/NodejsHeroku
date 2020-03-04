@@ -2,27 +2,42 @@
 
 <body>
     <div>
-        <% findCandy.forEach( (candy) => { %>
-            <ul>
-                <li> Namn: <b><%= candy.name %></b> Pris: <b><%= candy.price %> kr</b> Beskrivning: <b><%= candy.description %></b> Skapad av: <b><%= candy.createdByAdmin %></b> Bild: <%= candy.img %> </li>
-            </ul>
-        <% }); %>
-    </div>
-
-    <div>
         <form method="POST" enctype="multipart/form-data">
-            <ul>
-                <li class="noListType"><input type="text" name="name" placeholder="name" required></li>
-                <li class="noListType"><input type="text" name="price" placeholder="price" required></li>
-                <li class="noListType"><input type="text" name="description" placeholder="description" required></li>
-                <li class="noListType"><input type="checkbox" name="lakrits" value="lakrits"></li><label for="lakrits"> Lakrits</label>
-                <li class="noListType"><input type="checkbox" name="chokladlakrits" value="chokladlakrits"></li><label for="chokladlakrits"> Chokladlakrits</label>
-                <li class="noListType"><input type="text" name="createdByAdmin" placeholder="createdByAdmin" required></li>
-                <li class="noListType"><input type="file" name="img" required></li>
+            <ul class="noListType">
+                <li><input type="text" name="name" placeholder="Namn" required></li>
+                <li><input type="text" name="price" placeholder="Pris" required></li>
+                <li><input type="text" name="description" placeholder="Beskrivning" required></li>
+                <li>
+                    <input type="radio" name="category" value="lakrits"><label for="lakrits"> Lakrits</label>
+                    <input type="radio" name="category" value="chokladlakrits"><label for="chokladlakrits"> Chokladlakrits</label>
+                </li>
+                <li><input type="text" name="createdByAdmin" placeholder="Skapad av" required></li>
+                <li><input type="file" name="img" required></li>
             </ul>
 
             <button type="submit">Add</button>
-            
         </form>
+    </div>
+
+
+    <div>
+        <table>
+            <tr>
+                <th>Namn</th>
+                <th>Pris</th>
+                <th>Beskrivning</th>
+                <th>Kategori</th>
+                <th>Skapad av</th>
+                <th>Bild</th>
+                <th>Ändra</th>
+                <th>Ta bort</th>
+            </tr>
+        
+            <% findCandy.forEach( (candy) => { %>
+
+                <tr id="productRow"><td><%= candy.name %></td> <td><%= candy.price %> kr</td> <td><%= candy.description %></td> <td><%= candy.category %></td> <td><%= candy.createdByAdmin %></td> <td><%= candy.img %></td></tr>
+            
+            <% }); %>
+        </table>
     </div>
 </body>

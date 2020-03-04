@@ -1,2 +1,68 @@
 <%- include("header.ejs") %>
+
+<div class = "container">
+    <div class = "row justify-content-center pt-2">
+        <h3 class="shoppingcart-title">Din Varukorg</h3>
+    </div>
+
+    <div class= "row justify-content-center pt-2">
+        
+            <div class= "col-4">
+                <h5 class="product-title">Lakrits</h5>
+            </div>
+            <div class= "col-4">
+                <p class= "product-quantity">1</p>
+            </div>
+            <div class= "col-4">
+                <p class= "product-price">199</p>
+            </div>
+    </div>
+
+    <div class = "row justify-content-center pt-2">
+        <h3 class="checkout-information-title">Din Information</h3>
+    </div>
+
+    <div class= "row justify-content-center pt-2">
+        <div class="col-12  ">
+            
+            <form>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputName1">Förnamn</label>
+                    <input type="email" class="form-control" id="inputName1">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputName2">Efternamn</label>
+                    <input type="email" class="form-control" id="inputName2">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Adress</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                      <label for="inputZip">Postnummer</label>
+                      <input type="text" class="form-control" id="inputZip">
+                    </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">Ort</label>
+                    <input type="text" class="form-control" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPhoneNumber">Telefonnummer</label>
+                    <input type="text" class="form-control" id="inputPhoneNumber">
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100">Fortsätt till Betalning</button>
+              </form>
+        </div>
+    </div>
+</div>
+
 <%- include("footer.ejs") %>
