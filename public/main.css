@@ -1,21 +1,12 @@
-#header {
-  background-color: #1c1c1c; }
-  #header #headerTitle {
-    font-family: 'Mansalva';
-    font-size: 40px;
-    margin-left: 10px;
-    color: white; }
-  #header #slogan {
-    font-family: 'Mansalva';
-    color: #d8d881; }
+html {
+  height: 100%; }
 
-.footer {
-  background-color: #1c1c1c; }
-  .footer .footer-title, .footer .footer-text {
-    color: white; }
 body {
   background: #333;
-  color: #fff; }
+  color: #fff;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto; }
   body ul li {
     padding: 5px; }
   body ul .noListType {
@@ -31,6 +22,12 @@ body {
     body #header #slogan {
       font-family: 'Mansalva';
       color: #d8d881; }
+  body .footer {
+    background-color: #1c1c1c;
+    grid-row-start: 2;
+    grid-row-end: 3; }
+    body .footer .footer-title, body .footer .footer-text {
+      color: white; }
   body nav {
     background-color: #1c1c1c; }
     body nav #brand {

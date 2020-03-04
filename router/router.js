@@ -34,4 +34,11 @@ router.route("/mypage")
         res.render("myPage.ejs")
     }) 
 
+// För att komma till checkout
+router.route("/checkout")
+.get(async (req, res) => {
+    const shoppingBag = await databaseCandy.find();
+    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+}) 
+
 module.exports = router;
