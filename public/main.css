@@ -6,6 +6,13 @@ body {
   body ul .noListType {
     list-style-type: none; }
 
+@media only screen and (max-width: 600px) {
+  #header {
+    background-color: #1c1c1c;
+    text-align: center; }
+    #header #headerTitle {
+      font-size: 10px; } }
+
 #header {
   background-color: #1c1c1c;
   text-align: center; }
@@ -24,9 +31,7 @@ nav {
     font-family: 'Mansalva';
     color: white; }
   nav #navbarNav {
-    margin-top: 12px;
-    position: relative;
-    justify-content: space-evenly; }
+    margin-top: 12px; }
     nav #navbarNav ul {
       list-style-type: none; }
     nav #navbarNav a {
