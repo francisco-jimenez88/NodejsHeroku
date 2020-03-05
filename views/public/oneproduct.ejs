@@ -1,6 +1,17 @@
 <%- include("header.ejs") %>
 
 <div class="container">
+    <div class="row">
+        <div class="oneProductTitle col-sm-12 col-md-8 col-lg-6">
+            <h2 ><%= selectedCandy.name %></h2> <br>
+            <span><%= selectedCandy.price %> kr</span>
+        </div>
+        <div class="oneProductDescription col-sm-12 col-md-5 col-lg-4">
+
+        </div>
+
+    </div>
+
     <div class="oneProductWrappingDiv col-6"> 
         <%= selectedCandy.img %> <br>
     </div>
@@ -12,7 +23,7 @@
             Description: <%= selectedCandy.description %> <br>
         </div>
         <div class="oneProductDescriptionDiv col-2">
-            Price: <%= selectedCandy.price %> 
+            Price:  
         </div>
     </div>
 </div>
