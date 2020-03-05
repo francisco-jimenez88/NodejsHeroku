@@ -1,27 +1,76 @@
 const express = require("express");
 const router = express.Router();
-const newCandy = require("./model/productSchema");
+const databaseCandy = require("../model/productSchema");
+const databaseCustomer = require("../model/customerSchema");
+const bodyParser = require('body-parser')
 
+router.use(bodyParser.json())
+
+// För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
+        const item = await databaseCandy.find();
 
-        const allCandy = await newCandy.find();
-
-        res.render("index.ejs")
+        res.render("index", { item, title: "Lasses Lakrits" })
     })
 
+    .post(async (req, res) => {
+        // Kolla om kunden redan finns i databasen
+        const resultOfFindCustomer = await databaseCustomer.findOne({ user: req.body.user, password: req.body.password })
+        console.log(resultOfFindCustomer)
+        if (resultOfFindCustomer) {
+            // Här ska kunden loggas in 
+            // res.send("Kunden finns och kommer att loggas in.")
+            res.render("myPage")
 
-router.route("/categories")
+        } else {
+            // Skapar en ny kund till databasen
+            const addCustomer = await new databaseCustomer({ user: req.body.user, password: req.body.password })
+            if (addCustomer)
+                console.log('customer created:' + addCustomer)
+
+            addCustomer.save((error, success) => {
+                if (error) {
+                    console.log('smthn wrong')
+                    res.send(error._message);
+                } else {
+                    console.log('alles gut, gick att skapa ny användare')
+                    // res.send("Kunden har nu skapats till databasen"); 
+                    res.render('myPage')
+                }
+            });
+        }
+    })
+
+// Router för att komma till sidan med alla produkter
+router.route("/allproducts")
     .get(async (req, res) => {
 
-        const allCandy = await newCandy.find();
-        res.render("allproducts.ejs")
+        const allCandy = await databaseCandy.find();
+
+        res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
     })
 
+// För att komma till en specifik produkt
+router.route("/allproducts/:id")
+    .get(async (req, res) => {
+        console.log(req.params.id);
+        const selectedCandy = await databaseCandy.findOne({ name: req.params.id })
+        res.render("oneproduct", { selectedCandy, title: "Produkt" })
+    })
 
-router.route("/categories/:name")
+// För att komma till mina sidor
+router.route("/mypage")
     .get(async (req, res) => {
 
-        const selectedCandy = await newCandy.findById({_id: req.params.name})
-        res.render("oneproduct", {selectedCandy})
+        res.render("myPage.ejs")
     })
+
+// För att komma till checkout
+router.route("/checkout")
+.get(async (req, res) => {
+    const shoppingBag = await databaseCandy.find();
+    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+}) 
+
+module.exports = router;

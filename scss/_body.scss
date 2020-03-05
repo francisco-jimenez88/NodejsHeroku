@@ -1,0 +1,26 @@
+// Body föralla sidor 
+@import "mixins.scss"; 
+
+html body{
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    color: rgb(75, 75, 75);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    ul {
+        li {
+            padding: 5px;
+        }
+        .noListType {
+            list-style-type: none;
+        }
+        
+    }
+}
+    .container , .container-fluid {
+        flex: 1;    /* för att footern ska fungera måste allt innehåll på sidorna finnas i en div class ="container eller container-fluid" */
+    }
