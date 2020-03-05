@@ -6,9 +6,11 @@
         <p> Logga in</p>
 
         <form action="/" method="post">
+            <div id="errorMessage" style="display: none;">
+                felaktigt användarnamn eller lösenord.
+            </div>
             <input type="text" name="user" placeholder="Användarnamn"> <br>
             <input type="password" name="password" placeholder="Lösenord">
             <button type="submit">Logga in</button>
         </form>
-
 <%- include("footer.ejs") %>
