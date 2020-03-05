@@ -2,8 +2,8 @@
 @import "mixins.scss"; 
 
 body {
-    background: #333;
-    color: #fff;
+    background: #fff;
+    color: black;
     ul {
         li {
             padding: 5px;
@@ -12,4 +12,4 @@ body {
             list-style-type: none;
         }
     }   
-} 
+}

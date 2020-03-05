@@ -9,6 +9,7 @@ router.route("/")
         const item = await databaseCandy.find();
 
         res.render("index", { item, title: "Lasses Lakrits"})
+        res.status("200")
     })
     // .post(async (req, res) => {
 
@@ -21,6 +22,7 @@ router.route("/allproducts")
         const allCandy = await databaseCandy.find();
 
         res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
+        res.status("200")
     })
 
 // För att komma till en specifik produkt
