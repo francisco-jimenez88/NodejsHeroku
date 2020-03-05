@@ -9,11 +9,11 @@ const fs = require('fs');
 
 // Rakib bildhandeting  
 var storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null,"./public/images")
+    destination: function (req, file, cb) {
+        cb(null, "./public/images")
     },
-    filename: function(req, file, cb){
-        cb(null, file.fieldname + "-" + Date.now() )
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + "-" + Date.now())
     }
 })
 var upload = multer({ storage: storage })
@@ -24,7 +24,7 @@ var upload = multer({ storage: storage })
 router.route("/admin")
     .get(async (req, res) => {
         const findCandy = await newCandy.find();
-        
+
         res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
     })
     .post(upload.single('img'), async (req, res) => {
@@ -38,7 +38,7 @@ router.route("/admin")
             description: req.body.description,
             category: req.body.category,
             createdByAdmin: req.body.createdByAdmin,
-           
+
             // Rakib bildhantering 
             img: cleanedImg
 
@@ -52,6 +52,16 @@ router.route("/admin")
         });
 
     });
+
+//Admin login route
+router.route("/adminlogin")
+    .get(async (req, res) => {
+        res.render("admin/adminlogin");
+    })
+
+    .post(async (req, res) => {
+        res.redirect("/admin")
+    })
 
 
 module.exports = router;
