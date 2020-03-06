@@ -2,23 +2,27 @@
 @import "mixins.scss";
 body{
     .container{
-        .oneProductTitle{
-            background-color: pink;
+        .oneProductHeader{
+            background-color: salmon;
+            height: 150px;
+            @include desktop{
+                height: 200px;
+            }
+            .oneProductTitle{
+                background-color: pink;
+            }
+    
+            .oneProductDescription{
+                background-color: powderblue;
+                text-align: left;
+                                
+                @include mini-tablet {
+                    text-align: right;
+                }
+                @include mini-desktop {
+                    flex-direction: column;
+                } 
+            }
         }
-
-        .oneProductDescription{
-            background-color: powderblue;
-            
-        }
-         .oneProductWrappingDiv{
-            background-color: blue;
-        }
-        .oneProductDescriptionDiv{
-            background-color: green; 
-            
-        }  
-
-
     }
-
 }
