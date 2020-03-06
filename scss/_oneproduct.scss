@@ -1,10 +1,24 @@
 // oneProduct page
 @import "mixins.scss";
+body{
+    .container{
+        .oneProductTitle{
+            background-color: pink;
+        }
 
- .oneProductWrappingDiv{
-    background-color: blue;
+        .oneProductDescription{
+            background-color: powderblue;
+            
+        }
+         .oneProductWrappingDiv{
+            background-color: blue;
+        }
+        .oneProductDescriptionDiv{
+            background-color: green; 
+            
+        }  
+
+
+    }
+
 }
-.oneProductDescriptionDiv{
-    background-color: green; 
-    
-}  
