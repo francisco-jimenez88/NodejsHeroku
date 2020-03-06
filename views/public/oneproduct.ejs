@@ -1,31 +1,19 @@
 <%- include("header.ejs") %>
 
 <div class="container">
-    <div class="row">
-        <div class="oneProductTitle col-sm-12 col-md-8 col-lg-6">
-            <h2 ><%= selectedCandy.name %></h2> <br>
+    <div class="row  justify-content-between oneProductHeader">
+        <div class="oneProductTitle col-sm-12 col-md-6 col-lg-6">
+            <h2><%= selectedCandy.name %></h2> <br>
             <span><%= selectedCandy.price %> kr</span>
         </div>
-        <div class="oneProductDescription col-sm-12 col-md-5 col-lg-4">
-
+        <div class="oneProductDescription col-sm-12 col-md-6 col-lg-4 float-right">
+            <%= selectedCandy.description %>
         </div>
-
-    </div>
-
-    <div class="oneProductWrappingDiv col-6"> 
-        <%= selectedCandy.img %> <br>
-    </div>
-    <div class="row justify-content-center">
-        <div class="oneProductDescriptionDiv col-3"> 
-            Name: <%= selectedCandy.name %> <br>
-        </div>
-        <div class="oneProductDescriptionDiv col-7">
-            Description: <%= selectedCandy.description %> <br>
-        </div>
-        <div class="oneProductDescriptionDiv col-2">
-            Price:  
+        <div>
+            <img src="<%= selectedCandy.img %>" alt="">
         </div>
     </div>
+    <!-- <img src="../../public/images/twisted_banana_2.jpg" alt=""> -->
 </div>
 
 <%- include("footer.ejs") %>
