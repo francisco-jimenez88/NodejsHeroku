@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const databaseCandy = require("../model/productSchema");
 const databaseCustomer = require("../model/customerSchema");
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser")
+const flash = require("req-flash");
 
 router.use(bodyParser.json())
+// router.use(flash())
 
 // För att komma till förstasidan 
 router.route("/")
@@ -19,27 +21,28 @@ router.route("/")
         const resultOfFindCustomer = await databaseCustomer.findOne({ user: req.body.user, password: req.body.password })
         console.log(resultOfFindCustomer)
         if (resultOfFindCustomer) {
-            // Här ska kunden loggas in 
-            // res.send("Kunden finns och kommer att loggas in.")
+            // req.flash('successMessage', 'You are successfully using req-flash');
             res.render("myPage")
-
         } else {
-            // Skapar en ny kund till databasen
-            const addCustomer = await new databaseCustomer({ user: req.body.user, password: req.body.password })
-            if (addCustomer)
-                console.log('customer created:' + addCustomer)
+            // document.getElementById("#errorMessage").style.display = "show";
+            // req.flash('errorMessage', 'No errors, you\'re doing fine');
 
-            addCustomer.save((error, success) => {
-                if (error) {
-                    console.log('smthn wrong')
-                    res.send(error._message);
-                } else {
-                    console.log('alles gut, gick att skapa ny användare')
-                    // res.send("Kunden har nu skapats till databasen"); 
-                    res.render('myPage')
-                }
-            });
         }
+        // Skapar en ny kund till databasen. Skapar ett nytt konto
+        const addCustomer = await new databaseCustomer({ user: req.body.user, password: req.body.password })
+        if (addCustomer)
+            console.log('customer created:' + addCustomer)
+
+        addCustomer.save((error, success) => {
+            if (error) {
+                console.log('smthn wrong')
+                res.send(error._message);
+            } else {
+                console.log('alles gut, gick att skapa ny användare')
+                // res.send("Kunden har nu skapats till databasen"); 
+                res.render('myPage')
+            }
+        });
     })
 
 // Router för att komma till sidan med alla produkter
