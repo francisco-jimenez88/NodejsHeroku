@@ -11,7 +11,7 @@
     "sass": "node-sass --watch scss -o public",
     "dev": "npm-run-all --parallel start sass",
     "cypress": "cypress open",
-    "cy:run": "cypress run -- --record --spec 'cypress/integration/todo_ui_spec.js'",
+    "cy:run": "cypress run -- --record --spec 'cypress/integration/index.spec.js'",
     "unittest": "mocha",
     "test": "npm-run-all --parallel unittest cy:run"
   },
