@@ -53,6 +53,9 @@ router.route("/admin")
 
     });
 
+//Admin sign up route
+router.route("/")
+
 //Admin login route
 router.route("/adminlogin")
     .get(async (req, res) => {
