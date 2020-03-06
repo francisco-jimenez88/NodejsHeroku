@@ -1,0 +1,11 @@
+Develop
+1. git add .
+2. git commit -m "___"
+3. git push origin HannaDevelop 
+4. git checkout master 
+
+Master 
+5. git merge HannaDevelop 
+6. git push origin master 
+7. Lös konflikter. Är det konflikter så gör en ny add .
+8. git checkout HannaDevelop
