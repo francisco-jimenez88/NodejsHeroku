@@ -1,40 +1,39 @@
 body, html {
     height: 100%;
-}
-.parallax {
-    background-image: url("/images/background.jpg");
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#carousel {
-    width: 80%;
-    .carousel-inner {
-        width: 100%;
-        }
-        .carousel-control-prev,
-        .carousel-control-next {
-            filter: invert(1);
-            }
-        .carousel-item {
-            height: 100%;
-            width: 100%;    
-            img {
-                max-width: 175px;
-                min-width: 175px;
-                margin: auto;
-                height: 400px;
-            }
-        }
+    .parallax {
+        background-image: url("/images/background.jpg");
+        height: 100%;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
-.titel {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-.hover:hover {
-    filter: blur(3px);
+    #carousel {
+        width: 80%;
+        .carousel-inner {
+            width: 100%;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                filter: invert(1);
+                }
+            .carousel-item {
+                height: 100%;
+                width: 100%;    
+                img {
+                    max-width: 175px;
+                    min-width: 175px;
+                    margin: auto;
+                    height: 400px;
+                }
+            }
+        }
+    .titel {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    .hover:hover {
+        filter: blur(3px);
+    }
 }
