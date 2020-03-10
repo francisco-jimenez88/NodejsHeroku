@@ -40,7 +40,7 @@ router.route("/admin")
             createdByAdmin: req.body.createdByAdmin,
 
             // Rakib bildhantering 
-            img: cleanedImg
+            //img: cleanedImg
 
         }).save((error, success) => {
             if (error) {
