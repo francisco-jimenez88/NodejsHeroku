@@ -1,10 +1,43 @@
 // oneProduct page
 @import "mixins.scss";
+body{
+    .container{
+        .oneProductHeader{
+            background-color: salmon;
+            height: 150px;
+            display: flex;
+            justify-content: center;
 
- .oneProductWrappingDiv{
-    background-color: blue;
-}
-.oneProductDescriptionDiv{
-    background-color: green; 
+            .lakritsImgDiv{
+                .lakritsImg{
+                    width: 150px;
+                    padding-top: 30px;
+                }
+            }
     
-}  
+            @include mini-tablet {
+                
+            }
+            @include desktop{
+                height: 200px;
+            }
+
+            .oneProductTitle{
+                background-color: pink;
+            }
+    
+            .oneProductDescription{
+                background-color: powderblue;
+                text-align: left;
+                                
+                @include mini-tablet {
+                    text-align: right;
+                }
+                @include mini-desktop {
+                    flex-direction: column;
+                } 
+            }
+            
+        }
+    }
+}
