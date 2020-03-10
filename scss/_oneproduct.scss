@@ -5,9 +5,23 @@ body{
         .oneProductHeader{
             background-color: salmon;
             height: 150px;
+            display: flex;
+            justify-content: center;
+
+            .lakritsImgDiv{
+                .lakritsImg{
+                    width: 150px;
+                    padding-top: 30px;
+                }
+            }
+    
+            @include mini-tablet {
+                
+            }
             @include desktop{
                 height: 200px;
             }
+
             .oneProductTitle{
                 background-color: pink;
             }
@@ -23,6 +37,7 @@ body{
                     flex-direction: column;
                 } 
             }
+            
         }
     }
 }
