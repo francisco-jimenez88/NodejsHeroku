@@ -8,20 +8,21 @@ body {
     min-height: 100vh;
     flex-direction: column;
 
-    }
     
+
     .container , .container-fluid {
         flex: 1;    /* för att footern ska fungera måste allt innehåll på sidorna finnas i en div class ="container eller container-fluid" */
     }
 
-.footer {
-    background-color: #1c1c1c;
-    flex-shrink: 0;
+    .footer {
+        background-color: #1c1c1c;
+        flex-shrink: 0;
 
-    ul , .footer-title {
-        color: white;
+        ul , .footer-title {
+            color: white;
     
     }
+}
 
 }
 
