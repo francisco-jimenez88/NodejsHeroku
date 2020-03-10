@@ -1,0 +1,16 @@
+<%- include("header.ejs") %>
+
+        <p> Logga in</p>
+
+        <form action="/login" method="post">
+            <!-- <div id="errorMessage" style="display: none;">
+                felaktigt användarnamn eller lösenord.
+            </div> -->
+            <input type="email" name="email" required="true" placeholder="E-postadress"> <br>
+            <input type="password" name="password" required="true" placeholder="Lösenord">
+            <button type="submit">Logga in</button>
+        </form>
+
+        <p>Har du inget konto? Då kan du skapa ett <a href="/signup">här</a></p>
+
+<%- include("footer.ejs") %>

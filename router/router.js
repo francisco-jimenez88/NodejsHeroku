@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const databaseCandy = require("../model/productSchema");
-const databaseCustomer = require("../model/customerSchema");
 const bodyParser = require("body-parser")
 const flash = require("req-flash");
+const User = require("../model/userSchema")
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+// const verifyToken = require("./verifyToken")
 
-router.use(bodyParser.json())
+
 // router.use(flash())
 
 // För att komma till förstasidan 
@@ -17,32 +20,7 @@ router.route("/")
     })
 
     .post(async (req, res) => {
-        // Kolla om kunden redan finns i databasen
-        const resultOfFindCustomer = await databaseCustomer.findOne({ user: req.body.user, password: req.body.password })
-        console.log(resultOfFindCustomer)
-        if (resultOfFindCustomer) {
-            // req.flash('successMessage', 'You are successfully using req-flash');
-            res.render("myPage")
-        } else {
-            // document.getElementById("#errorMessage").style.display = "show";
-            // req.flash('errorMessage', 'No errors, you\'re doing fine');
 
-        }
-        // Skapar en ny kund till databasen. Skapar ett nytt konto
-        const addCustomer = await new databaseCustomer({ user: req.body.user, password: req.body.password })
-        if (addCustomer)
-            console.log('customer created:' + addCustomer)
-
-        addCustomer.save((error, success) => {
-            if (error) {
-                console.log('smthn wrong')
-                res.send(error._message);
-            } else {
-                console.log('alles gut, gick att skapa ny användare')
-                // res.send("Kunden har nu skapats till databasen"); 
-                res.render('myPage')
-            }
-        });
     })
 
 // Router för att komma till sidan med alla produkter
@@ -62,18 +40,70 @@ router.route("/allproducts/:id")
         res.render("oneproduct", { selectedCandy, title: "Produkt" })
     })
 
+//Signup sidan
+router.route("/signup")
+    .get(async (req, res) => {
+        res.render("signup", { title: "Registrering - Lasses Lakrits" })
+    })
+    .post(async (req, res) => {
+
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+        const user = await new User({
+            email: req.body.email,
+            name: req.body.name,
+            password: hashPassword
+        }).save()
+        console.log(user)
+        res.redirect("/")
+    })
+
+//Login sida
+router.route("/login")
+    .get(async (req, res) => {
+        res.render("login", { title: "Logga in - Lasses Lakrits" })
+    })
+    .post(async (req, res) => {
+
+        const user = await User.findOne({ email: req.body.email })
+
+        if (!user) return res.render("login")
+        console.log(user.password)
+        const compareHash = await bcrypt.compare(req.body.password, user.password)
+
+        if (!compareHash) return res.redirect("/login")
+
+        if (user.admin == true) return res.redirect("/admin")
+
+        /* jwt.sign({ user }, "secretkey", (err, token) => {
+            if (err) return res.redirect("/login")
+            if (token) {
+                const cookie = req.cookies.jsonwebtoken;
+                if (!cookie) {
+                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
+                }
+
+                res.render("myPage", { user, token })
+
+            } */
+
+        res.redirect("/")
+    })
+    
+
 // För att komma till mina sidor
 router.route("/mypage")
     .get(async (req, res) => {
 
-        res.render("myPage.ejs")
+        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
     })
 
 // För att komma till checkout
 router.route("/checkout")
-.get(async (req, res) => {
-    const shoppingBag = await databaseCandy.find();
-    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-}) 
+    .get(async (req, res) => {
+        const shoppingBag = await databaseCandy.find();
+        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+    })
 
 module.exports = router;

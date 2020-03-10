@@ -5,6 +5,7 @@ const multer = require("multer")
 const path = require("path");
 // const upload = multer({ dest: "/images" })
 const fs = require('fs');
+const User = require("../../model/userSchema");
 
 
 // Rakib bildhandeting  
@@ -59,11 +60,19 @@ router.route("/")
 //Admin login route
 router.route("/adminlogin")
     .get(async (req, res) => {
-        res.render("admin/adminlogin");
+        res.render("admin/adminlogin", { title: "Admin Login"});
     })
 
     .post(async (req, res) => {
-        res.redirect("/admin")
+
+        const findAdmin = await Admin.findOne({ admin: req.body.adminLogin })
+
+        //console.log(req.body.admin)
+
+        if (!findAdmin) return res.redirect("/adminlogin")
+        
+
+        res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
     })
 
 
