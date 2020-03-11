@@ -25,9 +25,15 @@ router.route("/")
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
-        const allCandy = await Candy.find();
+        //const allCandy = await Candy.find();
+        const currentPage = req.query.page || 1;
+        const items = 6;
+        const sort = req.query.sort;
+        const findProduct = await Candy.find()
+        const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
+        const pageCount = Math.ceil(findProduct.length / items)
 
-        res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
+        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage  })
         res.status("200")
     })
 
@@ -56,6 +62,10 @@ router.route("/signup")
         }).save()
         console.log(user)
         res.redirect("/")
+
+        const alreadyRegistered = await User.findOne({ email: req.body.email}) 
+
+        if(req.body.email == alreadyRegistered) return res.redirect("/signup")
     })
 
 //Login sida
