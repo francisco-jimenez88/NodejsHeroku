@@ -1,16 +1,13 @@
-html body{
-    height: 100%;
-}
 
+<<<<<<< HEAD
 body {
    
   //  display: flex;
     min-height: 100vh;
    // flex-direction: column;
+=======
+>>>>>>> e09471cb2b65bb414a632c668f86dc3a7b268044
 
-    .container , .container-fluid {
-        flex: 1;    /* för att footern ska fungera måste allt innehåll på sidorna finnas i en div class ="container eller container-fluid" */
-    }
 
     .footer {
         background-color: #1c1c1c;
@@ -21,5 +18,4 @@ body {
     }
 }
 
-}
 

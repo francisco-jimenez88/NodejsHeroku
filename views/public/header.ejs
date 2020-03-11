@@ -16,29 +16,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/main.css">
-    <title> Titel</title>
+    <title> <%= title %> </title>
 </head>
 <body>  
 <div id="header" class="container-fluid">
-        <span id="headerTitle">Lasses Lakrits</span>
-        <span id="slogan">Gott för både stora och små!</span>
+    <span id="headerTitle">Lasses Lakrits </span>
+    <span id="slogan"> Gott för både stora och små!</span>
+
 </div>
 
-    <nav class="navbar navbar-expand-lg w-100 navbar-light">
-        <a class="navbar-brand" id="brand" href="/">Lasses Lakrits</a>
-    
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav" id="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/allproducts">Produkter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Medlemmar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#kontakt">Kontakt</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg w-100 navbar-light containter-fluid">
+    <a class="navbar-brand" id="brand" href="/">Lasses Lakrits</a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" id="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/allproducts">Produkter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Medlemmar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#kontakt">Kontakt</a>
+            </li>
+            <li class="nav-item navbar-nav d-none d-lg-flex"></li>
+                <a class="navbar-text fas fa-shopping-cart" id="cart" href="/checkout"></a><span id="cartbadge" class="badge badge-light"></span>
+            </li>
+        </ul>
+    </div>
+</nav>
 
