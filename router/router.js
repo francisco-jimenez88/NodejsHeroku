@@ -6,7 +6,7 @@ const flash = require("req-flash");
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-// const verifyToken = require("./verifyToken")
+const verifyToken = require("./verifyToken")
 
 
 // router.use(flash())
@@ -69,25 +69,27 @@ router.route("/login")
         const user = await User.findOne({ email: req.body.email })
 
         if (!user) return res.render("login")
-        console.log(user.password)
+        //console.log(user.password)
         const compareHash = await bcrypt.compare(req.body.password, user.password)
 
         if (!compareHash) return res.redirect("/login")
 
         if (user.admin == true) return res.redirect("/admin")
 
-        /* jwt.sign({ user }, "secretkey", (err, token) => {
+        jwt.sign({ user }, "secretkey", (err, token) => {
             if (err) return res.redirect("/login")
             if (token) {
                 const cookie = req.cookies.jsonwebtoken;
                 if (!cookie) {
                     res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
                 }
+                console.log(user.password)
+                res.redirect("/")
 
-                res.render("myPage", { user, token })
+            }
 
-            } */
-
+            res.redirect("/")
+        })
         res.redirect("/")
     })
     
