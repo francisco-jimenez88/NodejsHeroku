@@ -11,6 +11,7 @@ body {
     }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 600px) {
     #header {
         background-color: #1c1c1c;
@@ -62,3 +63,14 @@ nav {
         }
     }
 }
+=======
+// Alla SCSS imports
+@import "header.scss";
+@import "navbar.scss";
+@import "allproducts.scss";
+@import "oneproduct.scss";
+@import "body.scss";
+@import "mixins.scss";
+@import "home.scss";
+@import "footer.scss";
+>>>>>>> ade8d5dd58154d3ae1872d5a8c42f5657ec09347

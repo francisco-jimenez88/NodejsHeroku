@@ -1,47 +1,29 @@
 const express = require("express");
-const newCandy = require("../../model/productSchema");
+const Candy = require("../../model/productSchema");
 const router = express.Router();
 const multer = require("multer")
 const path = require("path");
-// const upload = multer({ dest: "/images" })
 const fs = require('fs');
 const User = require("../../model/userSchema");
-
-
-// Rakib bildhandeting  
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "./public/images")
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + "-" + Date.now())
-    }
-})
-var upload = multer({ storage: storage })
-
-
 
 // Admin router 
 router.route("/admin")
     .get(async (req, res) => {
-        const findCandy = await newCandy.find();
-
+        const findCandy = await Candy.find();
+        
         res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
     })
-    .post(upload.single('img'), async (req, res) => {
+    .post( async (req, res) => {
 
         // Rakib bildhantering 
         console.log(req.file)
 
-        await new newCandy({
+        await new Candy({
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
             category: req.body.category,
             createdByAdmin: req.body.createdByAdmin,
-
-            // Rakib bildhantering 
-            //img: cleanedImg
 
         }).save((error, success) => {
             if (error) {
@@ -53,27 +35,6 @@ router.route("/admin")
         });
 
     });
-
-//Admin sign up route
-router.route("/")
-
-//Admin login route
-router.route("/adminlogin")
-    .get(async (req, res) => {
-        res.render("admin/adminlogin", { title: "Admin Login"});
-    })
-
-    .post(async (req, res) => {
-
-        const findAdmin = await Admin.findOne({ admin: req.body.adminLogin })
-
-        //console.log(req.body.admin)
-
-        if (!findAdmin) return res.redirect("/adminlogin")
-        
-
-        res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
-    })
 
 
 module.exports = router;

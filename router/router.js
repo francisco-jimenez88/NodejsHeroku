@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const databaseCandy = require("../model/productSchema");
+const Candy = require("../model/productSchema");
 const bodyParser = require("body-parser")
-const flash = require("req-flash");
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -14,7 +13,7 @@ const verifyToken = require("./verifyToken")
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
-        const item = await databaseCandy.find();
+        const item = await Candy.find();
 
         res.render("index", { item, title: "Lasses Lakrits" })
     })
@@ -26,17 +25,17 @@ router.route("/")
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
-
-        const allCandy = await databaseCandy.find();
+        const allCandy = await Candy.find();
 
         res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
+        res.status("200")
     })
 
 // För att komma till en specifik produkt
 router.route("/allproducts/:id")
     .get(async (req, res) => {
         console.log(req.params.id);
-        const selectedCandy = await databaseCandy.findOne({ name: req.params.id })
+        const selectedCandy = await Candy.findOne({ name: req.params.id })
         res.render("oneproduct", { selectedCandy, title: "Produkt" })
     })
 
@@ -103,9 +102,9 @@ router.route("/mypage")
 
 // För att komma till checkout
 router.route("/checkout")
-    .get(async (req, res) => {
-        const shoppingBag = await databaseCandy.find();
-        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-    })
+.get(async (req, res) => {
+    const shoppingBag = await Candy.find();
+    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+}) 
 
 module.exports = router;
