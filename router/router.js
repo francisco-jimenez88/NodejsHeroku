@@ -11,7 +11,6 @@ router.use(bodyParser.json())
 router.route("/")
     .get(async (req, res) => {
         const item = await Candy.find();
-
         res.render("index", { item, title: "Lasses Lakrits" })
     })
 
