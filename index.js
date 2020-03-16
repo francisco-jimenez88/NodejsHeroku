@@ -26,15 +26,9 @@ app.use(admin);
 app.get("*", (req, res) => res.send("404"));
 
 const options = {
-<<<<<<< HEAD
-    useUnifiedTopology: true, 
-  useNewUrlParser: true,
-  useCreateIndex: true
-=======
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true
->>>>>>> e09471cb2b65bb414a632c668f86dc3a7b268044
 }
 
 const port = process.env.PORT || 8000;

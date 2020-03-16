@@ -126,7 +126,6 @@ body, html {
     filter: blur(3px); }
 
 .footer {
-  background-color: #1c1c1c;
-  flex-shrink: 0; }
+  background-color: #1c1c1c; }
   .footer ul, .footer .footer-title {
     color: white; }
