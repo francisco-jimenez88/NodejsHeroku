@@ -39,8 +39,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
-    "mongoose": "^5.9.2",
-    "req-flash": "0.0.3"
+    "mongoose": "^5.9.2"
   },
   "keywords": []
 }

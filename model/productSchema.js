@@ -7,7 +7,8 @@ const schemaProduct = new mongoose.Schema({
     img: { type: Buffer, data: Buffer },
     description: { type: String, required: true },
     createdByAdmin: { type: String, required: true },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    color: {type: String, required: true}
 });
 
 
