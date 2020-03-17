@@ -3,23 +3,9 @@ const Candy = require("../../model/productSchema");
 const router = express.Router();
 const multer = require("multer")
 const path = require("path");
-// const upload = multer({ dest: "/images" })
 const fs = require('fs');
+const User = require("../../model/userSchema");
 
-
-// Rakib bildhandeting  
-/* var storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null,"./public/images")
-    },
-    filename: function(req, file, cb){
-        cb(null, file.fieldname + "-" + Date.now() )
-    }
-})
-var upload = multer({ storage: storage })
-
-upload.single('img'),
- */
 // Admin router 
 router.route("/admin")
     .get(async (req, res) => {
@@ -38,9 +24,6 @@ router.route("/admin")
             description: req.body.description,
             category: req.body.category,
             createdByAdmin: req.body.createdByAdmin,
-           
-            // Rakib bildhantering 
-           // img: cleanedImg
 
         }).save((error, success) => {
             if (error) {
