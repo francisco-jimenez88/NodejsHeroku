@@ -1,18 +1,4 @@
-body {
-  background: #333;
-  color: #fff; }
-  body ul li {
-    padding: 5px; }
-  body ul .noListType {
-    list-style-type: none; }
-
-@media only screen and (max-width: 600px) {
-  #header {
-    background-color: #1c1c1c;
-    text-align: center; }
-    #header #headerTitle {
-      font-size: 10px; } }
-
+@charset "UTF-8";
 #header {
   background-color: #1c1c1c;
   text-align: center; }
@@ -31,7 +17,9 @@ nav {
     font-family: 'Mansalva';
     color: white; }
   nav #navbarNav {
-    margin-top: 12px; }
+    margin-top: 12px;
+    position: relative;
+    justify-content: space-evenly; }
     nav #navbarNav ul {
       list-style-type: none; }
     nav #navbarNav a {
@@ -43,3 +31,57 @@ nav {
       text-decoration: none;
       font-family: 'Mansalva';
       color: #d8d881; }
+
+.lakritsWrappingDiv {
+  justify-content: center; }
+  .lakritsWrappingDiv .innerLakritsDiv {
+    width: 80%;
+    text-align: center;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 20px;
+    box-shadow: 0px 0px 40px black;
+    margin: 20px; }
+    @media (min-width: 820px) {
+      .lakritsWrappingDiv .innerLakritsDiv {
+        width: 40%; } }
+    @media (min-width: 1200px) {
+      .lakritsWrappingDiv .innerLakritsDiv {
+        width: 30%; } }
+    .lakritsWrappingDiv .innerLakritsDiv .lakritsDiv {
+      border-radius: 3px;
+      margin: auto;
+      background-color: white;
+      width: 90%;
+      box-shadow: 0px 0px 30px grey;
+      padding: 15px; }
+
+.oneProductWrappingDiv {
+  background-color: blue; }
+
+.oneProductDescriptionDiv {
+  background-color: green; }
+
+html body {
+  height: 100%; }
+
+body {
+  background-color: #fff;
+  color: #4b4b4b;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+  body ul li {
+    padding: 5px; }
+  body ul .noListType {
+    list-style-type: none; }
+
+.container, .container-fluid {
+  flex: 1;
+  /* för att footern ska fungera måste allt innehåll på sidorna finnas i en div class ="container eller container-fluid" */ }
+
+.footer {
+  background-color: #1c1c1c;
+  flex-shrink: 0; }
+  .footer .footer-title, .footer .footer-text {
+    color: white; }
