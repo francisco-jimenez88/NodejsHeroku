@@ -2,7 +2,7 @@ body, html {
     height: 100%;
     .parallax {
         background-image: url("/images/background.jpg");
-        height: 100%;
+        height: 75%;
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -10,6 +10,7 @@ body, html {
     }
     #carousel {
         width: 80%;
+        padding-top: 30px;
         .carousel-inner {
             width: 100%;
             }
@@ -33,7 +34,10 @@ body, html {
         justify-content: center;
         margin-top: 50px;
     }
+    
     .hover:hover {
-        filter: blur(3px);
+        filter: blur(1px);
+        transition: transform .2s;
+        transform: scale(1.1);
     }
 }
