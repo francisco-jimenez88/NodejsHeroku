@@ -1,3 +1,10 @@
+@mixin desktop {
+    @media (max-width: 1599px) { @content; }    
+}
+@mixin desktopLower {
+    @media (min-width: 1600px) { @content; }    
+}
+
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
@@ -95,29 +102,60 @@ body {
             margin-left: 2px;
         }
     
+        .sortHiddenUnderDesktop {
+            display: none;
+            // @include desktop {
+            //     display: none;
+            // }
+        }
         .rowName {
             width: 20%;
         }
     
         .rowPrice {
             width: 7%;
+            @include desktop {
+                padding-top: 21px;
+            }
         }
     
         .rowDescription {
             width: 32%;
             padding-top: 21px;
+            @include desktopLower {
+                padding-top: 0;
+            }
         }
     
+        .rowCategoryRadio {
+            width: 12.5%;
+            text-align: center;
+            input[type=radio] {
+                display: grid;
+                width: 100%;
+                margin: 10px 0px 5px 0px;
+            }
+        }
+
         .rowCategory {
             width: 12.5%;
+            @include desktop {
+                padding-top: 21px;
+            }
         }
 
         .rowColor {
             width: 4.5%;
+            @include desktopLower {
+                padding-top: 21px;
+            }
         }
 
         .rowCreatedBy {
             width: 8%;
+            @include desktop {
+                padding-top: 21px;
+            }
         }
     
         .rowImg, .rowChange, .rowDelete {

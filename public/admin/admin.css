@@ -58,19 +58,43 @@ body {
     body table .fa-caret-down {
       color: #ffce54;
       margin-left: 2px; }
+    body table .sortHiddenUnderDesktop {
+      display: none; }
     body table .rowName {
       width: 20%; }
     body table .rowPrice {
       width: 7%; }
+      @media (max-width: 1599px) {
+        body table .rowPrice {
+          padding-top: 21px; } }
     body table .rowDescription {
       width: 32%;
       padding-top: 21px; }
+      @media (min-width: 1600px) {
+        body table .rowDescription {
+          padding-top: 0; } }
+    body table .rowCategoryRadio {
+      width: 12.5%;
+      text-align: center; }
+      body table .rowCategoryRadio input[type=radio] {
+        display: grid;
+        width: 100%;
+        margin: 10px 0px 5px 0px; }
     body table .rowCategory {
       width: 12.5%; }
+      @media (max-width: 1599px) {
+        body table .rowCategory {
+          padding-top: 21px; } }
     body table .rowColor {
       width: 4.5%; }
+      @media (min-width: 1600px) {
+        body table .rowColor {
+          padding-top: 21px; } }
     body table .rowCreatedBy {
       width: 8%; }
+      @media (max-width: 1599px) {
+        body table .rowCreatedBy {
+          padding-top: 21px; } }
     body table .rowImg, body table .rowChange, body table .rowDelete {
       width: 5%;
       padding-top: 21px; }
