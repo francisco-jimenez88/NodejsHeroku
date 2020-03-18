@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @charset "UTF-8";
+=======
+>>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 #header {
   background-color: #1c1c1c;
   text-align: center; }
@@ -56,6 +59,7 @@ nav {
       box-shadow: 0px 0px 30px grey;
       padding: 15px; }
 
+<<<<<<< HEAD
 .oneProductWrappingDiv {
   background-color: blue; }
 
@@ -71,17 +75,90 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column; }
+=======
+#pagination {
+  text-align: center; }
+  #pagination .current {
+    background-color: black; }
+
+body .container .oneProductHeader {
+  background-color: salmon;
+  height: 150px;
+  display: flex;
+  justify-content: center; }
+  body .container .oneProductHeader .lakritsImgDiv .lakritsImg {
+    width: 150px;
+    padding-top: 30px; }
+  @media (min-width: 1200px) {
+    body .container .oneProductHeader {
+      height: 200px; } }
+  body .container .oneProductHeader .oneProductTitle {
+    background-color: pink; }
+  body .container .oneProductHeader .oneProductDescription {
+    background-color: powderblue;
+    text-align: left; }
+    @media (min-width: 600px) {
+      body .container .oneProductHeader .oneProductDescription {
+        text-align: right; } }
+    @media (min-width: 1000px) {
+      body .container .oneProductHeader .oneProductDescription {
+        flex-direction: column; } }
+
+body {
+  background: #fff;
+  color: black;
+  background-color: #fff;
+  color: #4b4b4b; }
+>>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
   body ul li {
     padding: 5px; }
   body ul .noListType {
     list-style-type: none; }
 
+<<<<<<< HEAD
 .container, .container-fluid {
   flex: 1;
   /* för att footern ska fungera måste allt innehåll på sidorna finnas i en div class ="container eller container-fluid" */ }
+=======
+body, html {
+  height: 100%; }
+  body .parallax, html .parallax {
+    background-image: url("/images/background.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  body #carousel, html #carousel {
+    width: 80%; }
+    body #carousel .carousel-inner, html #carousel .carousel-inner {
+      width: 100%; }
+    body #carousel .carousel-control-prev,
+    body #carousel .carousel-control-next, html #carousel .carousel-control-prev,
+    html #carousel .carousel-control-next {
+      filter: invert(1); }
+    body #carousel .carousel-item, html #carousel .carousel-item {
+      height: 100%;
+      width: 100%; }
+      body #carousel .carousel-item img, html #carousel .carousel-item img {
+        max-width: 175px;
+        min-width: 175px;
+        margin: auto;
+        height: 400px; }
+  body .titel, html .titel {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px; }
+  body .hover:hover, html .hover:hover {
+    filter: blur(3px); }
+>>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 
 .footer {
   background-color: #1c1c1c;
   flex-shrink: 0; }
+<<<<<<< HEAD
   .footer .footer-title, .footer .footer-text {
+=======
+  .footer ul, .footer .footer-title {
+>>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
     color: white; }
