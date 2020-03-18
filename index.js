@@ -16,21 +16,13 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
-
-app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/public')]);
+app.set('views',  [path.join(__dirname, 'views'),path.join(__dirname, 'views/public')]);
 
 app.use(lassesLakritsRouter);
-
 app.use(admin);
 
 app.get("*", (req, res) => res.send("404"));
 
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-}
-
 const port = process.env.PORT || 8000;
-mongoose.connect(config.databaseUrl, options)
+mongoose.connect(config.databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => app.listen(port, () => console.log(`Connection success on port: ${port}`)));

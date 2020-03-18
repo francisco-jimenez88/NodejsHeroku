@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Candy = require("../model/productSchema");
+// const databaseCandy = require("../model/productSchema");
+// const databaseCustomer = require("../model/customerSchema");
 const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
@@ -106,15 +108,14 @@ router.route("/login")
 // För att komma till mina sidor
 router.route("/mypage")
     .get(async (req, res) => {
-
         res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
     })
 
 // För att komma till checkout
 router.route("/checkout")
-.get(async (req, res) => {
-    const shoppingBag = await Candy.find();
-    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+    .get(async (req, res) => {
+        const shoppingBag = await Candy.find();
+        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
 }) 
 
 module.exports = router;

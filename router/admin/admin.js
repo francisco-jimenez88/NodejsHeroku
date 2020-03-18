@@ -1,29 +1,37 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
 const router = express.Router();
-const multer = require("multer")
-const path = require("path");
-const fs = require('fs');
-const User = require("../../model/userSchema");
 
-// Admin router 
+
 router.route("/admin")
     .get(async (req, res) => {
-        const findCandy = await Candy.find();
-        
-        res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
+        const sortName = req.query.name;
+        const sortPrice = req.query.price;
+        const sortCategory = req.query.category;
+        const queryExist = req.query.page;
+
+        let productQuantity = await Candy.find().countDocuments();
+
+        const page = +req.query.page || 1;
+        const productsPerPage = 4;
+        let pageQuantity = await Candy.find().countDocuments() / productsPerPage;
+        pageQuantity = Math.ceil(pageQuantity);
+
+        const pageCount = Math.ceil(productQuantity / productsPerPage)
+
+        const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
+
+        res.render("admin/admin", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
-    .post( async (req, res) => {
-
-        // Rakib bildhantering 
-        console.log(req.file)
-
+    .post(async (req, res) => {
         await new Candy({
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
             category: req.body.category,
+            color: req.body.color,
             createdByAdmin: req.body.createdByAdmin,
+            img: req.body.img
 
         }).save((error, success) => {
             if (error) {
@@ -33,8 +41,34 @@ router.route("/admin")
                 res.redirect("/admin");
             }
         });
-
     });
 
+router.route("/delete/:id")
+    .get(async (req, res) => {
+        await Candy.deleteOne({ _id: req.params.id });
+        res.redirect("/admin");
+    })
+
+
+router.route("/update/:id")
+    .get(async (req, res) => {
+        const updateCandy = await Candy.findById({ _id: req.params.id });
+        res.render("admin/update", { updateCandy, title: "Update Candy" });
+    })
+    .post(async (req, res) => {
+        await Candy.updateOne({ _id: req.params.id },
+            {
+                $set: {
+                    name: req.body.name,
+                    price: req.body.price,
+                    description: req.body.description,
+                    category: req.body.category,
+                    color: req.body.color,
+                    createdByAdmin: req.body.createdByAdmin,
+                    img: req.body.img
+                }
+            }, { runValidators: true });
+        res.redirect("/admin");
+    })
 
 module.exports = router;
