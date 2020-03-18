@@ -1,7 +1,6 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
 const router = express.Router();
-<<<<<<< HEAD
 
 
 router.route("/admin")
@@ -19,30 +18,12 @@ router.route("/admin")
         pageQuantity = Math.ceil(pageQuantity);
 
         const pageCount = Math.ceil(productQuantity / productsPerPage)
-=======
-const multer = require("multer")
-const path = require("path");
-const fs = require('fs');
-const User = require("../../model/userSchema");
-
-// Admin router 
-router.route("/admin")
-    .get(async (req, res) => {
-        const findCandy = await Candy.find();
-        
-        res.render("admin/admin", { findCandy, title: "Admin - Lasses Lakrits" })
-    })
-    .post( async (req, res) => {
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 
         const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
 
-<<<<<<< HEAD
         res.render("admin/admin", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
     .post(async (req, res) => {
-=======
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
         await new Candy({
             name: req.body.name,
             price: req.body.price,
@@ -50,10 +31,7 @@ router.route("/admin")
             category: req.body.category,
             color: req.body.color,
             createdByAdmin: req.body.createdByAdmin,
-<<<<<<< HEAD
             img: req.body.img
-=======
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 
         }).save((error, success) => {
             if (error) {

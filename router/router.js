@@ -1,17 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Candy = require("../model/productSchema");
-<<<<<<< HEAD
 // const databaseCandy = require("../model/productSchema");
-const databaseCustomer = require("../model/customerSchema");
-const bodyParser = require('body-parser')
-=======
+// const databaseCustomer = require("../model/customerSchema");
 const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken")
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 
 
 // router.use(flash())
@@ -39,14 +35,8 @@ router.route("/allproducts")
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
         const pageCount = Math.ceil(findProduct.length / items)
 
-<<<<<<< HEAD
-        const allCandy = await Candy.find();
-
-        res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
-=======
         res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage  })
         res.status("200")
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
     })
 
 // För att komma till en specifik produkt
@@ -118,27 +108,14 @@ router.route("/login")
 // För att komma till mina sidor
 router.route("/mypage")
     .get(async (req, res) => {
-        
-        res.render("myPage.ejs", { title: "Min sida"})
-    }) 
-
-<<<<<<< HEAD
+        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
+    })
 
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
         const shoppingBag = await Candy.find();
         res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-=======
-        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
-    })
-
-// För att komma till checkout
-router.route("/checkout")
-.get(async (req, res) => {
-    const shoppingBag = await Candy.find();
-    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
->>>>>>> cb90b157d5c9e53465c0377f2e5c3f4b19df1326
 }) 
 
 module.exports = router;
