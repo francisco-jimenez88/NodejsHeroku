@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const databaseCandy = require("../model/productSchema");
+const Candy = require("../model/productSchema");
 
 
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
-        const item = await databaseCandy.find();
+        const item = await Candy.find();
 
         res.render("index", { item, title: "Lasses Lakrits"})
     })
@@ -18,7 +18,7 @@ router.route("/")
 router.route("/allproducts")
     .get(async (req, res) => {
 
-        const allCandy = await databaseCandy.find();
+        const allCandy = await Candy.find();
 
         res.render("allproducts", { allCandy, title: "Lasses Lakritsar" })
     })
@@ -27,7 +27,7 @@ router.route("/allproducts")
 router.route("/allproducts/:id")
     .get(async (req, res) => {
         console.log(req.params.id);
-        const selectedCandy = await databaseCandy.findOne({ name: req.params.id })
+        const selectedCandy = await Candy.findOne({ name: req.params.id })
         res.render("oneproduct", { selectedCandy, title: "Produkt" })
     })
 
@@ -35,7 +35,7 @@ router.route("/allproducts/:id")
 router.route("/mypage")
     .get(async (req, res) => {
         
-        res.render("myPage.ejs")
+        res.render("myPage.ejs", { title: "Min sida"})
     }) 
 
 module.exports = router;
