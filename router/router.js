@@ -9,7 +9,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken")
 
-
 // router.use(flash())
 
 // För att komma till förstasidan 
@@ -96,7 +95,6 @@ router.route("/login")
                 }
                 console.log(user.password)
                 res.redirect("/")
-
             }
 
             res.redirect("/")
@@ -104,18 +102,24 @@ router.route("/login")
         res.redirect("/")
     })
     
-
-// För att komma till mina sidor
-router.route("/mypage")
-    .get(async (req, res) => {
-        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
-    })
-
+    // För att komma till mina sidor
+    router.route("/mypage")
+        .get(async (req, res) => {
+         /*  const user = await User.findOne({email: req.body.email})
+            if(!user) return res.render("login.ej")
+            if(req.body.email == user)*/ return res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"} ,/*{user}*/)
+            
+        })
+    //Logga ut
+        router.get("/logout", async (req, res) => {
+            res.clearCookie("jwtToken").redirect("/login")
+        })
+        
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
-        const shoppingBag = await Candy.find();
-        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-}) 
+    const shoppingBag = await Candy.find();
+    res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+    }) 
 
 module.exports = router;
