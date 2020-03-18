@@ -102,7 +102,6 @@ router.route("/login")
         res.redirect("/")
     })
     
-<<<<<<< HEAD
     // För att komma till mina sidor
     router.route("/mypage")
         .get(async (req, res) => {
@@ -122,20 +121,5 @@ router.route("/checkout")
     const shoppingBag = await Candy.find();
     res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
     }) 
-=======
-
-// För att komma till mina sidor
-router.route("/mypage")
-    .get(async (req, res) => {
-        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
-    })
-
-// För att komma till checkout
-router.route("/checkout")
-    .get(async (req, res) => {
-        const shoppingBag = await Candy.find();
-        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-}) 
->>>>>>> ad6b3ee37433317804a1e541f93313340e89f6ad
 
 module.exports = router;

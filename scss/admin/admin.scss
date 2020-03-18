@@ -101,30 +101,22 @@ body {
             color: #ffce54;
             margin-left: 2px;
         }
-    
-        .sortHiddenUnderDesktop {
-            display: none;
-            // @include desktop {
-            //     display: none;
-            // }
-        }
+
         .rowName {
             width: 20%;
+        }
+
+        .rowNameTable {
+            padding-top: 0;
+            margin-top: 0;
         }
     
         .rowPrice {
             width: 7%;
-            @include desktop {
-                padding-top: 21px;
-            }
         }
     
         .rowDescription {
             width: 32%;
-            padding-top: 21px;
-            @include desktopLower {
-                padding-top: 0;
-            }
         }
     
         .rowCategoryRadio {
@@ -139,28 +131,18 @@ body {
 
         .rowCategory {
             width: 12.5%;
-            @include desktop {
-                padding-top: 21px;
-            }
         }
 
         .rowColor {
             width: 4.5%;
-            @include desktopLower {
-                padding-top: 21px;
-            }
         }
 
         .rowCreatedBy {
             width: 8%;
-            @include desktop {
-                padding-top: 21px;
-            }
         }
-    
+
         .rowImg, .rowChange, .rowDelete {
             width: 5%;
-            padding-top: 21px;
         }
     
         .rowImg2 {
