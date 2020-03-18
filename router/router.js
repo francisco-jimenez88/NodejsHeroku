@@ -1,19 +1,48 @@
 const express = require("express");
 const router = express.Router();
 const Candy = require("../model/productSchema");
+// const databaseCandy = require("../model/productSchema");
+const databaseCustomer = require("../model/customerSchema");
+const bodyParser = require('body-parser')
 
+router.use(bodyParser.json())
 
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
         const item = await Candy.find();
 
-        res.render("index", { item, title: "Lasses Lakrits"})
+        res.render("index", { item, title: "Lasses Lakrits" })
     })
-    // .post(async (req, res) => {
 
-    // })
-    
+    .post(async (req, res) => {
+        // Kolla om kunden redan finns i databasen
+        const resultOfFindCustomer = await databaseCustomer.findOne({ user: req.body.user, password: req.body.password })
+        console.log(resultOfFindCustomer)
+        if (resultOfFindCustomer) {
+            // Här ska kunden loggas in 
+            // res.send("Kunden finns och kommer att loggas in.")
+            res.render("myPage")
+
+        } else {
+            // Skapar en ny kund till databasen
+            const addCustomer = await new databaseCustomer({ user: req.body.user, password: req.body.password })
+            if (addCustomer)
+                console.log('customer created:' + addCustomer)
+
+            addCustomer.save((error, success) => {
+                if (error) {
+                    console.log('smthn wrong')
+                    res.send(error._message);
+                } else {
+                    console.log('alles gut, gick att skapa ny användare')
+                    // res.send("Kunden har nu skapats till databasen"); 
+                    res.render('myPage')
+                }
+            });
+        }
+    })
+
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
@@ -37,5 +66,13 @@ router.route("/mypage")
         
         res.render("myPage.ejs", { title: "Min sida"})
     }) 
+
+
+// För att komma till checkout
+router.route("/checkout")
+    .get(async (req, res) => {
+        const shoppingBag = await Candy.find();
+        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
+}) 
 
 module.exports = router;

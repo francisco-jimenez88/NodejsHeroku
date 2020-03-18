@@ -1,8 +1,14 @@
 <%- include("header.ejs") %>
 
-<body>
-    <p> test</p>
 
-<img src="/images/twisted_banana_2.jpg">
+<body>
+    <!-- <img src="/images/twisted_banana_2.jpg"> -->
+        <p> Logga in</p>
+
+        <form action="/" method="post">
+            <input type="text" name="user" placeholder="Användarnamn"> <br>
+            <input type="password" name="password" placeholder="Lösenord">
+            <button type="submit">Logga in</button>
+        </form>
 
 <%- include("footer.ejs") %>
