@@ -6,6 +6,12 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
     phone: {type: Number},
+    wishlist:[{
+
+        productId: {type: mongoose.Schema.Types.ObjectId,
+        ref:"Candy"
+        } }],
+
     address: {
         lastname: {type: String},
         address: {type: String},
@@ -14,6 +20,11 @@ const userSchema = new mongoose.Schema({
     },
 
 });
+
+userSchema.methods.addToWishList = function(product){
+    this.wishlist.push({productId: product._id})
+    return this.save();
+}
 
 const User = mongoose.model("User", userSchema);
 

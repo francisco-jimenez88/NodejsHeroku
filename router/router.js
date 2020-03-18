@@ -100,12 +100,13 @@ router.route("/login")
         res.redirect("/")
     })
     
-    
     // För att komma till mina sidor
     router.route("/mypage")
         .get(async (req, res) => {
-        // const user = await User.findOne({ email: req.body.email })
-            res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"})
+         /*  const user = await User.findOne({email: req.body.email})
+            if(!user) return res.render("login.ej")
+            if(req.body.email == user)*/ return res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"} ,/*{user}*/)
+            
         })
     //Logga ut
         router.get("/logout", async (req, res) => {
