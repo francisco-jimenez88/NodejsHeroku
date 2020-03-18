@@ -16,11 +16,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.set("view engine", "ejs");
-
 app.set('views',  [path.join(__dirname, 'views'),path.join(__dirname, 'views/public')]);
 
 app.use(lassesLakritsRouter);
-
 app.use(admin);
 
 app.get("*", (req, res) => res.send("404"));

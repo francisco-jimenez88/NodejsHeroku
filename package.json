@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon index.js",
-    "sass": "node-sass --watch scss/admin -o public/admin",
+    "sass": "node-sass --watch scss -o public",
     "dev": "npm-run-all --parallel start sass",
     "cypress": "cypress open",
     "cy:run": "cypress run -- --record --spec 'cypress/integration/todo_ui_spec.js'",
