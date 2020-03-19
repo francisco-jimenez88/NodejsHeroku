@@ -1,30 +1,21 @@
 <%- include("header.ejs") %>
 
-    <!-- <div>
-        <table style="width: 90%; margin: 10px;">
-            <tr>
-            <th style="width: 200px;">Name</th>
-            <th>Description</th>
-            <th style="width: 100px;">Price</th>
-            <th></th>
-            </tr>
-
-            
-        </table>
-    </div> -->
-    <div class="lakritsWrappingDiv row">
+    <div class="container">
+        <div class="row">
         <% allCandy.forEach( item => { %>
-            <div class="innerLakritsDiv">
-                <div class="lakritsDiv">
-                   <img src="<%= item.img %>" alt=""> <br>
+                <div class="product-container col-sm-4 img-fluid">
+                    <a href="/allproducts/<%= item.name %>">
+                   <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
+                    <br>
+                    </a>
                     
                     <a href="/allproducts/<%= item.name %>"><%= item.name %></a>
-                    <!-- <p><%= item.description %> </p> -->
-                    <p><%= item.price %> </p>
+                    <!--<p><%= item.description %> </p>-->
+                    <p><%= item.price %> SEK</p>
                     <button type="button">Lägg i varukorg</button>
                 </div>
-            </div>
         <% }); %>
+        </div>
     </div>
 
 <%- include("footer.ejs") %>

@@ -1,18 +1,15 @@
 <%- include("header.ejs") %>
 
 <div class="container">
-    <div class="row oneProductHeader">
-        <div class="lakritsImgDiv">         
-            <img class="lakritsImg" src="<%= selectedCandy.img %>">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 oneProductHeader">
+            <img class="lakritsImg img-fluid" src="<%= selectedCandy.img %>">
         </div>
         <div class="oneProductTitle col-sm-12 col-md-6 col-lg-6">
             <h2><%= selectedCandy.name %></h2> <br>
             <span><%= selectedCandy.price %> kr</span>
-        </div>
-        <div class="oneProductDescription col-sm-12 col-md-6 col-lg-4 float-right">
-            <%= selectedCandy.description %>
+            <span><%= selectedCandy.description %></span>
         </div>
     </div>
-    
 </div>
 <%- include("footer.ejs") %>

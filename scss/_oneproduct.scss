@@ -1,32 +1,32 @@
 // oneProduct page
 @import "mixins.scss";
 body{
-    .container{
-        .oneProductHeader{
+    .container {
+        .oneProductHeader {
             background-color: salmon;
-            height: 150px;
+            height: 350px;
             display: flex;
             justify-content: center;
 
             .lakritsImgDiv{
                 .lakritsImg{
-                    width: 150px;
-                    padding-top: 30px;
+                    max-width: 100%;
+                    height: auto;
                 }
             }
     
             @include mini-tablet {
                 
             }
-            @include desktop{
+            @include desktop {
                 height: 200px;
             }
 
-            .oneProductTitle{
+            .oneProductTitle {
                 background-color: pink;
             }
     
-            .oneProductDescription{
+            .oneProductDescription {
                 background-color: powderblue;
                 text-align: left;
                                 
