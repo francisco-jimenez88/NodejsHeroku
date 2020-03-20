@@ -60,11 +60,20 @@ body {
       margin-left: 2px; }
     body table .rowName {
       width: 20%; }
+    body table .rowNameTable {
+      padding-top: 0;
+      margin-top: 0; }
     body table .rowPrice {
       width: 7%; }
     body table .rowDescription {
-      width: 32%;
-      padding-top: 21px; }
+      width: 32%; }
+    body table .rowCategoryRadio {
+      width: 12.5%;
+      text-align: center; }
+      body table .rowCategoryRadio input[type=radio] {
+        display: grid;
+        width: 100%;
+        margin: 10px 0px 5px 0px; }
     body table .rowCategory {
       width: 12.5%; }
     body table .rowColor {
@@ -72,8 +81,7 @@ body {
     body table .rowCreatedBy {
       width: 8%; }
     body table .rowImg, body table .rowChange, body table .rowDelete {
-      width: 5%;
-      padding-top: 21px; }
+      width: 5%; }
     body table .rowImg2 {
       width: 10.5%; }
   body form {

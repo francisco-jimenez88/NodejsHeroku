@@ -1,3 +1,10 @@
+@mixin desktop {
+    @media (max-width: 1599px) { @content; }    
+}
+@mixin desktopLower {
+    @media (min-width: 1600px) { @content; }    
+}
+
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
@@ -94,9 +101,14 @@ body {
             color: #ffce54;
             margin-left: 2px;
         }
-    
+
         .rowName {
             width: 20%;
+        }
+
+        .rowNameTable {
+            padding-top: 0;
+            margin-top: 0;
         }
     
         .rowPrice {
@@ -105,9 +117,18 @@ body {
     
         .rowDescription {
             width: 32%;
-            padding-top: 21px;
         }
     
+        .rowCategoryRadio {
+            width: 12.5%;
+            text-align: center;
+            input[type=radio] {
+                display: grid;
+                width: 100%;
+                margin: 10px 0px 5px 0px;
+            }
+        }
+
         .rowCategory {
             width: 12.5%;
         }
@@ -119,10 +140,9 @@ body {
         .rowCreatedBy {
             width: 8%;
         }
-    
+
         .rowImg, .rowChange, .rowDelete {
             width: 5%;
-            padding-top: 21px;
         }
     
         .rowImg2 {
