@@ -102,9 +102,9 @@ router.route("/login")
     })
     
     // För att komma till mina sidor
-router.get("/myPage", verifyToken, (req, res) => {
+router.get("/myPage", (req, res) => {
     
-          res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"} ,{user})
+          res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"})
             
         })
     //Logga ut
