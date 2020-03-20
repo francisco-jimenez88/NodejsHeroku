@@ -2,17 +2,4 @@
 @import "mixins.scss"; 
 
 body {
-    background: #fff;
-    color: black;
-    background-color: #fff;
-    color: rgb(75, 75, 75);
-    ul {
-        li {
-            padding: 5px;
-        }
-        .noListType {
-            list-style-type: none;
-        }
-    }   
 }
-    
