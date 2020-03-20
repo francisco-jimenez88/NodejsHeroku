@@ -17,3 +17,10 @@
         }
     }
 }
+
+#pagination {
+    text-align: center;
+    .current {
+        background-color: black;
+    }
+}

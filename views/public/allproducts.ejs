@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row">
-        <% allCandy.forEach( item => { %>
+        <% sixProducts.forEach( item => { %>
                 <div class="product-container col-sm-4 img-fluid">
                     <a href="/allproducts/<%= item.name %>">
                    <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
@@ -17,5 +17,17 @@
         <% }); %>
         </div>
     </div>
+
+    <div id="pagination">
+    <% for (let page = 1; page <= pageCount; page++ ) { %>
+        <% if (currentPage == page) { %>
+        <a href="/allproducts/?page=<%= page %>" class="current"><%= page %></a>
+        <% } else { %>
+        <a href="/allproducts/?page=<%= page %>"><%= page %></a>
+        <% } %>
+        <% } %>
+    </div>
+    
+</body>
 
 <%- include("footer.ejs") %>

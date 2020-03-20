@@ -1,0 +1,15 @@
+<%- include("header.ejs") %>
+
+<form action="/signup" method="post">
+
+    <input type="email" name="email" id="" placeholder="E-postadress">
+    <input type="text" name="name" id="" placeholder="Namn">
+    <input type="password" name="password" id="" placeholder="password">
+    <input type="password" name="" id="" placeholder="Repeat password">
+    <button type="submit">Sign up</button>
+
+</form>
+
+<p>Har du redan ett konto? Logga in <a href="/login">här</a></p>
+
+<%- include("footer.ejs") %>
