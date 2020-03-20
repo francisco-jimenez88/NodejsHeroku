@@ -5,19 +5,11 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
-    phone: {type: Number},
     wishlist:[{
-
+        
         productId: {type: mongoose.Schema.Types.ObjectId,
-        ref:"Candy"
+            ref:"Candy"
         } }],
-
-    address: {
-        lastname: {type: String},
-        address: {type: String},
-        city: {type: String},
-        zip: {type: Number}
-    },
 
 });
 

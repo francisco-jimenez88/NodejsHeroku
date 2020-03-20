@@ -1,13 +1,12 @@
 const express = require("express");
-const router = express.Router();
-const Candy = require("../model/productSchema");
-// const databaseCandy = require("../model/productSchema");
-// const databaseCustomer = require("../model/customerSchema");
 const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken")
+const config = require("../config/config");
+const Candy = require("../model/productSchema");
+const router = express.Router();
 
 // router.use(flash())
 
@@ -71,14 +70,14 @@ router.route("/signup")
 
 //Login sida
 router.route("/login")
-    .get(async (req, res) => {
+    .get((req, res) => {
         res.render("login", { title: "Logga in - Lasses Lakrits" })
     })
     .post(async (req, res) => {
 
         const user = await User.findOne({ email: req.body.email })
 
-        if (!user) return res.render("login")
+        if (!user) return res.render("login", { title: "Logga in - Lasses Lakrits" })
         //console.log(user.password)
         const compareHash = await bcrypt.compare(req.body.password, user.password)
 
@@ -102,13 +101,10 @@ router.route("/login")
         res.redirect("/")
     })
     
-<<<<<<< HEAD
     // För att komma till mina sidor
-    router.route("/mypage")
-        .get(async (req, res) => {
-         /*  const user = await User.findOne({email: req.body.email})
-            if(!user) return res.render("login.ej")
-            if(req.body.email == user)*/ return res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"} ,/*{user}*/)
+router.get("/myPage", verifyToken, (req, res) => {
+    
+          res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"} ,{user})
             
         })
     //Logga ut
@@ -122,20 +118,5 @@ router.route("/checkout")
     const shoppingBag = await Candy.find();
     res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
     }) 
-=======
-
-// För att komma till mina sidor
-router.route("/mypage")
-    .get(async (req, res) => {
-        res.render("myPage.ejs", { title: "Min sida - Lasses Lakrits" })
-    })
-
-// För att komma till checkout
-router.route("/checkout")
-    .get(async (req, res) => {
-        const shoppingBag = await Candy.find();
-        res.render("checkout.ejs", { shoppingBag, title: "Checkout" })
-}) 
->>>>>>> ad6b3ee37433317804a1e541f93313340e89f6ad
 
 module.exports = router;
