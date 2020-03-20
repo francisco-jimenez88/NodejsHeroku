@@ -1,7 +1,7 @@
 // allproducts page
 @import "mixins.scss";
 
-.container {
+#all-products-container {
     display: flex;
     justify-content: center;
     .product-container {
