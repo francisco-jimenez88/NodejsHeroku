@@ -33,17 +33,17 @@ nav {
       font-family: 'Century Gothic';
       color: #d8d881; }
 
-.container {
+#all-products-container {
   display: flex;
   justify-content: center; }
-  .container .product-container {
+  #all-products-container .product-container {
     text-align: center;
     padding-top: 40px; }
-    .container .product-container img {
+    #all-products-container .product-container img {
       max-width: 200px;
       min-width: 200px;
       padding-bottom: 20px; }
-      .container .product-container img .hover:hover {
+      #all-products-container .product-container img .hover:hover {
         filter: blur(3px); }
 
 #pagination {
@@ -51,7 +51,7 @@ nav {
   #pagination .current {
     background-color: black; }
 
-.container-fluid {
+#one-product-container {
   background-image: url("/images/LakritdBG.png");
   background-repeat: repeat;
   background-size: 50%;
@@ -61,22 +61,22 @@ nav {
 @keyframes animation {
   100% {
     background-position: -0px -3000px; } }
-  .container-fluid .oneProductHeader {
+  #one-product-container .oneProductHeader {
     width: 100%;
     position: absolute;
     max-height: 250px; }
-  .container-fluid .lakritsMainDiv {
+  #one-product-container .lakritsMainDiv {
     padding-top: 30px;
     justify-content: center;
     padding-bottom: 30px;
     margin: 0px; }
-    .container-fluid .lakritsMainDiv .lakritsImg {
+    #one-product-container .lakritsMainDiv .lakritsImg {
       height: 400px;
       z-index: 1; }
-    .container-fluid .lakritsMainDiv .backgroundLakrits .miniLakrits {
+    #one-product-container .lakritsMainDiv .backgroundLakrits .miniLakrits {
       width: 20px;
       padding: 50px; }
-  .container-fluid .oneProductInfo {
+  #one-product-container .oneProductInfo {
     padding-bottom: 30px;
     margin-left: 0px;
     margin-right: 0px;
@@ -89,19 +89,19 @@ nav {
     padding-left: 15px;
     padding-right: 10px; }
     @media (min-width: 820px) {
-      .container-fluid .oneProductInfo {
+      #one-product-container .oneProductInfo {
         padding-left: 30px; } }
     @media (min-width: 1200px) {
-      .container-fluid .oneProductInfo {
+      #one-product-container .oneProductInfo {
         padding-left: 60px; } }
-    .container-fluid .oneProductInfo .oneProductBtn {
+    #one-product-container .oneProductInfo .oneProductBtn {
       padding-top: 15px;
       padding-bottom: 20px; }
-    .container-fluid .oneProductInfo .oneProductDescription {
+    #one-product-container .oneProductInfo .oneProductDescription {
       text-align: left;
       z-index: 1; }
       @media (min-width: 1000px) {
-        .container-fluid .oneProductInfo .oneProductDescription {
+        #one-product-container .oneProductInfo .oneProductDescription {
           flex-direction: column; } }
 
 body, html {
