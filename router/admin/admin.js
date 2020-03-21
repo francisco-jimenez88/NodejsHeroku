@@ -22,7 +22,7 @@ router.route("/admin")
 
         const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
 
-        res.render("admin/admin", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
+        res.render("admin/adminProduct", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
     .post(async (req, res) => {
         await new Candy({
@@ -54,7 +54,7 @@ router.route("/delete/:id")
 router.route("/update/:id")
     .get(async (req, res) => {
         const updateCandy = await Candy.findById({ _id: req.params.id });
-        res.render("admin/update", { updateCandy, title: "Update Candy" });
+        res.render("admin/updateProduct", { updateCandy, title: "Update Candy" });
     })
     .post(async (req, res) => {
         await Candy.updateOne({ _id: req.params.id },
@@ -95,7 +95,7 @@ router.route("/admin2")
         let onlyAdmins = { admin: true };
         const findAdmins = await User.find(onlyAdmins).collation({ locale: "sv", strength: 2 }).sort({ admin: sortAdmin }).skip(usersPerPage * (page - 1)).limit(usersPerPage);
 
-        res.render("admin/admin2", { findUsers, findAdmins, page, pageQuantity, usersPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
+        res.render("admin/adminUser", { findUsers, findAdmins, page, pageQuantity, usersPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
 
 
