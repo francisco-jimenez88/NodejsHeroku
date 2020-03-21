@@ -5,13 +5,13 @@
     background-repeat: repeat;
     background-size: 50%;
     padding: 0px;
-    animation: animation 200s linear infinite;
+    // animation: animation 200s linear infinite;
     
-     @keyframes animation {
-         100%{
-             background-position:-0px -3000px;
-         }
-     } 
+    //  @keyframes animation {
+    //      100%{
+    //          background-position:-0px -3000px;
+    //      }
+    //  } 
     .oneProductHeader{
         width: 100%;
         position: absolute;
@@ -58,6 +58,10 @@
         .oneProductBtn{
             padding-top: 15px;
             padding-bottom: 20px;
+            .far{
+                padding-left: 8px;
+                margin: 3px;
+            }
         }
 
         .oneProductDescription{
