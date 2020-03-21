@@ -142,7 +142,19 @@ body, html {
     transition: transform .2s;
     transform: scale(1.1); }
 
+html body {
+  height: 100%; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.thecontainer {
+  flex: 1; }
+
 .footer {
-  background-color: #1c1c1c; }
+  background-color: #1c1c1c;
+  flex-shrink: 0; }
   .footer ul, .footer .footer-title {
     color: white; }
