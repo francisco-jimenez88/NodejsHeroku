@@ -58,9 +58,13 @@
         .oneProductBtn{
             padding-top: 15px;
             padding-bottom: 20px;
-            .far{
-                padding-left: 8px;
-                margin: 3px;
+            padding-left: 14px;
+            .iconDiv{
+                .far{
+                    pointer-events: auto;
+                    padding-left: 8px;
+                    margin: 5px;
+                }
             }
         }
 

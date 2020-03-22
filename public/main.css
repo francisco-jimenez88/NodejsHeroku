@@ -91,10 +91,12 @@ nav {
         padding-left: 60px; } }
     #one-product-container .oneProductInfo .oneProductBtn {
       padding-top: 15px;
-      padding-bottom: 20px; }
-      #one-product-container .oneProductInfo .oneProductBtn .far {
+      padding-bottom: 20px;
+      padding-left: 14px; }
+      #one-product-container .oneProductInfo .oneProductBtn .iconDiv .far {
+        pointer-events: auto;
         padding-left: 8px;
-        margin: 3px; }
+        margin: 5px; }
     #one-product-container .oneProductInfo .oneProductDescription {
       text-align: left;
       z-index: 1; }
