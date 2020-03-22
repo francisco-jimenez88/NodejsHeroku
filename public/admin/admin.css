@@ -2,8 +2,18 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
 
 body {
-  text-transform: capitalize; }
-  body #textTransformInitial {
+  text-transform: capitalize;
+  text-align: center; }
+  body h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid black;
+    display: inline;
+    border-spacing: 2px; }
+  body .usersTable {
+    padding-top: 15px; }
+  body .adminsTable {
+    padding-top: 60px; }
+  body .textTransformInitial {
     text-transform: initial; }
   body table {
     margin-top: 20px;
@@ -84,6 +94,8 @@ body {
       width: 5%; }
     body table .rowImg2 {
       width: 10.5%; }
+    body table .rowUser {
+      padding-top: 21px; }
   body form {
     text-align: center; }
     body form .animate {
