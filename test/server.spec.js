@@ -1,8 +1,6 @@
-
-
 const mocha = require('mocha');
 const request = require('supertest')
-const  server  = require('../router/router')
+const server = require('../router/router')
 
 describe('Using express', ()=> {
 

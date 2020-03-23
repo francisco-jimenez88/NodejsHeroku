@@ -2,13 +2,12 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next)=>{
 
-    const token = req.cookies.jsonwebtoken
-    console.log("usertoken", token)
-
+    const token = req.cookies.jsonwebtoken;
+   
     if(token) {
         const user = jwt.verify(token, "secretkey")
 
-        req.user = user;
+        req.body = user;
         next();
     }
     else {

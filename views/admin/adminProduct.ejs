@@ -30,18 +30,18 @@
                 <th class="rowPrice">Pris<a href="?price=1"></a> <a href="?price=-1"></a></th>
                 <th class="rowDescription">Beskrivning</th>
                 <th class="rowCategory">Kategori<a href="?category=1"></a> <a href="?category=-1"></a></th>
-                <th class="rowCreatedBy">Skapad av<a href="?createdBy=1"></a> <a href="?createdBy=-1"></a></th>
+                <th class="rowCreatedBy textTransformInitial">Skapad av<a href="?createdBy=1"></a> <a href="?createdBy=-1"></a></th>
                 <th class="rowImg">Bild</th>
                 <th class="rowChange">Ändra</th>
-                <th class="rowDelete" id="textTransformInitial">Ta bort</th>
+                <th class="rowDelete textTransformInitial">Ta bort</th>
             </tr>
 
             <% findCandy.forEach( (candy) => { %>
 
             <tr class="productRow">
                 <td><%= candy.name %></td>
-                <td id="textTransformInitial"><%= candy.price %> kr</td>
-                <td id="textTransformInitial"><%= candy.description %></td>
+                <td class="textTransformInitial"><%= candy.price %> kr</td>
+                <td class="textTransformInitial"><%= candy.description %></td>
                 <td><%= candy.category %></td>
                 <td><%= candy.createdByAdmin %></td>
                 <td class="fontAwesomeIcon"><a href="<%=candy.img%>" target="_blank"><i class="far fa-image fa-lg"></i></a></td>

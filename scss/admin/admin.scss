@@ -1,18 +1,27 @@
-@mixin desktop {
-    @media (max-width: 1599px) { @content; }    
-}
-@mixin desktopLower {
-    @media (min-width: 1600px) { @content; }    
-}
-
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 body {
     text-transform: capitalize;
+    text-align: center;
 
-    #textTransformInitial {
+    h1 {
+        font-size: 2.5rem;
+        border-bottom: 2px solid black;
+        display: inline;
+        border-spacing: 2px;
+    }
+
+    .usersTable {
+        padding-top: 15px;
+    }
+
+    .adminsTable {
+        padding-top: 60px;
+    }
+
+    .textTransformInitial {
         text-transform: initial;
     }
 
@@ -148,6 +157,11 @@ body {
         .rowImg2 {
             width: 10.5%;
         }
+
+        .rowUser {
+            padding-top: 21px;
+        }
+
     }
 
     form {
