@@ -47,7 +47,6 @@ userSchema.methods.removeFromList = function (productId) {
 
 }
 
-
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
