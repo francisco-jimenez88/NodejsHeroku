@@ -9,19 +9,20 @@
 <div class ="row justify-content-center">
     <div class="col-sm-12 col-md-9 text-center">
 
-<li>
-    <% user.wishlist.forEach( (product)=>{ %>
-    <!-- <li> product id objektet:  <%=product.productId %></li> -->
-<li> <%= product.productId.name%>
-    <span> Price: <%=product.productId.price %> </span>
+<ul>
+    <% user.wishlist.forEach( (candy)=>{ %>
+    <%=candy.candyId %>
+<li> <%= candy.candyId.name%>
+    <span> Price: <%=candy.candyId.price %> </span>
 </li>
-<a href="/deleteWishlist/<%=product.productId._id%>">Remove wishlist</a>
+<a href="/deleteWishlist/<%=candy.candyId._id%>">Remove from wishlist</a>
 <% } ) %>
-</li>
+</ul>
 
 <div class="col-sm-12 col-md-3 text-center">
+    <h6><a href="/mypage">Mina uppgifter</a></h6>
     <h6>Mina beställningar</h6>
-    <h6>Mina favoriter</h6>
+    <h6><a href="/wishlist">Min Wishlist</a></h6>
     <h6>Säg upp medlemskap</h6>
     <h6><%- include("logout.ejs") %></h6>
 </div>
