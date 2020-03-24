@@ -1,0 +1,32 @@
+<%- include("headermember.ejs") %>
+
+<div class = "container thecontainer">
+    <div class = "row justify-content-center py-3">
+        <h3 class="my-page-title">Mina sidor</h3>
+        
+    </div>
+
+<div class ="row justify-content-center">
+    <div class="col-sm-12 col-md-9 text-center">
+
+<li>
+    <% user.wishlist.forEach( (product)=>{ %>
+    <!-- <li> product id objektet:  <%=product.productId %></li> -->
+<li> <%= product.productId.name%>
+    <span> Price: <%=product.productId.price %> </span>
+</li>
+<a href="/deleteWishlist/<%=product.productId._id%>">Remove wishlist</a>
+<% } ) %>
+</li>
+
+<div class="col-sm-12 col-md-3 text-center">
+    <h6>Mina beställningar</h6>
+    <h6>Mina favoriter</h6>
+    <h6>Säg upp medlemskap</h6>
+    <h6><%- include("logout.ejs") %></h6>
+</div>
+
+</div>
+    </div>
+
+<%- include("footer.ejs") %>

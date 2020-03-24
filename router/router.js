@@ -14,6 +14,7 @@ const router = express.Router();
 router.route("/")
     .get(async (req, res) => {
         const item = await Candy.find();
+
         res.render("index", { item, title: "Lasses Lakrits" })
     })
 
@@ -81,7 +82,7 @@ router.route("/login")
         const compareHash = await bcrypt.compare(req.body.password, user.password)
 
         if (!compareHash) return res.redirect("/login")
-
+        
         if (user.admin == true) return res.redirect("/admin")
 
         jwt.sign({ user }, "secretkey", (err, token) => {
@@ -101,16 +102,44 @@ router.route("/login")
     })
     
     // För att komma till mina sidor
-router.get("/myPage", (req, res) => {
-    
-          res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"})
+    router.get("/myPage", verifyToken, async (req, res) => {
+        const user = await User.findOne({_id: req.body.user._id})
+            res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"}, {user})
             
         })
+
     //Logga ut
-        router.get("/logout", async (req, res) => {
-            res.clearCookie("jwtToken").redirect("/login")
+    router.get("/logout", async (req, res) => {
+        res.clearCookie("jsonwebtoken").redirect("/login")
         })
         
+    //Wishlist
+    router.get("/wishlist",verifyToken , async (req, res)=>{
+  
+        const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.productId")
+           res.render("wishlist.ejs", {user});
+           
+           })
+           
+           
+    router.get("/wishlist/:id",verifyToken , async (req, res)=>{
+        const product =  await  Product.findOne({_id:req.params.id}) 
+        const user = await User.findOne({_id: req.body.user._id})   
+           // mata in ett product id från mongo databas  . Lägg den som string  "51232131231......."
+           //console.log("product" , product)
+            await user.addToWishList(product)
+            //console.log("wishlist user " , user)
+            res.redirect("/wishlist")
+           //res.render("wishlist.ejs", {user});
+           
+           })
+           
+    router.get("/deleteWishlist/:id", verifyToken, async(req, res)=>{
+             const user = await User.findOne({_id: req.body.user._id})
+             user.removeFromList(req.params.id)
+             res.redirect("/wishlist");
+           })
+           
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
