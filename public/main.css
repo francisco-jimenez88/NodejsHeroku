@@ -55,12 +55,7 @@ nav {
   background-image: url("/images/LakritdBG.png");
   background-repeat: repeat;
   background-size: 50%;
-  padding: 0px;
-  animation: animation 200s linear infinite; }
-
-@keyframes animation {
-  100% {
-    background-position: -0px -3000px; } }
+  padding: 0px; }
   #one-product-container .oneProductHeader {
     width: 100%;
     position: absolute;
@@ -96,7 +91,12 @@ nav {
         padding-left: 60px; } }
     #one-product-container .oneProductInfo .oneProductBtn {
       padding-top: 15px;
-      padding-bottom: 20px; }
+      padding-bottom: 20px;
+      padding-left: 14px; }
+      #one-product-container .oneProductInfo .oneProductBtn .iconDiv .far {
+        pointer-events: auto;
+        padding-left: 8px;
+        margin: 5px; }
     #one-product-container .oneProductInfo .oneProductDescription {
       text-align: left;
       z-index: 1; }
