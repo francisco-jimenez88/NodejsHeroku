@@ -92,30 +92,33 @@ router.route("/signup")
     console.log("Hej hej")
                     }
     if (user.admin == true) return res.redirect("/admin")
-     
+
+
     res.redirect("/")
-                }
+    console.log("cookie")
+                
+    }
      
     res.redirect("/login")
             })
         })
-    
-    //Logga ut
-    router.get("/logout", async (req, res) => {
-        res.clearCookie("jsonwebtoken").redirect("/login")
-        })
         
 //Mypage
-    router.get("/mypage" , async (req, res) => {
-        const user = await User.findOne({ email:req.body.email })
-            res.render("userprofile/mypage.ejs",{ title:"Logga in - Lasses Lakrits" }, {user})
+router.get("/mypage", verifyToken, async (req, res) => {
+    const user = await User.findOne({ email: req.body.email })
+    res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
+})
+
+//Logga ut
+    router.get("/logout", async (req, res) => {
+        res.clearCookie("jsonwebtoken").redirect("/login")
         })
 
     //Wishlist
     router.get("/wishlist",verifyToken , async (req, res)=>{
   
         const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.productId")
-           res.render("userprofile/wishlist.ejs", {user});
+           res.render("userprofile/wishlist", {user, title: "Wishlist"})
         
            })
            

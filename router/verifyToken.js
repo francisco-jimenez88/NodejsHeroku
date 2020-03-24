@@ -11,7 +11,7 @@ module.exports = (req, res, next)=>{
         next();
     }
     else {
-        res.send("No valid cookie-Token") //res.redirect("/login")
+        res.send("No valid cookie-Token") 
     }
 
 }
