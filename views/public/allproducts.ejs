@@ -1,0 +1,43 @@
+<%- include("./header.ejs") %>
+
+<body>
+    <!-- <div>
+        <table style="width: 90%; margin: 10px;">
+            <tr>
+            <th style="width: 200px;">Name</th>
+            <th>Description</th>
+            <th style="width: 100px;">Price</th>
+            <th></th>
+            </tr>
+
+            
+        </table>
+    </div> -->
+    <div class="lakritsWrappingDiv row">
+        <% sixProducts.forEach( item => { %>
+            <div class="innerLakritsDiv">
+                <div class="lakritsDiv">
+                   <img src="<%= item.img %>" alt=""> <br>
+                    
+                    <a href="/allproducts/<%= item.name %>"><%= item.name %></a>
+                    <!-- <p><%= item.description %> </p> -->
+                    <p><%= item.price %> </p>
+                    <button type="button">Lägg i varukorg</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <div id="pagination">
+    <% for (let page = 1; page <= pageCount; page++ ) { %>
+        <% if (currentPage == page) { %>
+        <a href="/allproducts/?page=<%= page %>" class="current"><%= page %></a>
+        <% } else { %>
+        <a href="/allproducts/?page=<%= page %>"><%= page %></a>
+        <% } %>
+        <% } %>
+    </div>
+    
+</body>
+
+<%- include("footer.ejs") %>
