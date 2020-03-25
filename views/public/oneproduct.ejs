@@ -1,14 +1,8 @@
 <%- include("header.ejs") %>
-<<<<<<< HEAD
-<body>
-    <!-- Product header and image -->
-    <div class="container-fluid">
-=======
 
 <body>
     <!-- Product header and image -->
     <div class="container-fluid" id="one-product-container">
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         <canvas class="oneProductHeader"
             style="background-color: <%= selectedCandy.color %>; background-image: linear-gradient(to top left, <%= selectedCandy.color %> , white 99%);">
         </canvas>
@@ -16,14 +10,6 @@
             <img class="lakritsImg" src="<%= selectedCandy.img %>">
         </div>
         <!-- Product title, price and description -->
-<<<<<<< HEAD
-        <div class="row oneProductInfo m-0" >
-            <div class="oneProductTitle col-sm-12 col-md-6 col-lg-6">
-                <h2><%= selectedCandy.name %></h2> <br>
-                <span><%= selectedCandy.price %> kr</span>
-                <div class="oneProductBtn">
-                    <button type="button" class="btn btn-outline-dark">Lägg till</button>
-=======
         <div class="row oneProductInfo m-0">
             <div class="oneProductTitle col-sm-12 col-md-6 col-lg-6">
                 <h2><%= selectedCandy.name %></h2> <br>
@@ -33,7 +19,6 @@
                     <div class="iconDiv">
                         <a href="#<%=selectedCandy._id %>"><i class="far fa-heart fa-2x" style="color: black;"></i></a>
                     </div>
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
                 </div>
             </div>
             <div class="oneProductDescription col-sm-12 col-md-6 col-lg-6">
@@ -41,10 +26,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <%- include("footer.ejs") %>
-</body>
-=======
 
     <script>
         $(document).ready(function () {
@@ -55,4 +36,3 @@
     </script>
     <%- include("footer.ejs") %>
 </body>
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d

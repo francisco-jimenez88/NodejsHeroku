@@ -1,9 +1,6 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
-<<<<<<< HEAD
-=======
 const User = require("../../model/userSchema");
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 const router = express.Router();
 
 
@@ -24,16 +21,10 @@ router.route("/admin")
         const pageCount = Math.ceil(productQuantity / productsPerPage)
 
         const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
-<<<<<<< HEAD
-
-        res.render("admin/admin", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
-    })
-=======
         
         res.render("admin/adminProduct", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
 
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     .post(async (req, res) => {
         await new Candy({
             name: req.body.name,

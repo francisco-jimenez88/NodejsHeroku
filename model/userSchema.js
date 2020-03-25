@@ -5,27 +5,6 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
-<<<<<<< HEAD
-    phone: {type: Number},
-    wishlist:[{
-
-        productId: {type: mongoose.Schema.Types.ObjectId,
-        ref:"Candy"
-        } }],
-
-    address: {
-        lastname: {type: String},
-        address: {type: String},
-        city: {type: String},
-        zip: {type: Number}
-    },
-
-});
-
-userSchema.methods.addToWishList = function(product){
-    this.wishlist.push({productId: product._id})
-    return this.save();
-=======
     wishlist:[{
         
         CandyId: {type: mongoose.Schema.Types.ObjectId,
@@ -66,7 +45,6 @@ userSchema.methods.removeFromList = function (CandyId) {
     this.wishlist = restOftheProducts;
     return this.save();
 
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 }
 
 const User = mongoose.model("User", userSchema);

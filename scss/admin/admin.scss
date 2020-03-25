@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @mixin desktop {
     @media (max-width: 1599px) { @content; }    
 }
@@ -6,18 +5,12 @@
     @media (min-width: 1600px) { @content; }    
 }
 
-=======
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 body {
     text-transform: capitalize;
-<<<<<<< HEAD
-
-    #textTransformInitial {
-=======
     text-align: center;
 
     h1 {
@@ -36,7 +29,6 @@ body {
     }
 
     .textTransformInitial {
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         text-transform: initial;
     }
 
@@ -172,49 +164,15 @@ body {
         .rowImg2 {
             width: 10.5%;
         }
-<<<<<<< HEAD
-=======
 
         .rowUser {
             padding-top: 21px;
         }
 
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     }
 
     form {
         text-align: center;
-<<<<<<< HEAD
-        
-        .animate {
-            transition: all 0.1s;
-            -webkit-transition: all 0.1s;
-        }
-        .green {
-            background-color: #42ac6e;
-            border-top: 0;
-            border-left: 0;
-            border-right: 0;
-            border-bottom: 5px solid #76d49e;
-            text-shadow: 0px -2px #27ae60;
-        }
-        .action-button {
-            padding: 10px 40px;
-            margin: 20px 0px;
-            font-size: 18px;
-            color: #FFF;
-            text-decoration: none;
-        }
-        .action-button:active {
-            transform: translate(0px,5px);
-            -webkit-transform: translate(0px,5px);
-            border-bottom: 1px solid;
-        }
-        .action-button:focus {
-            outline: none;
-            border: 0;
-        }
-=======
     }
 
     .animate {
@@ -260,16 +218,11 @@ body {
     .action-button:focus {
         outline: none;
         border: 0;
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     }
 
     .pagination {
         text-align: center;
-<<<<<<< HEAD
-        padding-top: 40px;
-=======
         padding-top: 30px;
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         font-size: 1.5rem;
 
         .hidden {
@@ -288,8 +241,6 @@ body {
         }
     }
 }
-<<<<<<< HEAD
-=======
 
 .footerAdmin {
     position: absolute;
@@ -299,4 +250,3 @@ body {
     height: 200px;
     text-align: center;
   }
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
