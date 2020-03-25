@@ -1,3 +1,10 @@
+@mixin desktop {
+    @media (max-width: 1599px) { @content; }    
+}
+@mixin desktopLower {
+    @media (min-width: 1600px) { @content; }    
+}
+
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
