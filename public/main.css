@@ -21,6 +21,15 @@
 .navbar .iconBar {
   color: white; }
 
+.navbar .navbar-nav {
+  margin: auto; }
+  .navbar .navbar-nav li {
+    margin-left: 70px;
+    margin-right: 70px; }
+
+#pagination {
+  padding: 25px; }
+
 nav {
   background-color: #1c1c1c; }
   nav #brand {
@@ -48,9 +57,13 @@ nav {
   #all-products-container .product-container {
     text-align: center;
     padding-top: 40px; }
+    #all-products-container .product-container a {
+      text-decoration: none;
+      color: black; }
+    #all-products-container .product-container a:hover {
+      font-weight: bold; }
     #all-products-container .product-container img {
       max-width: 200px;
-      min-width: 200px;
       padding-bottom: 20px; }
 
 #pagination {
