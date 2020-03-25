@@ -9,13 +9,13 @@ const schemaProduct = new mongoose.Schema({
     createdByAdmin: { type: String, required: true },
     img: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User", 
-    //     required: true
-    // }
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+         //  mongoose.Schema.Types.ObjectId, //någon valid mongoose id 
+        ref:"User",  //ref refererar från vilken model den skulle leta objektId
+        required:true
+    }
 });
-
 
 const Candy = mongoose.model("Candy", schemaProduct);
 

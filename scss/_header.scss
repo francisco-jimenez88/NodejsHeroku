@@ -15,3 +15,24 @@
         margin-bottom: 0%;
     }
 }
+.navbar{
+    a{
+        color: rgb(216, 216, 129) !important;
+    }
+    .navbar-toggler{
+        border-color: white;
+    }
+    .iconBar{
+        color: white;
+    }
+    .navbar-nav{
+        margin: auto;
+        li{
+            margin-left: 70px;
+            margin-right: 70px;
+          }
+    }
+}
+#pagination{
+    padding: 25px;
+}

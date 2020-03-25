@@ -12,6 +12,24 @@
     color: #d8d881;
     margin-bottom: 0%; }
 
+.navbar a {
+  color: #d8d881 !important; }
+
+.navbar .navbar-toggler {
+  border-color: white; }
+
+.navbar .iconBar {
+  color: white; }
+
+.navbar .navbar-nav {
+  margin: auto; }
+  .navbar .navbar-nav li {
+    margin-left: 70px;
+    margin-right: 70px; }
+
+#pagination {
+  padding: 25px; }
+
 nav {
   background-color: #1c1c1c; }
   nav #brand {
@@ -39,23 +57,30 @@ nav {
   #all-products-container .product-container {
     text-align: center;
     padding-top: 40px; }
+    #all-products-container .product-container a {
+      text-decoration: none;
+      color: black; }
+    #all-products-container .product-container a:hover {
+      font-weight: bold; }
     #all-products-container .product-container img {
       max-width: 200px;
-      min-width: 200px;
       padding-bottom: 20px; }
-      #all-products-container .product-container img .hover:hover {
-        filter: blur(3px); }
 
 #pagination {
   text-align: center; }
   #pagination .current {
-    background-color: black; }
+    text-decoration: underline; }
 
 #one-product-container {
   background-image: url("/images/LakritdBG.png");
   background-repeat: repeat;
   background-size: 50%;
-  padding: 0px; }
+  padding: 0px;
+  animation: animation 200s linear infinite; }
+
+@keyframes animation {
+  100% {
+    background-position: -0px -3000px; } }
   #one-product-container .oneProductHeader {
     width: 100%;
     position: absolute;
@@ -91,10 +116,12 @@ nav {
         padding-left: 60px; } }
     #one-product-container .oneProductInfo .oneProductBtn {
       padding-top: 15px;
-      padding-bottom: 20px; }
-      #one-product-container .oneProductInfo .oneProductBtn .far {
+      padding-bottom: 20px;
+      padding-left: 14px; }
+      #one-product-container .oneProductInfo .oneProductBtn .iconDiv .far {
+        pointer-events: auto;
         padding-left: 8px;
-        margin: 3px; }
+        margin: 5px; }
     #one-product-container .oneProductInfo .oneProductDescription {
       text-align: left;
       z-index: 1; }
@@ -106,7 +133,7 @@ body, html {
   height: 100%; }
   body .parallax, html .parallax {
     background-image: url("/images/background.jpg");
-    height: 75%;
+    height: 70%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -131,21 +158,28 @@ body, html {
   body .favProd, html .favProd {
     max-width: 250px;
     margin: auto; }
+    body .favProd a, html .favProd a {
+      text-decoration: none; }
+      body .favProd a .h5Titel, html .favProd a .h5Titel {
+        text-align: center;
+        color: #2b2b2b; }
   body .titel, html .titel {
     display: flex;
     justify-content: center;
-    margin-top: 50px; }
+    margin-top: 50px;
+    padding-bottom: 30px; }
   body .hover:hover, html .hover:hover {
-    filter: blur(1px);
+    filter: blur(0.5px);
     transition: transform .2s;
     transform: scale(1.1); }
+  body .historyDiv, html .historyDiv {
+    margin: 30px; }
 
 html body {
-  height: 100%; }
+  height: 100vh; }
 
-body {
+.footer-container {
   display: flex;
-  min-height: 100vh;
   flex-direction: column; }
 
 .thecontainer {
