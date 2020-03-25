@@ -23,7 +23,6 @@ router.route("/")
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
-        //const allCandy = await Candy.find();
         const currentPage = req.query.page || 1;
         const items = 6;
         const sort = req.query.sort;

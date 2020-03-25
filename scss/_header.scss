@@ -1,4 +1,5 @@
 // Header
+@import "mixins.scss";
 #header {
     z-index: 1;
     background-color: #1c1c1c;
@@ -14,4 +15,27 @@
         color: rgb(216, 216, 129);
         margin-bottom: 0%;
     }
+}
+.navbar{
+    a{
+        color: rgb(216, 216, 129) !important;
+    }
+    .navbar-toggler{
+        border-color: white;
+    }
+    .iconBar{
+        color: white;
+    }
+    .navbar-nav{
+        @include mini-desktop{
+            margin: auto;
+            li{
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+        }
+    }
+}
+#pagination{
+    padding: 25px;
 }
