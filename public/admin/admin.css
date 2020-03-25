@@ -10,9 +10,9 @@ body {
     display: inline;
     border-spacing: 2px; }
   body .usersTable {
-    padding-top: 15px; }
+    padding-top: 5px; }
   body .adminsTable {
-    padding-top: 60px; }
+    padding-top: 30px; }
   body .textTransformInitial {
     text-transform: initial; }
   body table {
@@ -98,32 +98,46 @@ body {
       padding-top: 21px; }
   body form {
     text-align: center; }
-    body form .animate {
-      transition: all 0.1s;
-      -webkit-transition: all 0.1s; }
-    body form .green {
-      background-color: #42ac6e;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      border-bottom: 5px solid #76d49e;
-      text-shadow: 0px -2px #27ae60; }
-    body form .action-button {
-      padding: 10px 40px;
-      margin: 20px 0px;
-      font-size: 18px;
-      color: #FFF;
-      text-decoration: none; }
-    body form .action-button:active {
-      transform: translate(0px, 5px);
-      -webkit-transform: translate(0px, 5px);
-      border-bottom: 1px solid; }
-    body form .action-button:focus {
-      outline: none;
-      border: 0; }
+  body .animate {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s; }
+  body .green {
+    background-color: #42ac6e;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 5px solid #76d49e;
+    text-shadow: 0px -2px #27ae60; }
+  body .grey {
+    background-color: #a3b3aa;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 5px solid #c4d4cb;
+    text-shadow: 0px -2px #acb8b1; }
+  body .yellow {
+    background-color: #b6b463;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 5px solid #cfd87a;
+    text-shadow: 0px -2px #b2be6b; }
+  body .action-button {
+    padding: 10px 40px;
+    margin: 20px 0px;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none; }
+  body .action-button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid; }
+  body .action-button:focus {
+    outline: none;
+    border: 0; }
   body .pagination {
     text-align: center;
-    padding-top: 40px;
+    padding-top: 30px;
     font-size: 1.5rem; }
     body .pagination .hidden {
       opacity: 0.2; }
@@ -134,3 +148,11 @@ body {
       color: #ffce54;
       font-weight: bold;
       font-size: 2rem; }
+
+.footerAdmin {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  text-align: center; }
