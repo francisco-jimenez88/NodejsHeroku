@@ -55,7 +55,12 @@ nav {
   background-image: url("/images/LakritdBG.png");
   background-repeat: repeat;
   background-size: 50%;
-  padding: 0px; }
+  padding: 0px;
+  animation: animation 200s linear infinite; }
+
+@keyframes animation {
+  100% {
+    background-position: -0px -3000px; } }
   #one-product-container .oneProductHeader {
     width: 100%;
     position: absolute;
@@ -108,7 +113,7 @@ body, html {
   height: 100%; }
   body .parallax, html .parallax {
     background-image: url("/images/background.jpg");
-    height: 75%;
+    height: 100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -143,11 +148,10 @@ body, html {
     transform: scale(1.1); }
 
 html body {
-  height: 100%; }
+  height: 100vh; }
 
-body {
+.footer-container {
   display: flex;
-  min-height: 100vh;
   flex-direction: column; }
 
 .thecontainer {
