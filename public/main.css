@@ -21,11 +21,12 @@
 .navbar .iconBar {
   color: white; }
 
-.navbar .navbar-nav {
-  margin: auto; }
-  .navbar .navbar-nav li {
-    margin-left: 70px;
-    margin-right: 70px; }
+@media (min-width: 992px) {
+  .navbar .navbar-nav {
+    margin: auto; }
+    .navbar .navbar-nav li {
+      margin-left: 70px;
+      margin-right: 70px; } }
 
 #pagination {
   padding: 25px; }
@@ -125,7 +126,7 @@ nav {
     #one-product-container .oneProductInfo .oneProductDescription {
       text-align: left;
       z-index: 1; }
-      @media (min-width: 1000px) {
+      @media (min-width: 992px) {
         #one-product-container .oneProductInfo .oneProductDescription {
           flex-direction: column; } }
 

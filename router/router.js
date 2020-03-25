@@ -8,8 +8,6 @@ const config = require("../config/config");
 const Candy = require("../model/productSchema");
 const router = express.Router();
 
-// router.use(flash())
-
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
@@ -25,7 +23,6 @@ router.route("/")
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
-        //const allCandy = await Candy.find();
         const currentPage = req.query.page || 1;
         const items = 6;
         const sort = req.query.sort;

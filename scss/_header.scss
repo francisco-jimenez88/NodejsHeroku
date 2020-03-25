@@ -1,4 +1,5 @@
 // Header
+@import "mixins.scss";
 #header {
     z-index: 1;
     background-color: #1c1c1c;
@@ -26,11 +27,13 @@
         color: white;
     }
     .navbar-nav{
-        margin: auto;
-        li{
-            margin-left: 70px;
-            margin-right: 70px;
-          }
+        @include mini-desktop{
+            margin: auto;
+            li{
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+        }
     }
 }
 #pagination{
