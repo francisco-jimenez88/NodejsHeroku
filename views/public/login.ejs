@@ -1,4 +1,5 @@
 <%- include("header.ejs") %>
+<<<<<<< HEAD
 
         <p> Logga in</p>
 
@@ -13,4 +14,22 @@
 
         <p>Har du inget konto? Då kan du skapa ett <a href="/signup">här</a></p>
 
+=======
+<div class="container thecontainer">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2 class="mb-4"> Logga in</h2>
+            <form action="/login" method="post">
+                <!-- <div id="errorMessage" style="display: none;">
+        felaktigt användarnamn eller lösenord.
+    </div> -->
+                <input class="mb-3" type="email" name="email" required="true" placeholder="E-postadress"> <br>
+                <input class="mb-3" type="password" name="password" required="true" placeholder="Lösenord"><br>
+                <button type="submit">Logga in</button>
+            </form>
+            <p>Har du inget konto? Då kan du skapa ett <a href="/signup">här</a></p>
+        </div>
+    </div>
+</div>
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 <%- include("footer.ejs") %>

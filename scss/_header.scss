@@ -1,4 +1,8 @@
 // Header
+<<<<<<< HEAD
+=======
+@import "mixins.scss";
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 #header {
     z-index: 1;
     background-color: #1c1c1c;
@@ -11,7 +15,36 @@
         color: white;
     }
     #slogan {
+<<<<<<< HEAD
         font-family: 'Mansalva';
         color: rgb(216, 216, 129);
     }
+=======
+        color: rgb(216, 216, 129);
+        margin-bottom: 0%;
+    }
+}
+.navbar{
+    a{
+        color: rgb(216, 216, 129) !important;
+    }
+    .navbar-toggler{
+        border-color: white;
+    }
+    .iconBar{
+        color: white;
+    }
+    .navbar-nav{
+        @include mini-desktop{
+            margin: auto;
+            li{
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+        }
+    }
+}
+#pagination{
+    padding: 25px;
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 }

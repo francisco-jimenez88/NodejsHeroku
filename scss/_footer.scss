@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .footer {
         background-color: #1c1c1c;
 
@@ -5,3 +6,27 @@
             color: white;
         }
 }
+=======
+html body{
+    height: 100vh;
+}
+.footer-container {
+    display: flex;
+    //min-height: 100vh;
+    flex-direction: column;
+}
+
+.thecontainer {
+    flex: 1;    
+}
+
+.footer {
+    background-color: #1c1c1c;
+    flex-shrink: 0;
+
+    ul , .footer-title {
+        color: white;
+    }
+}
+
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d

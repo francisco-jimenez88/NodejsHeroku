@@ -1,4 +1,5 @@
 <%- include("header.ejs") %>
+<<<<<<< HEAD
 
 <form action="/signup" method="post">
 
@@ -11,5 +12,22 @@
 </form>
 
 <p>Har du redan ett konto? Logga in <a href="/login">här</a></p>
+=======
+<div class="container">
+    <h2 class="mb-4 mt-3">Registera dig hos Lasses Lakrits</h2>
+    <form action="/signup" method="post">
+    
+        <input class="mb-3" type="email" name="email" id="" placeholder="E-postadress">
+        <input class="mb-3" type="text" name="name" id="" placeholder="Namn"><br>
+        <input class="mb-3" type="password" name="password" id="" placeholder="Lösenord">
+        <input class="mb-3" type="password" name="" id="" placeholder="Upprepa lösenord"><br>
+        <button class="mb-3" type="submit">Registrera</button>
+    
+    </form>
+    
+    <p>Har du redan ett konto? Logga in <a href="/login">här</a></p>
+
+</div>
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 
 <%- include("footer.ejs") %>

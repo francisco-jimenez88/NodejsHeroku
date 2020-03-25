@@ -1,16 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/config");
+<<<<<<< HEAD
+=======
+const cookieParser = require("cookie-parser");
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 const sassMiddleware = require("node-sass-middleware");
 const lassesLakritsRouter = require("./router/router");
 const admin = require("./router/admin/admin");
 const path = require("path");
+<<<<<<< HEAD
 const cookieParser = require("cookie-parser");
 const app = express();
 
 
 app.use(express.urlencoded({ extended: true }))
 
+=======
+const app = express();
+
+app.use(express.urlencoded({ extended: true }))
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 app.use(cookieParser())
 
 app.use(sassMiddleware({

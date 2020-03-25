@@ -1,6 +1,7 @@
 // allproducts page
 @import "mixins.scss";
 
+<<<<<<< HEAD
 .lakritsWrappingDiv{
     justify-content: center;
     .innerLakritsDiv{
@@ -24,6 +25,24 @@
             width: 90%;
             box-shadow:  0px 0px 30px grey;
             padding: 15px;
+=======
+#all-products-container {
+    display: flex;
+    justify-content: center;
+    .product-container {
+        text-align: center;
+        padding-top: 40px;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            font-weight: bold;
+        }
+        img {
+            max-width: 200px;
+            padding-bottom: 20px;
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         }
     }
 }
@@ -31,6 +50,10 @@
 #pagination {
     text-align: center;
     .current {
+<<<<<<< HEAD
         background-color: black;
+=======
+        text-decoration: underline;
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     }
 }

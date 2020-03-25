@@ -6,8 +6,13 @@ Develop
 
 Master 
 5. git merge HannaDevelop 
+<<<<<<< HEAD
 6. git pull origin master 
 7. Lös konflikter. Stage:a dem. Är det konflikter så gör en ny add . + commit osv
+=======
+6. Lös konflikter. Stage:a dem. Är det konflikter så gör en ny add . + commit osv
+7. git pull origin master 
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 8. git push origin master 
 9. git checkout HannaDevelop
 

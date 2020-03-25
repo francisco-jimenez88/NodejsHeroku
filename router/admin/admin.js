@@ -1,5 +1,9 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
+<<<<<<< HEAD
+=======
+const User = require("../../model/userSchema");
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 const router = express.Router();
 
 
@@ -20,9 +24,16 @@ router.route("/admin")
         const pageCount = Math.ceil(productQuantity / productsPerPage)
 
         const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
+<<<<<<< HEAD
 
         res.render("admin/admin", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
+=======
+        
+        res.render("admin/adminProduct", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
+    })
+
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     .post(async (req, res) => {
         await new Candy({
             name: req.body.name,
@@ -53,7 +64,11 @@ router.route("/delete/:id")
 router.route("/update/:id")
     .get(async (req, res) => {
         const updateCandy = await Candy.findById({ _id: req.params.id });
+<<<<<<< HEAD
         res.render("admin/update", { updateCandy, title: "Update Candy" });
+=======
+        res.render("admin/updateProduct", { updateCandy, title: "Update Candy" });
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     })
     .post(async (req, res) => {
         await Candy.updateOne({ _id: req.params.id },
@@ -71,4 +86,52 @@ router.route("/update/:id")
         res.redirect("/admin");
     })
 
+<<<<<<< HEAD
+=======
+
+router.route("/admin2")
+    .get(async (req, res) => {
+        const sortName = req.query.name;
+        const sortAdmin = req.query.admin;
+
+        const queryExist = req.query.page;
+
+        let userQuantity = await User.find().countDocuments();
+
+        const page = +req.query.page || 1;
+        const usersPerPage = 4;
+        let pageQuantity = await User.find().countDocuments() / usersPerPage;
+        pageQuantity = Math.ceil(pageQuantity);
+
+        const pageCount = Math.ceil(userQuantity / usersPerPage)
+
+        let onlyUsers = { admin: false };
+        const findUsers = await User.find(onlyUsers).collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(usersPerPage * (page - 1)).limit(usersPerPage);
+
+        let onlyAdmins = { admin: true };
+        const findAdmins = await User.find(onlyAdmins).collation({ locale: "sv", strength: 2 }).sort({ admin: sortAdmin }).skip(usersPerPage * (page - 1)).limit(usersPerPage);
+
+        res.render("admin/adminUser", { findUsers, findAdmins, page, pageQuantity, usersPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
+    })
+
+
+router.route("/updateUser/:id")
+    .get(async (req, res) => {
+        const findUser = await User.findById({ _id: req.params.id });
+        res.render("admin/updateUser", { findUser, title: "Update Admin" });
+    })
+    .post(async (req, res) => {
+        await User.updateOne({ _id: req.params.id },
+            {
+                $set: {
+                    name: req.body.name,
+                    email: req.body.email,
+                    admin: req.body.admin
+                }
+            }, { runValidators: true });
+        res.redirect("/admin2");
+    })
+    
+
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 module.exports = router;

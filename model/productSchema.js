@@ -9,9 +9,19 @@ const schemaProduct = new mongoose.Schema({
     createdByAdmin: { type: String, required: true },
     img: { type: String, required: true },
     date: { type: Date, default: Date.now },
+<<<<<<< HEAD
 });
 
 
+=======
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User", 
+        required:true
+    }
+});
+
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 const Candy = mongoose.model("Candy", schemaProduct);
 
 module.exports = Candy;

@@ -1,10 +1,15 @@
 @import "mixins.scss";
 
+<<<<<<< HEAD
 .container-fluid{
+=======
+#one-product-container{
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     background-image: url("/images/LakritdBG.png");
     background-repeat: repeat;
     background-size: 50%;
     padding: 0px;
+<<<<<<< HEAD
     // animation: animation 200s linear infinite;
     
     // @keyframes animation {
@@ -12,6 +17,15 @@
     //         background-position:-0px -3000px;
     //     }
     // }
+=======
+     animation: animation 200s linear infinite;
+    
+      @keyframes animation {
+          100%{
+              background-position:-0px -3000px;
+          }
+      } 
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     .oneProductHeader{
         width: 100%;
         position: absolute;
@@ -58,6 +72,17 @@
         .oneProductBtn{
             padding-top: 15px;
             padding-bottom: 20px;
+<<<<<<< HEAD
+=======
+            padding-left: 14px;
+            .iconDiv{
+                .far{
+                    pointer-events: auto;
+                    padding-left: 8px;
+                    margin: 5px;
+                }
+            }
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         }
 
         .oneProductDescription{

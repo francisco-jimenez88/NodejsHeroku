@@ -2,7 +2,11 @@ body, html {
     height: 100%;
     .parallax {
         background-image: url("/images/background.jpg");
+<<<<<<< HEAD
         height: 75%;
+=======
+        height: 70%;
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -29,10 +33,25 @@ body, html {
                 }
             }
         }
+<<<<<<< HEAD
+=======
+    .favProd {
+        max-width: 250px;
+        margin: auto;
+        a{
+            text-decoration: none;
+            .h5Titel{
+                text-align: center;
+                color: rgb(43, 43, 43);
+            }
+        }
+    }
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     .titel {
         display: flex;
         justify-content: center;
         margin-top: 50px;
+<<<<<<< HEAD
     }
     
     .hover:hover {
@@ -40,4 +59,17 @@ body, html {
         transition: transform .2s;
         transform: scale(1.1);
     }
+=======
+        padding-bottom: 30px;
+    }
+    
+    .hover:hover {
+        filter: blur(0.5px);
+        transition: transform .2s;
+        transform: scale(1.1);
+    }
+    .historyDiv{
+        margin: 30px;
+    }
+>>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 }
