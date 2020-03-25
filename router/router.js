@@ -55,7 +55,8 @@ router.route("/signup")
         const user = await new User({
             email: req.body.email,
             name: req.body.name,
-            password: hashPassword
+            password: hashPassword,
+            admin: req.body.admin
         }).save()
         console.log(user)
         res.redirect("/")
