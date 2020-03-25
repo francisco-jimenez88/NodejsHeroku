@@ -65,7 +65,7 @@ router.route("/signup")
         if(req.body.email == alreadyRegistered) return res.redirect("/signup")
     })
 
-    //Login sida
+//Login sida
 router.route("/login")
         .get(async (req, res) => {
     res.render("login", { title:"Logga in - Lasses Lakrits" })
@@ -75,7 +75,7 @@ router.route("/login")
     const user = await User.findOne({ email:req.body.email })
      
     if (!user) return res.redirect("/login")
-    //console.log(user.password)
+    
     const compareHash = await bcrypt.compare(req.body.password, user.password)
      
     if (!compareHash) return res.redirect("/login")
@@ -99,7 +99,7 @@ router.route("/login")
             })
         })
         
-    //Mypage
+//Mypage
     router.get("/mypage", verifyToken, async (req, res) => {
         const user = await User.findOne({ email: req.body.email })
             res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
@@ -110,7 +110,7 @@ router.route("/login")
         res.clearCookie("jsonwebtoken").redirect("/login")
         })
 
-    //Wishlist
+//Wishlist
     router.get("/wishlist",verifyToken , async (req, res)=>{
   
         const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.CandyId")
@@ -135,7 +135,6 @@ router.route("/login")
              res.redirect("/wishlist");
            })
 
-           
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
