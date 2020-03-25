@@ -12,6 +12,15 @@
     color: #d8d881;
     margin-bottom: 0%; }
 
+.navbar a {
+  color: #d8d881 !important; }
+
+.navbar .navbar-toggler {
+  border-color: white; }
+
+.navbar .iconBar {
+  color: white; }
+
 nav {
   background-color: #1c1c1c; }
   nav #brand {
@@ -111,7 +120,7 @@ body, html {
   height: 100%; }
   body .parallax, html .parallax {
     background-image: url("/images/background.jpg");
-    height: 100%;
+    height: 70%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
