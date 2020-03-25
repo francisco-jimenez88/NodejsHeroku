@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/config");
 const sassMiddleware = require("node-sass-middleware");
+const User = require("./model/userSchema")
 const lassesLakritsRouter = require("./router/router");
 const admin = require("./router/admin/admin");
 const path = require("path");
