@@ -32,16 +32,27 @@ body, html {
     .favProd {
         max-width: 250px;
         margin: auto;
+        a{
+            text-decoration: none;
+            .h5Titel{
+                text-align: center;
+                color: rgb(43, 43, 43);
+            }
+        }
     }
     .titel {
         display: flex;
         justify-content: center;
         margin-top: 50px;
+        padding-bottom: 30px;
     }
     
     .hover:hover {
-        filter: blur(1px);
+        filter: blur(0.5px);
         transition: transform .2s;
         transform: scale(1.1);
+    }
+    .historyDiv{
+        margin: 30px;
     }
 }

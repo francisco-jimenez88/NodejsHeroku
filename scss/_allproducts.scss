@@ -11,9 +11,6 @@
             max-width: 200px;
             min-width: 200px;
             padding-bottom: 20px;
-            .hover:hover {
-                filter: blur(3px);
-            }
         }
     }
 }
@@ -21,6 +18,6 @@
 #pagination {
     text-align: center;
     .current {
-        background-color: black;
+        text-decoration: underline;
     }
 }

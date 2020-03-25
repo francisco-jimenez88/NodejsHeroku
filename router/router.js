@@ -14,6 +14,7 @@ const router = express.Router();
 router.route("/")
     .get(async (req, res) => {
         const item = await Candy.find();
+
         res.render("index", { item, title: "Lasses Lakrits" })
     })
 
@@ -67,50 +68,78 @@ router.route("/signup")
         if(req.body.email == alreadyRegistered) return res.redirect("/signup")
     })
 
-//Login sida
-router.route("/login")
-    .get((req, res) => {
-        res.render("login", { title: "Logga in - Lasses Lakrits" })
-    })
-    .post(async (req, res) => {
-
-        const user = await User.findOne({ email: req.body.email })
-
-        if (!user) return res.render("login", { title: "Logga in - Lasses Lakrits" })
-        //console.log(user.password)
-        const compareHash = await bcrypt.compare(req.body.password, user.password)
-
-        if (!compareHash) return res.redirect("/login")
-
-        if (user.admin == true) return res.redirect("/admin")
-
-        jwt.sign({ user }, "secretkey", (err, token) => {
-            if (err) return res.redirect("/login")
-            if (token) {
-                const cookie = req.cookies.jsonwebtoken;
-                if (!cookie) {
-                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
-                }
-                console.log(user.password)
-                res.redirect("/")
-            }
-
-            res.redirect("/")
+    //Login sida
+    router.route("/login")
+        .get(async (req, res) => {
+    res.render("login", { title:"Logga in - Lasses Lakrits" })
         })
-        res.redirect("/")
-    })
+        .post(async (req, res) => {
+     
+    const user = await User.findOne({ email:req.body.email })
+     
+    if (!user) return res.redirect("/login")
+    //console.log(user.password)
+    const compareHash = await bcrypt.compare(req.body.password, user.password)
+     
+    if (!compareHash) return res.redirect("/login")
     
-    // För att komma till mina sidor
-router.get("/myPage", (req, res) => {
-    
-          res.render("myPage.ejs", {title: "Lasses lakrits - Mina sidor"})
-            
-        })
-    //Logga ut
-        router.get("/logout", async (req, res) => {
-            res.clearCookie("jwtToken").redirect("/login")
+    jwt.sign({ user }, "secretkey", (err, token) => {
+    if (err) return res.redirect("/login")
+    if (token) {
+    const cookie = req.cookies.jsonwebtoken;
+    if (!cookie) {
+    res.cookie("jsonwebtoken", token, { maxAge:3600000, httpOnly:true })
+    console.log("Hej hej")
+                    }
+    if (user.admin == true) return res.redirect("/admin")
+
+
+    res.redirect("/")
+    console.log("cookie")
+                
+    }
+     
+    res.redirect("/login")
+            })
         })
         
+//Mypage
+router.get("/mypage", verifyToken, async (req, res) => {
+    const user = await User.findOne({ email: req.body.email })
+    res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
+})
+
+//Logga ut
+    router.get("/logout", async (req, res) => {
+        res.clearCookie("jsonwebtoken").redirect("/login")
+        })
+
+    //Wishlist
+    router.get("/wishlist",verifyToken , async (req, res)=>{
+  
+        const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.productId")
+           res.render("userprofile/wishlist", {user, title: "Wishlist"})
+        
+           })
+           
+    router.get("/wishlist/:id",verifyToken , async (req, res)=>{
+        const product =  await  Candy.findOne({_id:req.params.id}) 
+        const user = await User.findOne({_id: req.body.user._id})   
+           // mata in ett product id från mongo databas  . Lägg den som string  "51232131231......."
+           //console.log("product" , product)
+            await user.addToWishList(product)
+            //console.log("wishlist user " , user)
+            res.redirect("/wishlist")
+           //res.render("wishlist.ejs", {user});
+           
+           })
+           
+    router.get("/deleteWishlist/:id", verifyToken, async(req, res)=>{
+             const user = await User.findOne({_id: req.body.user._id})
+             user.removeFromList(req.params.id)
+             res.redirect("/wishlist");
+           })
+           
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
