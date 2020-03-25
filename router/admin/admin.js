@@ -1,11 +1,13 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
 const User = require("../../model/userSchema");
+const verifyToken = require("../verifyToken")
 const router = express.Router();
 
-
 router.route("/admin")
-    .get(async (req, res) => {
+    .get(verifyToken , async (req, res) => {
+    if(req.user.admin == false) return res.redirect("/")
+
         const sortName = req.query.name;
         const sortPrice = req.query.price;
         const sortCategory = req.query.category;
