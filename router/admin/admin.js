@@ -21,9 +21,10 @@ router.route("/admin")
         const pageCount = Math.ceil(productQuantity / productsPerPage)
 
         const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
-
+        
         res.render("admin/adminProduct", { findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
     })
+
     .post(async (req, res) => {
         await new Candy({
             name: req.body.name,

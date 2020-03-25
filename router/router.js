@@ -8,8 +8,6 @@ const config = require("../config/config");
 const Candy = require("../model/productSchema");
 const router = express.Router();
 
-// router.use(flash())
-
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
@@ -69,7 +67,7 @@ router.route("/signup")
     })
 
     //Login sida
-    router.route("/login")
+router.route("/login")
         .get(async (req, res) => {
     res.render("login", { title:"Logga in - Lasses Lakrits" })
         })
@@ -93,7 +91,6 @@ router.route("/signup")
                     }
     if (user.admin == true) return res.redirect("/admin")
 
-
     res.redirect("/")
     console.log("cookie")
                 
@@ -103,10 +100,10 @@ router.route("/signup")
             })
         })
         
-//Mypage
-router.get("/mypage", verifyToken, async (req, res) => {
-    const user = await User.findOne({ email: req.body.email })
-    res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
+    //Mypage
+    router.get("/mypage", verifyToken, async (req, res) => {
+        const user = await User.findOne({ email: req.body.email })
+            res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
 })
 
 //Logga ut
@@ -117,20 +114,19 @@ router.get("/mypage", verifyToken, async (req, res) => {
     //Wishlist
     router.get("/wishlist",verifyToken , async (req, res)=>{
   
-        const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.productId")
-           res.render("userprofile/wishlist", {user, title: "Wishlist"})
+        const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.CandyId")
+        
+        res.render("userprofile/wishlist", {user, title: "Wishlist - Lasses"})
         
            })
            
-    router.get("/wishlist/:id",verifyToken , async (req, res)=>{
-        const product =  await  Candy.findOne({_id:req.params.id}) 
+    router.get("/wishlist/:id",verifyToken , async (req, res) => {
+        const Candy =  await Candy.findOne({_id:req.params.id}) 
         const user = await User.findOne({_id: req.body.user._id})   
-           // mata in ett product id från mongo databas  . Lägg den som string  "51232131231......."
-           //console.log("product" , product)
-            await user.addToWishList(product)
-            //console.log("wishlist user " , user)
+           
+            await user.addToWishList(Candy)
+          
             res.redirect("/wishlist")
-           //res.render("wishlist.ejs", {user});
            
            })
            
@@ -139,6 +135,7 @@ router.get("/mypage", verifyToken, async (req, res) => {
              user.removeFromList(req.params.id)
              res.redirect("/wishlist");
            })
+
            
 // För att komma till checkout
 router.route("/checkout")

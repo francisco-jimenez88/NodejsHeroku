@@ -8,26 +8,29 @@
 
 <div class ="row justify-content-center">
     <div class="col-sm-12 col-md-9 text-center">
-
-<ul>
-    <% user.wishlist.forEach( (candy)=>{ %>
-    <%=candy.candyId %>
-<li> <%= candy.candyId.name%>
-    <span> Price: <%=candy.candyId.price %> </span>
-</li>
-<a href="/deleteWishlist/<%=candy.candyId._id%>">Remove from wishlist</a>
-<% } ) %>
-</ul>
-
-<div class="col-sm-12 col-md-3 text-center">
-    <h6><a href="/mypage">Mina uppgifter</a></h6>
-    <h6>Mina beställningar</h6>
-    <h6><a href="/wishlist">Min Wishlist</a></h6>
-    <h6>Säg upp medlemskap</h6>
-    <h6><%- include("logout.ejs") %></h6>
+<h5>Din Wishlist</h5>
+        <ul>
+            <% user.wishlist.forEach( (Candy)=>{ %>
+            <%=Candy.CandyId %>
+        <li><%= Candy.CandyId.name%>
+        <span> Price: <%=Candy.CandyId.price %> </span>
+        </li>
+            <a href="/deleteWishlist/<%=Candy.CandyId._id%>">Remove from wishlist</a>
+            <% } ) %>
+        </ul>
 </div>
+    
 
-</div>
+    <div class="col-sm-12 col-md-3 text-center">
+        <h6><a href="/mypage">Mina uppgifter</a></h6>
+        <h6>Mina beställningar</h6>
+        <h6><a href="/wishlist">Min Wishlist</a></h6>
+        <h6>Säg upp medlemskap</h6>
+        <h6><%- include("logout.ejs") %></h6>
     </div>
 
-<%- include("footer.ejs") %>
+</div>
+
+</div>
+
+<%- include("../public/footer.ejs") %>
