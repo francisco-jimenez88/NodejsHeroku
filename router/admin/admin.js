@@ -55,11 +55,7 @@ router.route("/delete/:id")
 router.route("/update/:id")
     .get(async (req, res) => {
         const updateCandy = await Candy.findById({ _id: req.params.id });
-<<<<<<< HEAD
-        res.render("admin/update", { updateCandy, title: "Update Candy" });
-=======
         res.render("admin/updateProduct", { updateCandy, title: "Update Candy" });
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
     })
     .post(async (req, res) => {
         await Candy.updateOne({ _id: req.params.id },
@@ -77,8 +73,6 @@ router.route("/update/:id")
         res.redirect("/admin");
     })
 
-<<<<<<< HEAD
-=======
 
 router.route("/admin2")
     .get(async (req, res) => {
@@ -124,5 +118,4 @@ router.route("/updateUser/:id")
     })
     
 
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 module.exports = router;

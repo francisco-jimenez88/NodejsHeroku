@@ -1,24 +1,12 @@
 const express = require("express");
-<<<<<<< HEAD
-const router = express.Router();
-const Candy = require("../model/productSchema");
-// const databaseCandy = require("../model/productSchema");
-// const databaseCustomer = require("../model/customerSchema");
-=======
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken")
-<<<<<<< HEAD
-
-// router.use(flash())
-=======
 const config = require("../config/config");
 const Candy = require("../model/productSchema");
 const router = express.Router();
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
 
 // För att komma till förstasidan 
 router.route("/")
@@ -35,10 +23,6 @@ router.route("/")
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
     .get(async (req, res) => {
-<<<<<<< HEAD
-        //const allCandy = await Candy.find();
-=======
->>>>>>> 5cb1de28494d67e01670b012472fcdbbdcae799d
         const currentPage = req.query.page || 1;
         const items = 6;
         const sort = req.query.sort;
