@@ -110,8 +110,7 @@ router.route("/login")
                     if (user.admin == true) return res.redirect("/admin");
 
                     res.redirect("/mypage");
-                    //res.render("myPage", {token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits"});
-                    console.log("cookie");
+                    console.log(user.name);
 
                 }
                 res.redirect("/login");
@@ -169,6 +168,7 @@ res.redirect("/login");
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
+    console.log(user)
     res.render("userprofile/mypage", { token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits" });
 });
 
