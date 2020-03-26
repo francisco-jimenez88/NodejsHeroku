@@ -21,7 +21,7 @@ router.route("/")
     .get( async (req, res) => {
         const item = await Candy.find();
 
-        res.render("index", { item, title: "Lasses Lakrits" })
+        res.render("index", { token: req.cookies.jsonwebtoken, item, title: "Lasses Lakrits" })
     });
 
 // Router för att komma till sidan med alla produkter
@@ -34,7 +34,7 @@ router.route("/allproducts")
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
         const pageCount = Math.ceil(findProduct.length / items);
 
-        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
+        res.render("allproducts", { token: req.cookies.jsonwebtoken, title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
         res.status("200");
     });
 
@@ -107,13 +107,9 @@ router.route("/login")
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
-<<<<<<< HEAD
                     res.redirect("/mypage");
                     console.log(user.name);
 
-=======
-                    res.render("myPage", { user, title: "Medlemssida - Lasses Lakrits" });
->>>>>>> f35057e0325345050d94edf7b49730bf59584e8f
                 }
                 res.redirect("/login");
             })
