@@ -18,10 +18,10 @@ const transport = nodemailer.createTransport(sendGridTransport({
 }))
 // För att komma till förstasidan 
 router.route("/")
-    .get(async (req, res) => {
+    .get( async (req, res) => {
         const item = await Candy.find();
 
-        res.render("index", { item, title: "Lasses Lakrits" })
+        res.render("index", { token: req.cookies.jsonwebtoken, item, title: "Lasses Lakrits" })
     })
     .post(async (req, res) => {
     })
@@ -36,7 +36,7 @@ router.route("/allproducts")
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
         const pageCount = Math.ceil(findProduct.length / items)
 
-        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage })
+        res.render("allproducts", { token: req.cookies.jsonwebtoken, title: "Lasses Lakritsar", sixProducts, pageCount, currentPage })
         res.status("200")
     })
 
@@ -45,7 +45,7 @@ router.route("/allproducts/:id")
     .get(async (req, res) => {
         console.log(req.params.id);
         const selectedCandy = await Candy.findOne({ name: req.params.id });
-        res.render("oneproduct", { selectedCandy, title: "Produkt" });
+        res.render("oneproduct", { token: req.cookies.jsonwebtoken, selectedCandy, title: "Produkt" });
     })
 
 //Signup sidan
@@ -61,11 +61,21 @@ router.route("/signup")
         const user = await new User({
             email: req.body.email,
             name: req.body.name,
-            password: hashPassword,
-            admin: req.body.admin
-        }).save()
-        console.log(user)
-        res.redirect("/")
+            password: hashPassword
+        }).save();
+
+        jwt.sign({ user }, "secretkey", (err, token) => {
+            if (err){
+                return res.redirect("/login");
+            } 
+
+            if (token) {
+                const cookie = req.cookies.jsonwebtoken;
+                if (!cookie) {
+                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
+        res.redirect("/mypage");
+                }
+        }})
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
@@ -99,7 +109,8 @@ router.route("/login")
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
-                    res.render("myPage", {user, title: "Medlemssida - Lasses Lakrits"});
+                    res.redirect("/mypage");
+                    //res.render("myPage", {token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits"});
                     console.log("cookie");
 
                 }
@@ -156,7 +167,7 @@ res.redirect("/login");
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
-    res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" });
+    res.render("userprofile/mypage", { token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits" });
 });
 
 //Logga ut
@@ -164,19 +175,36 @@ router.get("/logout", (req, res) => {
     res.clearCookie("jsonwebtoken").redirect("/login");
 });
 
+//Ta bort user
+router.get("/deleteuser", verifyToken, async (req, res) => {
+    const user = await User.findOne({ _id: req.user.user._id });
+    res.render("userprofile/deleteuser", { user, title: "Avsluta medlemskap - Lasses Lakrits" });
+});
+
+router.get("/deleteuser/:id", verifyToken, async (req, res) => {
+      await User.deleteOne({ _id: req.user.user._id }, (err,data) => {
+      
+        if(!err) {
+          console.log("Deleted");
+          const message = "Din användare är nu avregistrerad"
+        res.clearCookie("jsonwebtoken").redirect("/login")
+    }
+    });
+    }) 
+
 //Wishlist
 router.get("/wishlist", verifyToken, async (req, res) => {
-    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.CandyId");
+    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
 
-    res.render("userprofile/wishlist", { user, title: "Wishlist - Lasses" });
+    res.render("userprofile/wishlist", { token: req.cookies.jsonwebtoken, user, title: "Wishlist - Lasses" });
 });
 
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
-    const Candy = await Candy.findOne({ _id: req.params.id });
-    const user = await User.findOne({ _id: req.body.user._id });
+    const candy = await Candy.findOne({ _id: req.params.id });
+    const user = await User.findOne({ _id: req.user.user._id });
 
-    await user.addToWishList(Candy);
-
+    await user.addToWishList(candy);
+    
     res.redirect("/wishlist");
 });
 
@@ -191,7 +219,7 @@ router.get("/deleteWishlist/:id", verifyToken, async (req, res) => {
 router.route("/checkout")
     .get(async (req, res) => {
         const shoppingBag = await Candy.find();
-        res.render("checkout.ejs", { shoppingBag, title: "Checkout" });
+        res.render("checkout.ejs", { token: req.cookies.jsonwebtoken, shoppingBag, title: "Checkout" });
     })
 
 module.exports = router;
