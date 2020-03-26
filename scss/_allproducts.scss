@@ -2,8 +2,10 @@
 @import "mixins.scss";
 
 #all-products-container {
-    display: flex;
-    justify-content: center;
+    .row {
+        display: flex;
+        justify-content: center;
+    }
     .product-container {
         text-align: center;
         padding-top: 40px;

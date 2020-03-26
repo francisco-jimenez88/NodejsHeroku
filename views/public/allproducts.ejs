@@ -3,7 +3,7 @@
     <div class="container" id="all-products-container">
         <div class="row">
         <% sixProducts.forEach( item => { %>
-                <div class="product-container col-sm-4 img-fluid">
+                <div class="product-container col-md-4 col-sm-6 img-fluid">
                     <a href="/allproducts/<%= item.name %>">
                    <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
                     <br>
@@ -27,7 +27,6 @@
         <% } %>
         <% } %>
     </div>
-    
 </body>
 
 <%- include("footer.ejs") %>

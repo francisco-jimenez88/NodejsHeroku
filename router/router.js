@@ -2,14 +2,20 @@ const express = require("express");
 const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
+const sendGridTransport = require("nodemailer-sendgrid-transport")
+const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken")
 const config = require("../config/config");
 const Candy = require("../model/productSchema");
 const router = express.Router();
 
-// router.use(flash())
-
+const transport = nodemailer.createTransport(sendGridTransport({
+    auth: {
+        api_key: config.key
+    }
+}))
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
@@ -102,6 +108,54 @@ router.route("/signup")
     res.redirect("/login")
             })
         })
+
+        //Router för återställning av lösenord
+router.get("/resetPassword", (req, res) => {
+    res.render("resetPassword", { title: "Lasses Lakrits" })
+})
+
+router.post("/resetPassword", async (req, res) => {
+    const user = await User.findOne({ email: req.body.resetMail })
+    if (!user) return res.redirect("/signup");
+
+    crypto.randomBytes(32, async (err, token) => {
+        if (err) return res.redirect("/signup");
+        const resetToken = token.toString("hex");
+
+        user.resetToken = resetToken;
+        user.expirationToken = Date.now() + 100000;
+        await user.save();
+
+        await transport.sendMail({
+            to: user.email,
+            from: "<no-reply>lasses@lakrits.se",
+            subject: "Återställning av lösenord",
+            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/reset/${resetToken}`
+        })
+        res.redirect("/login")
+ })
+})
+
+//Kollar ifall användare har token, då skickas man till sidan med formulär
+router.get("/reset/:token", async (req, res) => {
+    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
+     console.log(user);
+    if (!user) return res.redirect("/signUp");
+
+    res.render("resetForm.ejs" , {user})
+
+})
+
+router.post("/reset/:token", async(req, res)=>{
+    const user = await User.findOne({_id:req.body.userId})
+
+    user.password = await bcrypt.hash(req.body.password, 10) ;
+    user.resetToken = undefined;
+    user.expirationToken = undefined;
+     await user.save();
+
+res.redirect("/login");
+})
         
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {

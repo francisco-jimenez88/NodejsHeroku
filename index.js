@@ -7,6 +7,7 @@ const lassesLakritsRouter = require("./router/router");
 const admin = require("./router/admin/admin");
 const path = require("path");
 const app = express();
+require('dotenv').config();
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -28,3 +29,5 @@ app.get("*", (req, res) => res.send("404"));
 const port = process.env.PORT || 8000;
 mongoose.connect(config.databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => app.listen(port, () => console.log(`Connection success on port: ${port}`)));
+
+module.exports = app
