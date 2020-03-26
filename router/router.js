@@ -200,7 +200,7 @@ router.get("/wishlist", verifyToken, async (req, res) => {
 
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
     const candy = await Candy.findOne({ _id: req.params.id });
-    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
+    const user = await User.findOne({ _id: req.user.user._id });
 
     await user.addToWishList(candy);
     res.redirect("/wishlist");

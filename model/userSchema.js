@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema({
 });
 
 // Lägg till produkt till wishlist
-userSchema.methods.addToWishList = function (Candy) {
-    this.wishlist.push({ candyId: Candy._id })
+userSchema.methods.addToWishList = function (candy) {
+    this.wishlist.push({ candyId: candy._id })
     const newWishlist = this.wishlist.filter(function ({ candyId }) {
 
         return !this.has(`${candyId}`) && this.add(`${candyId}`)
