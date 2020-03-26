@@ -128,23 +128,21 @@ router.post("/resetPassword", async (req, res) => {
             to: user.email,
             from: "<no-reply>lasses@lakrits.se",
             subject: "Återställning av lösenord",
-            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/reset/${resetToken}`
+            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/resetpassword/${resetToken}`
         })
         res.redirect("/login")
     })
 });
 
 //Kollar ifall användare har token, då skickas man till sidan med formulär
-router.get("/reset/:token", async (req, res) => {
+router.get("/resetpassword/:token", async (req, res) => {
     const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
      console.log(user);
     if (!user) return res.redirect("/signUp");
-
-    res.render("resetForm.ejs" , {user})
-
+    res.render("resetForm" , {user})
 });
 
-router.post("/reset/:token", async(req, res)=>{
+router.post("/resetpassword/:token", async(req, res)=>{
     const user = await User.findOne({_id:req.body.userId})
 
     user.password = await bcrypt.hash(req.body.password, 10) ;
