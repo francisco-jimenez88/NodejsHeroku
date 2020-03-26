@@ -8,7 +8,6 @@
                 <th class="rowPrice">Pris</th>
                 <th class="rowDescription">Beskrivning</th>
                 <th class="rowCategory">Kategori</th>
-                <th class="rowCreatedBy textTransformInitial">Skapad av</th>
                 <th class="rowImg2">Bild</th>
                 <th class="rowColor">Färg</th>
             </tr>
@@ -24,7 +23,7 @@
                         <input type="radio" name="category" value="lakrits" id="lakrits"><label for="lakrits"> Lakrits</label>
                         <input type="radio" name="category" value="chokladlakrits" id="chokladlakrits"><label for="chokladlakrits"> Chokladlakrits</label>
                     </th>
-                    <th class="rowCreatedBy"><input type="text" name="createdByAdmin" value="<%=updateCandy.createdByAdmin%>" class="inputAdd" required></th>
+                    <th style="display: none;"><input type="text" name="createdByAdmin" value="<%=updateCandy.createdByAdmin%>"></th>
                     <th class="rowImg2"><input type="text" name="img" value="<%=updateCandy.img%>" class="inputAdd" required></th>
                     <th class="rowColor"><input type="color" name="color" value="<%=updateCandy.color%>" class="inputAdd"></th>
                 </tr>
