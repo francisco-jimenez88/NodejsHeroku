@@ -1,15 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/config");
-const cookieParser = require("cookie-parser");
 const sassMiddleware = require("node-sass-middleware");
 const lassesLakritsRouter = require("./router/router");
 const admin = require("./router/admin/admin");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const app = express();
 require('dotenv').config();
 
+
 app.use(express.urlencoded({ extended: true }))
+
 app.use(cookieParser())
 
 app.use(sassMiddleware({

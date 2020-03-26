@@ -9,7 +9,7 @@
     @media (min-width: 820px) { @content; }    
 }
 @mixin mini-desktop {
-    @media (min-width: 1000px) { @content; }
+    @media (min-width: 992px) { @content; }
 }
 @mixin desktop {
     @media (min-width: 1200px) { @content; }    

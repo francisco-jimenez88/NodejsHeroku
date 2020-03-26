@@ -1,6 +1,6 @@
 <%- include("headermember.ejs") %>
 
-<div class = "container thecontainer">
+<div class = "container">
     <div class = "row justify-content-center py-3">
         <h3 class="my-page-title">Mina sidor</h3>
         
@@ -8,8 +8,8 @@
 
     <div class ="row justify-content-center">
         <div class="col-sm-12 col-md-9 text-center">
-            <h5>Välkommen <%= ""%> </h5>
-            <p>Här kan du lägga till och ändra din adress, se tidigare beställningar och dina favoritmarkerade produkter.</p>
+            <h5>Välkommen</h5>
+            <p>Här kan du lägga till och ändra din adress, se tidigare beställningar och dina favoritmarkerade produkter</p>
                 <h6>Mina Uppgifter</h6>
                 <form action= "/userinfo" method="post">
                    
@@ -51,13 +51,12 @@
         </div>
 
         <div class="col-sm-12 col-md-3 text-center">
-          <h6><a href="/mypage">Mina uppgifter</a></h6>
             <h6>Mina beställningar</h6>
-            <h6><a href="/wishlist">Min Wishlist</a></h6>
-            <h6><a href="#">Säg Upp Medlemskap</a></h6>
+            <h6>Mina favoriter</h6>
+            <h6>Säg upp medlemskap</h6>
             <h6><%- include("logout.ejs") %></h6>
         </div>
     </div>
 </div>
 
-<%- include("../public/footer.ejs") %>
+<%- include("footer.ejs") %>

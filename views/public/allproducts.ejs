@@ -1,7 +1,7 @@
 <%- include("header.ejs") %>
 
-    <div class="container" id="all-products-container">
-        <div class="row">
+<div class="container" id="all-products-container">
+    <div class="row">
         <% sixProducts.forEach( item => { %>
                 <div class="product-container col-md-4 col-sm-6 img-fluid">
                     <a href="/allproducts/<%= item.name %>">
@@ -16,9 +16,11 @@
                 </div>
         <% }); %>
         </div>
+        <% }); %>
     </div>
+</div>
 
-    <div id="pagination">
+<div id="pagination">
     <% for (let page = 1; page <= pageCount; page++ ) { %>
         <% if (currentPage == page) { %>
         <a href="/allproducts/?page=<%= page %>" class="current"><%= page %></a>

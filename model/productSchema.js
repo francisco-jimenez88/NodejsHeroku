@@ -11,9 +11,8 @@ const schemaProduct = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     user:{
         type: mongoose.Schema.Types.ObjectId,
-         //  mongoose.Schema.Types.ObjectId, //någon valid mongoose id 
-        ref:"User",  //ref refererar från vilken model den skulle leta objektId
-        required:true
+        ref: "User", 
+        required: true
     }
 });
 
