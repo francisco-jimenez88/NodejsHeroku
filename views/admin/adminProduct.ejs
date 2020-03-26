@@ -12,9 +12,10 @@
                         <input type="radio" name="category" value="lakrits"><label for="lakrits"> Lakrits</label>
                         <input type="radio" name="category" value="chokladlakrits"><label for="chokladlakrits"> Chokladlakrits</label>
                     </th>
-                    <th class="rowCreatedBy"><input type="text" name="createdByAdmin" placeholder="Skapad av" class="inputAdd" required></th>
+                    <th style="display: none;"><input type="text" name="createdByAdmin" value="<%= user.name %>"></th>
                     <th class="rowImg2"><input type="text" name="img" placeholder="BildURL" class="inputAdd" required></th>
                     <th class="rowColor"><input type="color" name="color" value="#ffce54" class="inputAdd"></th>
+                    <th style="display: none;"><input type="text" id="hidden" name="user" value="<%= user._id %>"></th>
                 </tr>
             </table>
 

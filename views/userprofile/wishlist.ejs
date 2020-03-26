@@ -10,16 +10,12 @@
     <div class="col-sm-12 col-md-9 text-center">
 <h5>Din Wishlist</h5>
         <ul>
-            <% user.wishlist.forEach( (Candy)=>{ %>
-
-            <%= Candy.CandyId %>
-
-            <%= Candy.CandyId %>
-
-        <li><%= Candy.CandyId.name%>
-        <span> Price: <%=Candy.CandyId.price %> </span>
+            <% user.wishlist.forEach( (candy)=>{ %>
+        <li>
+            <%= candy.name %>
+            <span> Price: <%=candy.price %> </span>
         </li>
-            <a href="/deleteWishlist/<%=Candy.CandyId._id%>">Remove from wishlist</a>
+            <a href="/deleteWishlist/<%=candy._id%>">Remove from wishlist</a>
             <% } ) %>
         </ul>
 </div>
