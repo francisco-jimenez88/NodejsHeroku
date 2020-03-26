@@ -168,17 +168,17 @@ router.get("/logout", (req, res) => {
 
 //Wishlist
 router.get("/wishlist", verifyToken, async (req, res) => {
-    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.CandyId");
+    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
 
     res.render("userprofile/wishlist", { user, title: "Wishlist - Lasses" });
 });
 
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
-    const Candy = await Candy.findOne({ _id: req.params.id });
-    const user = await User.findOne({ _id: req.body.user._id });
+    const candy = await Candy.findOne({ _id: req.params.id });
+    const user = await User.findOne({ _id: req.user.user._id });
 
-    await user.addToWishList(Candy);
-
+    await user.addToWishList(candy);
+    
     res.redirect("/wishlist");
 });
 
