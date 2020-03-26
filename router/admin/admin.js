@@ -1,7 +1,7 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
 const User = require("../../model/userSchema");
-const adminToken = require("../adminToken")
+const verifyToken = require("../verifyToken")
 const router = express.Router();
 
 router.route("/admin")
