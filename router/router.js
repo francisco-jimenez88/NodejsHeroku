@@ -34,7 +34,7 @@ router.route("/allproducts")
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
         const pageCount = Math.ceil(findProduct.length / items);
 
-        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
+        res.render("allproducts", { token: req.cookies.jsonwebtoken, title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
         res.status("200");
     });
 
@@ -107,7 +107,9 @@ router.route("/login")
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
-                    res.render("myPage", { user, title: "Medlemssida - Lasses Lakrits" });
+                    res.redirect("/mypage");
+                    console.log(user.name);
+
                 }
                 res.redirect("/login");
             })
@@ -163,6 +165,7 @@ router.post("/resetpassword/:token", async(req, res)=>{
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
+    console.log(user)
     res.render("userprofile/mypage", { token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits" });
 });
 
