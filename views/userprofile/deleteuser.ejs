@@ -1,6 +1,4 @@
-<% if(token) { %> <%- include("headermember.ejs") %> <% } 
- else { %> <%- include("header.ejs") %> <% } %> 
-
+<%- include("headermember.ejs") %>
 <div class = "container thecontainer">
     <div class = "row justify-content-center py-3">
         <h3 class="my-page-title">Mina sidor</h3>
@@ -9,17 +7,11 @@
 
 <div class ="row justify-content-center">
     <div class="col-sm-12 col-md-9 text-center">
-<h5>Din Wishlist</h5>
-        <ul>
-            <% user.wishlist.forEach( (candy)=>{ %>
-        <li>
-            <%= candy.name %>
-            <span> Price: <%=candy.price %> </span>
-        </li>
-            <a href="/deleteWishlist/<%=candy._id%>">Remove from wishlist</a>
-            <% } ) %>
-        </ul>
-</div>
+        <h5>Avsluta medlemskap</h5>
+        <p>Här tar du bort din användare från Lasses Lakrits. Det går inte att ångra.</p>
+
+    <a href="/deleteuser/:id<%=""%>"><button type="submit" class="btn btn-dark w-100" id="delete-btn">Ta bort denna användare</button></a>
+    </div>
     
     <div class="col-sm-12 col-md-3 text-center">
         <h6><a href="/mypage">Mina uppgifter</a></h6>
@@ -32,5 +24,4 @@
 </div>
 
 </div>
-
 <%- include("../public/footer.ejs") %>

@@ -9,7 +9,7 @@
 
     <div class ="row justify-content-center">
         <div class="col-sm-12 col-md-9 text-center">
-            <h5>Välkommen <%= ""%> </h5>
+            <h5>Välkommen <%=""%> </h5>
             <p>Här kan du lägga till och ändra din adress, se tidigare beställningar och dina favoritmarkerade produkter.</p>
                 <h6>Mina Uppgifter</h6>
                 <form action= "/userinfo" method="post">
@@ -55,7 +55,7 @@
           <h6><a href="/mypage">Mina uppgifter</a></h6>
             <h6>Mina beställningar</h6>
             <h6><a href="/wishlist">Min Wishlist</a></h6>
-            <h6><a href="#">Säg Upp Medlemskap</a></h6>
+            <h6><a href="/deleteuser">Avsluta medlemskap</a></h6>
             <h6><%- include("logout.ejs") %></h6>
         </div>
     </div>

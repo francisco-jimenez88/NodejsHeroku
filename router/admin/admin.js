@@ -66,7 +66,6 @@ router.route("/delete/:id")
         }
     })
 
-
 router.route("/update/:id")
     .get(verifyToken, async (req, res) => {
         const user = await User.findOne({ _id: req.user.user._id });
@@ -93,7 +92,6 @@ router.route("/update/:id")
             }, { runValidators: true });
         res.redirect("/admin");
     })
-
 
 router.route("/admin2")
     .get(verifyToken, async (req, res) => {
