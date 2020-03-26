@@ -1,11 +1,11 @@
 const express = require("express");
 const Candy = require("../../model/productSchema");
 const User = require("../../model/userSchema");
-const verifyToken = require("../verifyToken")
+const adminToken = require("../adminToken")
 const router = express.Router();
 
 router.route("/admin")
-    .get(verifyToken , async (req, res) => {
+    .get(adminToken , async (req, res) => {
     if(req.user.admin == false) return res.redirect("/")
 
         const sortName = req.query.name;
