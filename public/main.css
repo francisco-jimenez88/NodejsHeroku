@@ -55,17 +55,18 @@ nav {
 #all-products-container .row {
   display: flex;
   justify-content: center; }
-  #all-products-container .product-container {
-    text-align: center;
-    padding-top: 40px; }
-    #all-products-container .product-container a {
-      text-decoration: none;
-      color: black; }
-    #all-products-container .product-container a:hover {
-      font-weight: bold; }
-    #all-products-container .product-container img {
-      max-width: 200px;
-      padding-bottom: 20px; }
+
+#all-products-container .product-container {
+  text-align: center;
+  padding-top: 40px; }
+  #all-products-container .product-container a {
+    text-decoration: none;
+    color: black; }
+  #all-products-container .product-container a:hover {
+    font-weight: bold; }
+  #all-products-container .product-container img {
+    max-width: 200px;
+    padding-bottom: 20px; }
 
 #pagination {
   text-align: center; }

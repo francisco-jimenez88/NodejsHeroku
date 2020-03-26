@@ -23,9 +23,7 @@ router.route("/")
 
         res.render("index", { item, title: "Lasses Lakrits" })
     })
-
     .post(async (req, res) => {
-
     })
 
 // Router för att komma till sidan med alla produkter
@@ -80,7 +78,6 @@ router.route("/login")
         res.render("login", { title: "Logga in - Lasses Lakrits" });
     })
     .post(async (req, res) => {
-
         const user = await User.findOne({ email: req.body.email });
 
         if (!user) return res.redirect("/login");
@@ -108,7 +105,7 @@ router.route("/login")
                 }
                 res.redirect("/login");
             })
-        })
+        }});
 
         //Router för återställning av lösenord
 router.get("/resetPassword", (req, res) => {
@@ -134,8 +131,8 @@ router.post("/resetPassword", async (req, res) => {
             html: `Följ denna länk för att återställa lösenord: http://localhost:8000/reset/${resetToken}`
         })
         res.redirect("/login")
- })
-})
+    })
+});
 
 //Kollar ifall användare har token, då skickas man till sidan med formulär
 router.get("/reset/:token", async (req, res) => {
@@ -145,7 +142,7 @@ router.get("/reset/:token", async (req, res) => {
 
     res.render("resetForm.ejs" , {user})
 
-})
+});
 
 router.post("/reset/:token", async(req, res)=>{
     const user = await User.findOne({_id:req.body.userId})
@@ -156,7 +153,7 @@ router.post("/reset/:token", async(req, res)=>{
      await user.save();
 
 res.redirect("/login");
-})
+});
         
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
