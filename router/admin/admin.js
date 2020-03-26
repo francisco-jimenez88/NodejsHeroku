@@ -106,7 +106,7 @@ router.route("/admin2")
             let userQuantity = await User.find().countDocuments();
 
             const page = +req.query.page || 1;
-            const usersPerPage = 4;
+            const usersPerPage = 5;
             let pageQuantity = await User.find().countDocuments() / usersPerPage;
             pageQuantity = Math.ceil(pageQuantity);
 
