@@ -9,10 +9,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-
-app.use(express.urlencoded({ extended: true }))
-
 app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }))
 
 app.use(sassMiddleware({
     src: path.join(__dirname, "scss"),

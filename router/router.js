@@ -57,7 +57,19 @@ router.route("/signup")
             name: req.body.name,
             password: hashPassword
         }).save();
-        res.redirect("/");
+
+        jwt.sign({ user }, "secretkey", (err, token) => {
+            if (err){
+                return res.redirect("/login");
+            } 
+
+            if (token) {
+                const cookie = req.cookies.jsonwebtoken;
+                if (!cookie) {
+                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
+        res.redirect("/mypage");
+                }
+        }})
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
@@ -111,6 +123,23 @@ router.get("/mypage", verifyToken, async (req, res) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("jsonwebtoken").redirect("/login");
 });
+
+//Ta bort user
+router.get("/deleteuser", verifyToken, async (req, res) => {
+    const user = await User.findOne({ _id: req.user.user._id });
+    res.render("userprofile/deleteuser", { user, title: "Avsluta medlemskap - Lasses Lakrits" });
+});
+
+router.get("/deleteuser/:id", verifyToken, async (req, res) => {
+      await User.deleteOne({ _id: req.user.user._id }, (err,data) => {
+      
+        if(!err) {
+          console.log("Deleted");
+          const message = "Din användare är nu avregistrerad"
+        res.clearCookie("jsonwebtoken").redirect("/login")
+    }
+    });
+    }) 
 
 //Wishlist
 router.get("/wishlist", verifyToken, async (req, res) => {

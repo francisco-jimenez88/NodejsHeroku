@@ -1,5 +1,4 @@
 <%- include("headermember.ejs") %>
-
 <div class = "container thecontainer">
     <div class = "row justify-content-center py-3">
         <h3 class="my-page-title">Mina sidor</h3>
@@ -8,21 +7,11 @@
 
 <div class ="row justify-content-center">
     <div class="col-sm-12 col-md-9 text-center">
-<h5>Din Wishlist</h5>
-        <ul>
-            <% user.wishlist.forEach( (Candy)=>{ %>
+        <h5>Avsluta medlemskap</h5>
+        <p>Här tar du bort din användare från Lasses Lakrits. Det går inte att ångra.</p>
 
-            <%= Candy.CandyId %>
-
-            <%= Candy.CandyId %>
-
-        <li><%= Candy.CandyId.name%>
-        <span> Price: <%=Candy.CandyId.price %> </span>
-        </li>
-            <a href="/deleteWishlist/<%=Candy.CandyId._id%>">Remove from wishlist</a>
-            <% } ) %>
-        </ul>
-</div>
+    <a href="/deleteuser/:id<%=""%>"><button type="submit" class="btn btn-dark w-100" id="delete-btn">Ta bort denna användare</button></a>
+    </div>
     
     <div class="col-sm-12 col-md-3 text-center">
         <h6><a href="/mypage">Mina uppgifter</a></h6>
@@ -35,5 +24,4 @@
 </div>
 
 </div>
-
 <%- include("../public/footer.ejs") %>
