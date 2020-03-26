@@ -5,47 +5,40 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
-    wishlist:[{
-        candyId: {type: mongoose.Schema.Types.ObjectId,
-        ref:"Candy"
+    wishlist: [{
+        candyId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Candy"
         }
     }],
     userinfo: [{
-       lastname: {type: String},
-       phonenumber: {type: Number},
-       address: {type: String},
-       city: {type: String},
-       zip: {type: Number}
-        
+        lastname: { type: String },
+        phonenumber: { type: Number },
+        address: { type: String },
+        city: { type: String },
+        zip: { type: Number }
     }]
-
 });
 
 // Lägg till produkt till wishlist
 userSchema.methods.addToWishList = function (Candy) {
-this.wishlist.push({ Id: Candy._id })
-const newWishlist = this.wishlist.filter( function( {candyId} ) {
- 
-  return !this.has(`${candyId}`) && this.add(`${candyId}`)
-},new Set)
-console.log(newWishlist)
-this.wishlist = [...newWishlist]
-return this.save();
- 
+    this.wishlist.push({ candyId: Candy._id })
+    const newWishlist = this.wishlist.filter(function ({ candyId }) {
+
+        return !this.has(`${candyId}`) && this.add(`${candyId}`)
+    }, new Set)
+    this.wishlist = [...newWishlist]
+    return this.save();
 }
-//Ta bort produkt från wish-list
+
+// Ta bort produkt från wishlist
 userSchema.methods.removeFromList = function (candyId) {
-
-    const restOftheProducts = this.wishlist.filter((Candy) => {
-        return Candy.candyId.toString()
-            !==candyId.toString()
-    })
-
+    const restOftheProducts = this.wishlist.filter(candy =>
+        candy.candyId.toString() !== candyId.toString()
+    );
     this.wishlist = restOftheProducts;
     return this.save();
-
 }
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;

@@ -21,10 +21,8 @@ router.route("/")
     .get( async (req, res) => {
         const item = await Candy.find();
 
-        res.render("index", { token: req.cookies.jsonwebtoken, item, title: "Lasses Lakrits" })
-    })
-    .post(async (req, res) => {
-    })
+        res.render("index", { item, title: "Lasses Lakrits" })
+    });
 
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
@@ -32,13 +30,13 @@ router.route("/allproducts")
         const currentPage = req.query.page || 1;
         const items = 6;
         const sort = req.query.sort;
-        const findProduct = await Candy.find()
+        const findProduct = await Candy.find();
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
-        const pageCount = Math.ceil(findProduct.length / items)
+        const pageCount = Math.ceil(findProduct.length / items);
 
-        res.render("allproducts", { token: req.cookies.jsonwebtoken, title: "Lasses Lakritsar", sixProducts, pageCount, currentPage })
-        res.status("200")
-    })
+        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
+        res.status("200");
+    });
 
 // För att komma till en specifik produkt
 router.route("/allproducts/:id")
@@ -98,9 +96,9 @@ router.route("/login")
             return res.redirect("/login");
         } else {
             jwt.sign({ user }, "secretkey", (err, token) => {
-                if (err){
+                if (err) {
                     return res.redirect("/login");
-                } 
+                }
 
                 if (token) {
                     const cookie = req.cookies.jsonwebtoken;
@@ -109,21 +107,26 @@ router.route("/login")
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
+<<<<<<< HEAD
                     res.redirect("/mypage");
                     console.log(user.name);
 
+=======
+                    res.render("myPage", { user, title: "Medlemssida - Lasses Lakrits" });
+>>>>>>> f35057e0325345050d94edf7b49730bf59584e8f
                 }
                 res.redirect("/login");
             })
-        }});
+        }
+    });
 
-        //Router för återställning av lösenord
+//Router för återställning av lösenord
 router.get("/resetPassword", (req, res) => {
-    res.render("resetPassword", { title: "Lasses Lakrits" })
+    res.render("resetPassword", { title: "Lasses Lakrits" });
 })
 
 router.post("/resetPassword", async (req, res) => {
-    const user = await User.findOne({ email: req.body.resetMail })
+    const user = await User.findOne({ email: req.body.resetMail });
     if (!user) return res.redirect("/signup");
 
     crypto.randomBytes(32, async (err, token) => {
@@ -138,33 +141,31 @@ router.post("/resetPassword", async (req, res) => {
             to: user.email,
             from: "<no-reply>lasses@lakrits.se",
             subject: "Återställning av lösenord",
-            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/reset/${resetToken}`
+            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/resetpassword/${resetToken}`
         })
         res.redirect("/login")
     })
 });
 
 //Kollar ifall användare har token, då skickas man till sidan med formulär
-router.get("/reset/:token", async (req, res) => {
+router.get("/resetpassword/:token", async (req, res) => {
     const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
      console.log(user);
     if (!user) return res.redirect("/signUp");
-
-    res.render("resetForm.ejs" , {user})
-
+    res.render("resetForm" , {user})
 });
 
-router.post("/reset/:token", async(req, res)=>{
+router.post("/resetpassword/:token", async(req, res)=>{
     const user = await User.findOne({_id:req.body.userId})
 
-    user.password = await bcrypt.hash(req.body.password, 10) ;
+    user.password = await bcrypt.hash(req.body.password, 10);
     user.resetToken = undefined;
     user.expirationToken = undefined;
-     await user.save();
+    await user.save();
 
-res.redirect("/login");
+    res.redirect("/login");
 });
-        
+
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
@@ -203,19 +204,18 @@ router.get("/wishlist", verifyToken, async (req, res) => {
 
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
     const candy = await Candy.findOne({ _id: req.params.id });
-    const user = await User.findOne({ _id: req.user.user._id });
+    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
 
     await user.addToWishList(candy);
-    
     res.redirect("/wishlist");
 });
 
 router.get("/deleteWishlist/:id", verifyToken, async (req, res) => {
-    const user = await User.findOne({ _id: req.body.user._id });
+    console.log("Här kommer req.params.id för wishlist:id " + req.params.id);
+    const user = await User.findOne({ _id: req.user.user._id });
     user.removeFromList(req.params.id);
     res.redirect("/wishlist");
 })
-
 
 // För att komma till checkout
 router.route("/checkout")

@@ -178,7 +178,7 @@ body, html {
     margin: 30px; }
 
 html body {
-  height: 100vh; }
+  min-height: 100%; }
 
 .footer-container {
   display: flex;
@@ -192,3 +192,25 @@ html body {
   flex-shrink: 0; }
   .footer ul, .footer .footer-title {
     color: white; }
+
+#login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30%;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+#signup-container {
+  margin-top: 20px;
+  margin-bottom: 25%;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+#resetform {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40%;
+  padding-top: 20px;
+  padding-bottom: 20px; }

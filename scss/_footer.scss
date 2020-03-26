@@ -1,9 +1,8 @@
-html body{
-    height: 100vh;
-}
+ html body{
+    min-height: 100%;
+} 
 .footer-container {
     display: flex;
-    //min-height: 100vh;
     flex-direction: column;
 }
 
@@ -19,4 +18,3 @@ html body{
         color: white;
     }
 }
-
