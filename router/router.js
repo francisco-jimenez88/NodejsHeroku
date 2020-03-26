@@ -22,9 +22,7 @@ router.route("/")
         const item = await Candy.find();
 
         res.render("index", { item, title: "Lasses Lakrits" })
-    })
-    .post(async (req, res) => {
-    })
+    });
 
 // Router för att komma till sidan med alla produkter
 router.route("/allproducts")
@@ -32,21 +30,22 @@ router.route("/allproducts")
         const currentPage = req.query.page || 1;
         const items = 6;
         const sort = req.query.sort;
-        const findProduct = await Candy.find()
+        const findProduct = await Candy.find();
         const sixProducts = await Candy.find().skip((currentPage - 1) * items).limit(items).sort({ text: sort });
-        const pageCount = Math.ceil(findProduct.length / items)
+        const pageCount = Math.ceil(findProduct.length / items);
 
-        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage })
-        res.status("200")
-    })
+        res.render("allproducts", { title: "Lasses Lakritsar", sixProducts, pageCount, currentPage });
+        res.status("200");
+    });
 
 // För att komma till en specifik produkt
 router.route("/allproducts/:id")
     .get(async (req, res) => {
         console.log(req.params.id);
         const selectedCandy = await Candy.findOne({ name: req.params.id });
+        console.log(selectedCandy);
         res.render("oneproduct", { selectedCandy, title: "Produkt" });
-    })
+    });
 
 //Signup sidan
 router.route("/signup")
@@ -63,9 +62,8 @@ router.route("/signup")
             name: req.body.name,
             password: hashPassword,
             admin: req.body.admin
-        }).save()
-        console.log(user)
-        res.redirect("/")
+        }).save();
+        res.redirect("/");
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
@@ -88,9 +86,9 @@ router.route("/login")
             return res.redirect("/login");
         } else {
             jwt.sign({ user }, "secretkey", (err, token) => {
-                if (err){
+                if (err) {
                     return res.redirect("/login");
-                } 
+                }
 
                 if (token) {
                     const cookie = req.cookies.jsonwebtoken;
@@ -99,21 +97,20 @@ router.route("/login")
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
-                    res.render("myPage", {user, title: "Medlemssida - Lasses Lakrits"});
-                    console.log("cookie");
-
+                    res.render("myPage", { user, title: "Medlemssida - Lasses Lakrits" });
                 }
                 res.redirect("/login");
             })
-        }});
+        }
+    });
 
-        //Router för återställning av lösenord
+//Router för återställning av lösenord
 router.get("/resetPassword", (req, res) => {
-    res.render("resetPassword", { title: "Lasses Lakrits" })
+    res.render("resetPassword", { title: "Lasses Lakrits" });
 })
 
 router.post("/resetPassword", async (req, res) => {
-    const user = await User.findOne({ email: req.body.resetMail })
+    const user = await User.findOne({ email: req.body.resetMail });
     if (!user) return res.redirect("/signup");
 
     crypto.randomBytes(32, async (err, token) => {
@@ -136,25 +133,25 @@ router.post("/resetPassword", async (req, res) => {
 
 //Kollar ifall användare har token, då skickas man till sidan med formulär
 router.get("/reset/:token", async (req, res) => {
-    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
-     console.log(user);
+    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } });
+    console.log(user);
     if (!user) return res.redirect("/signUp");
 
-    res.render("resetForm.ejs" , {user})
+    res.render("resetForm.ejs", { user });
 
 });
 
-router.post("/reset/:token", async(req, res)=>{
-    const user = await User.findOne({_id:req.body.userId})
+router.post("/reset/:token", async (req, res) => {
+    const user = await User.findOne({ _id: req.body.userId });
 
-    user.password = await bcrypt.hash(req.body.password, 10) ;
+    user.password = await bcrypt.hash(req.body.password, 10);
     user.resetToken = undefined;
     user.expirationToken = undefined;
-     await user.save();
+    await user.save();
 
-res.redirect("/login");
+    res.redirect("/login");
 });
-        
+
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
@@ -175,19 +172,18 @@ router.get("/wishlist", verifyToken, async (req, res) => {
 
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
     const candy = await Candy.findOne({ _id: req.params.id });
-    const user = await User.findOne({ _id: req.user.user._id });
+    const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
 
     await user.addToWishList(candy);
-    
     res.redirect("/wishlist");
 });
 
 router.get("/deleteWishlist/:id", verifyToken, async (req, res) => {
-    const user = await User.findOne({ _id: req.body.user._id });
+    console.log("Här kommer req.params.id för wishlist:id " + req.params.id);
+    const user = await User.findOne({ _id: req.user.user._id });
     user.removeFromList(req.params.id);
     res.redirect("/wishlist");
 })
-
 
 // För att komma till checkout
 router.route("/checkout")
