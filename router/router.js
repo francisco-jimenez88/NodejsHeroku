@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser")
 const User = require("../model/userSchema")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -56,7 +57,19 @@ router.route("/signup")
             name: req.body.name,
             password: hashPassword
         }).save();
-        res.redirect("/");
+
+        jwt.sign({ user }, "secretkey", (err, token) => {
+            if (err){
+                return res.redirect("/login");
+            } 
+
+            if (token) {
+                const cookie = req.cookies.jsonwebtoken;
+                if (!cookie) {
+                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
+        res.redirect("/mypage");
+                }
+        }})
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
@@ -65,28 +78,6 @@ router.route("/signup")
 
 //Login sida
 router.route("/login")
-<<<<<<< HEAD
-        .get(async (req, res) => {
-    res.render("login", { title:"Logga in - Lasses Lakrits" })
-        })
-        .post(async (req, res) => {
-     
-    const user = await User.findOne({ email:req.body.email })
-     
-    if (!user) return res.redirect("/login")
-    
-    const compareHash = await bcrypt.compare(req.body.password, user.password)
-     
-    if (!compareHash) return res.redirect("/login")
-    
-    jwt.sign({ user }, "secretkey", (err, token) => {
-    if (err) return res.redirect("/login")
-    if (token) {
-    const cookie = req.cookies.jsonwebtoken;
-    if (!cookie) {
-    res.cookie("jsonwebtoken", token, { maxAge:3600000, httpOnly:true })
-    console.log("Hej hej")
-=======
     .get(async (req, res) => {
         res.render("login", { title: "Logga in - Lasses Lakrits" });
     })
@@ -110,55 +101,15 @@ router.route("/login")
                     const cookie = req.cookies.jsonwebtoken;
                     if (!cookie) {
                         res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
->>>>>>> e5f2c8a189f012ed77534388c24a430dbd075920
                     }
                     if (user.admin == true) return res.redirect("/admin");
 
-                    res.render("myPage", {user, title: "Medlemssida - Lasses Lakrits"});
+                    res.render("userprofile/myPage", {user, title: "Medlemssida - Lasses Lakrits"});
                     console.log("cookie");
 
                 }
                 res.redirect("/login");
             })
-<<<<<<< HEAD
-        })
-        
-//Mypage
-    router.get("/mypage", verifyToken, async (req, res) => {
-        const user = await User.findOne({ email: req.body.email })
-            res.render("userprofile/mypage", { user, title: "Medlemssida - Lasses Lakrits" })
-})
-
-//Logga ut
-    router.get("/logout", async (req, res) => {
-        res.clearCookie("jsonwebtoken").redirect("/login")
-        })
-
-//Wishlist
-    router.get("/wishlist",verifyToken , async (req, res)=>{
-  
-        const user = await User.findOne({_id: req.body.user._id}).populate("wishlist.CandyId")
-        
-        res.render("userprofile/wishlist", {user, title: "Wishlist - Lasses"})
-        
-           })
-           
-    router.get("/wishlist/:id",verifyToken , async (req, res) => {
-        const Candy =  await Candy.findOne({_id:req.params.id}) 
-        const user = await User.findOne({_id: req.body.user._id})   
-           
-            await user.addToWishList(Candy)
-          
-            res.redirect("/wishlist")
-           
-           })
-           
-    router.get("/deleteWishlist/:id", verifyToken, async(req, res)=>{
-             const user = await User.findOne({_id: req.body.user._id})
-             user.removeFromList(req.params.id)
-             res.redirect("/wishlist");
-           })
-=======
         }
     })
 
@@ -172,6 +123,23 @@ router.get("/mypage", verifyToken, async (req, res) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("jsonwebtoken").redirect("/login");
 });
+
+//Ta bort user
+router.get("/deleteuser", verifyToken, async (req, res) => {
+    const user = await User.findOne({ _id: req.user.user._id });
+    res.render("userprofile/deleteuser", { user, title: "Avsluta medlemskap - Lasses Lakrits" });
+});
+
+router.get("/deleteuser/:id", verifyToken, async (req, res) => {
+      await User.deleteOne({ _id: req.user.user._id }, (err,data) => {
+      
+        if(!err) {
+          console.log("Deleted");
+          const message = "Din användare är nu avregistrerad"
+        res.clearCookie("jsonwebtoken").redirect("/login")
+    }
+    });
+    }) 
 
 //Wishlist
 router.get("/wishlist", verifyToken, async (req, res) => {
@@ -195,7 +163,6 @@ router.get("/deleteWishlist/:id", verifyToken, async (req, res) => {
     res.redirect("/wishlist");
 })
 
->>>>>>> e5f2c8a189f012ed77534388c24a430dbd075920
 
 // För att komma till checkout
 router.route("/checkout")

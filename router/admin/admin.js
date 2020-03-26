@@ -53,7 +53,6 @@ router.route("/delete/:id")
         res.redirect("/admin");
     })
 
-
 router.route("/update/:id")
     .get(async (req, res) => {
         const updateCandy = await Candy.findById({ _id: req.params.id });
@@ -74,7 +73,6 @@ router.route("/update/:id")
             }, { runValidators: true });
         res.redirect("/admin");
     })
-
 
 router.route("/admin2")
     .get(async (req, res) => {
