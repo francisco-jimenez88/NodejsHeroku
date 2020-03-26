@@ -7,7 +7,7 @@ const router = express.Router();
 router.route("/admin")
     .get(verifyToken, async (req, res) => {
         const user = await User.findOne({ _id: req.user.user._id })
-
+        console.log(req.cookies.jsonwebtoken) //token: req.cookies.jsonwebtoken
         if (req.user.user.admin == true) {
             const sortName = req.query.name;
             const sortPrice = req.query.price;
@@ -25,7 +25,7 @@ router.route("/admin")
 
             const findCandy = await Candy.find().collation({ locale: "sv", strength: 2 }).sort({ name: sortName }).skip(productsPerPage * (page - 1)).limit(productsPerPage);
 
-            res.render("admin/adminProduct", { user, findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
+            res.render("admin/adminProduct", { token: req.cookies.jsonwebtoken, user, findCandy, page, pageQuantity, productsPerPage, queryExist, pageCount, title: "Admin - Lasses Lakrits" })
         } else {
             res.send("Du har inte rättigheter för den här sidan");
         }
