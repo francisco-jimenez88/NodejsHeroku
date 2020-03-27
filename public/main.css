@@ -214,3 +214,18 @@ html body {
   margin-bottom: 40%;
   padding-top: 20px;
   padding-bottom: 20px; }
+
+.mainDiv {
+  padding-bottom: 200px; }
+
+.sidebar-mypage a, .sidebar-mypage a:link, .sidebar-mypage a:visited {
+  color: #8f8f8f;
+  text-decoration: none;
+  font-weight: lighter; }
+
+.sidebar-mypage a:hover {
+  color: black; }
+
+.sidebar-mypage a:active, .sidebar-mypage a:focus {
+  color: black;
+  font-weight: bold; }
