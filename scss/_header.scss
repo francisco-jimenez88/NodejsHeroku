@@ -24,7 +24,7 @@
         border-color: white;
     }
     .iconBar{
-        color: white;
+        color: white !important;
     }
     .navbar-nav{
         @include mini-desktop{

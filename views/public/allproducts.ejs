@@ -4,31 +4,31 @@
 <div class="container" id="all-products-container">
     <div class="row">
         <% sixProducts.forEach( item => { %>
-                <div class="product-container col-md-4 col-sm-6 img-fluid">
-                    <a href="/allproducts/<%= item.name %>">
-                   <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
-                    <br>
-                    </a>
-                    
-                    <a href="/allproducts/<%= item.name %>"><%= item.name %></a>
-                    <!--<p><%= item.description %> </p>-->
-                    <p><%= item.price %> SEK</p>
-                    <button type="button">Lägg i varukorg</button>
-                </div>
-        <% }); %>
+        <div class="product-container col-md-4 col-sm-6 img-fluid">
+            <a href="/allproducts/<%= item.name %>">
+                <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
+                <br>
+            </a>
+
+            <a href="/allproducts/<%= item.name %>"><%= item.name %></a>
+            <!--<p><%= item.description %> </p>-->
+            <p><%= item.price %> SEK</p>
+            <button type="button">Lägg i varukorg</button>
         </div>
+        <% }); %>
     </div>
+</div>
 </div>
 
 <div id="pagination">
     <% for (let page = 1; page <= pageCount; page++ ) { %>
-        <% if (currentPage == page) { %>
-        <a href="/allproducts/?page=<%= page %>" class="current"><%= page %></a>
-        <% } else { %>
-        <a href="/allproducts/?page=<%= page %>"><%= page %></a>
-        <% } %>
-        <% } %>
-    </div>
+    <% if (currentPage == page) { %>
+    <a href="/allproducts/?page=<%= page %>" class="current"><%= page %></a>
+    <% } else { %>
+    <a href="/allproducts/?page=<%= page %>"><%= page %></a>
+    <% } %>
+    <% } %>
+</div>
 </body>
 
 <%- include("footer.ejs") %>

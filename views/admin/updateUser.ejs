@@ -9,7 +9,7 @@
                 <th class="rowCategory">Admin: False / True</th>
             </tr>
         </table>
-        
+
         <form method="POST">
             <table>
                 <tr id="addProduct">
@@ -27,15 +27,15 @@
     </div>
 
     <% if(findUser.admin === false){ %>
-        <script>
-            document.getElementById("false").checked = true;
-        </script>
+    <script>
+        document.getElementById("false").checked = true;
+    </script>
     <% } %>
 
     <% if(findUser.admin === true){ %>
-        <script>
-            document.getElementById("true").checked = true;
-        </script>
+    <script>
+        document.getElementById("true").checked = true;
+    </script>
     <% } %>
 
 </body>

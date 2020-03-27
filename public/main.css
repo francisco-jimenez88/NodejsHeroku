@@ -19,7 +19,7 @@
   border-color: white; }
 
 .navbar .iconBar {
-  color: white; }
+  color: white !important; }
 
 @media (min-width: 992px) {
   .navbar .navbar-nav {

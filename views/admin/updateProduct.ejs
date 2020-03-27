@@ -32,17 +32,17 @@
             <button type="submit" class="btn action-button shadow animate green">Ändra produkt</button>
         </form>
     </div>
-        
-        <% if(updateCandy.category === "lakrits"){ %>
-            <script>
-                document.getElementById("lakrits").checked = true;
-            </script>
-        <% } %>
 
-        <% if(updateCandy.category === "chokladlakrits"){ %>
-            <script>
-                document.getElementById("chokladlakrits").checked = true;
-            </script>
-        <% } %>
+    <% if(updateCandy.category === "lakrits"){ %>
+    <script>
+        document.getElementById("lakrits").checked = true;
+    </script>
+    <% } %>
+
+    <% if(updateCandy.category === "chokladlakrits"){ %>
+    <script>
+        document.getElementById("chokladlakrits").checked = true;
+    </script>
+    <% } %>
 
 </body>

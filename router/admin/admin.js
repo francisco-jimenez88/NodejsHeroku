@@ -4,14 +4,13 @@ const User = require("../../model/userSchema");
 const verifyToken = require("../verifyToken")
 const router = express.Router();
 
+
 router.route("/admin")
     .get(verifyToken, async (req, res) => {
         const user = await User.findOne({ _id: req.user.user._id })
-        console.log(req.cookies.jsonwebtoken) //token: req.cookies.jsonwebtoken
+
         if (req.user.user.admin == true) {
             const sortName = req.query.name;
-            const sortPrice = req.query.price;
-            const sortCategory = req.query.category;
             const queryExist = req.query.page;
 
             let productQuantity = await Candy.find().countDocuments();
@@ -29,7 +28,6 @@ router.route("/admin")
         } else {
             res.send("Du har inte rättigheter för den här sidan");
         }
-
     })
     .post(async (req, res) => {
         await new Candy({
@@ -40,10 +38,7 @@ router.route("/admin")
             color: req.body.color,
             createdByAdmin: req.body.createdByAdmin,
             img: req.body.img,
-            // user: "5e763d50c5002e07b42894ab"
             user: req.body.user
-
-
         }).save((error, success) => {
             if (error) {
                 res.send(error.message);
@@ -54,10 +49,9 @@ router.route("/admin")
         });
     });
 
+
 router.route("/delete/:id")
     .get(verifyToken, async (req, res) => {
-        const user = await User.findOne({ _id: req.user.user._id });
-
         if (req.user.user.admin == true) {
             await Candy.deleteOne({ _id: req.params.id });
             res.redirect("/admin");
@@ -66,10 +60,9 @@ router.route("/delete/:id")
         }
     })
 
+
 router.route("/update/:id")
     .get(verifyToken, async (req, res) => {
-        const user = await User.findOne({ _id: req.user.user._id });
-
         if (req.user.user.admin == true) {
             const updateCandy = await Candy.findById({ _id: req.params.id });
             res.render("admin/updateProduct", { updateCandy, title: "Update Candy" });
@@ -93,6 +86,7 @@ router.route("/update/:id")
         res.redirect("/admin");
     })
 
+
 router.route("/admin2")
     .get(verifyToken, async (req, res) => {
         const user = await User.findOne({ _id: req.user.user._id });
@@ -100,13 +94,12 @@ router.route("/admin2")
         if (req.user.user.admin == true) {
             const sortName = req.query.name;
             const sortAdmin = req.query.admin;
-
             const queryExist = req.query.page;
 
             let userQuantity = await User.find().countDocuments();
 
             const page = +req.query.page || 1;
-            const usersPerPage = 4;
+            const usersPerPage = 5;
             let pageQuantity = await User.find().countDocuments() / usersPerPage;
             pageQuantity = Math.ceil(pageQuantity);
 
@@ -127,8 +120,6 @@ router.route("/admin2")
 
 router.route("/updateUser/:id")
     .get(verifyToken, async (req, res) => {
-        const user = await User.findOne({ _id: req.user.user._id });
-
         if (req.user.user.admin == true) {
             const findUser = await User.findById({ _id: req.params.id });
             res.render("admin/updateUser", { findUser, title: "Update Admin" });
