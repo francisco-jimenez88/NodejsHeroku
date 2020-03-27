@@ -205,7 +205,10 @@ html body {
   margin-top: 20px;
   margin-bottom: 25%;
   padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center; }
 
 #resetform {
   display: flex;
@@ -214,9 +217,6 @@ html body {
   margin-bottom: 40%;
   padding-top: 20px;
   padding-bottom: 20px; }
-
-.mainDiv {
-  padding-bottom: 200px; }
 
 .sidebar-mypage a, .sidebar-mypage a:link, .sidebar-mypage a:visited {
   color: #8f8f8f;
