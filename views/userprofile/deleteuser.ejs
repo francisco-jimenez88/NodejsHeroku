@@ -3,20 +3,18 @@
     <div class="row justify-content-center py-3"></div>
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-9 text-center">
-            <h3 class="my-page-title">Mina sidor</h3>
             <h5>Avsluta medlemskap</h5>
             <p>Här tar du bort din användare från Lasses Lakrits. Det går inte att ångra.</p>
 
-            <a href="/deleteuser/:id<%=""%>"><button type="submit" class="btn btn-dark w-100" id="delete-btn">Ta bort
-                    denna användare</button></a>
+            <a href="/deleteuser/:id<%=""%>"><button type="submit" class="btn btn-dark w-100" id="delete-btn">Ta bort användare</button></a>
         </div>
 
         <div class="col-sm-12 col-md-3 border-left  sidebar-mypage">
             <h6><a href="/mypage">Mina uppgifter</a></h6>
-            <h6><a href="/wishlist">Min Wishlist</a></h6>
+            <h6><a href="/wishlist">Min önskelista</a></h6>
             <h6><a href="/deleteuser">Avsluta medlemskap</a></h6>
             <h6><%- include("logout.ejs") %></h6>
         </div>
     </div>
 </div>
-<%- include("../public/footer.ejs") %>
+<!-- <%- include("../public/footer.ejs") %> -->
