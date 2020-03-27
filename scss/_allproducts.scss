@@ -25,6 +25,10 @@
 
 #pagination {
     text-align: center;
+    font-size: 2.2rem;
+    a {
+        color: black;
+    }
     .current {
         text-decoration: underline;
     }
