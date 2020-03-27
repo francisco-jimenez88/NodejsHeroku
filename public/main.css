@@ -69,7 +69,10 @@ nav {
     padding-bottom: 20px; }
 
 #pagination {
-  text-align: center; }
+  text-align: center;
+  font-size: 2.2rem; }
+  #pagination a {
+    color: black; }
   #pagination .current {
     text-decoration: underline; }
 
@@ -207,8 +210,7 @@ html body {
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  justify-content: center;
-  text-align: center; }
+  justify-content: center; }
 
 #resetform {
   display: flex;
@@ -218,14 +220,25 @@ html body {
   padding-top: 20px;
   padding-bottom: 20px; }
 
-.sidebar-mypage a, .sidebar-mypage a:link, .sidebar-mypage a:visited {
-  color: #8f8f8f;
-  text-decoration: none;
-  font-weight: lighter; }
+.sidebar-mypage {
+  margin-top: 25px; }
+  .sidebar-mypage a, .sidebar-mypage a:link, .sidebar-mypage a:visited {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter; }
+  .sidebar-mypage a:hover {
+    color: black;
+    font-weight: bold; }
+  .sidebar-mypage a:active, .sidebar-mypage a:focus {
+    color: black;
+    font-weight: bold; }
 
-.sidebar-mypage a:hover {
+ul {
+  list-style-type: none; }
+
+h6 {
+  font-weight: bold;
   color: black; }
 
-.sidebar-mypage a:active, .sidebar-mypage a:focus {
-  color: black;
-  font-weight: bold; }
+.wishlistImg {
+  height: 100px; }

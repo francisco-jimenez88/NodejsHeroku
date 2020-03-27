@@ -109,8 +109,6 @@ router.route("/login")
                     if (user.admin == true) return res.redirect("/admin");
 
                     res.redirect("/mypage");
-                    console.log(user.name);
-
                 }
                 res.redirect("/login");
             })
