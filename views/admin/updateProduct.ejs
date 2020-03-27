@@ -16,24 +16,16 @@
         <form method="POST">
             <table>
                 <tr id="addProduct">
-                    <th class="rowName"><input type="text" name="name" value="<%=updateCandy.name%>" class="inputAdd"
-                            required></th>
-                    <th class="rowPrice"><input type="text" name="price" value="<%=updateCandy.price%>" class="inputAdd"
-                            id="price" required></th>
-                    <th class="rowDescription"><textarea name="description" class="inputDescription"
-                            required><%=updateCandy.description%></textarea></th>
+                    <th class="rowName"><input type="text" name="name" value="<%=updateCandy.name%>" class="inputAdd" required></th>
+                    <th class="rowPrice"><input type="text" name="price" value="<%=updateCandy.price%>" class="inputAdd" id="price" required></th>
+                    <th class="rowDescription"><textarea name="description" class="inputDescription" required><%=updateCandy.description%></textarea></th>
                     <th class="rowCategory">
-                        <input type="radio" name="category" value="lakrits" id="lakrits"><label for="lakrits">
-                            Lakrits</label>
-                        <input type="radio" name="category" value="chokladlakrits" id="chokladlakrits"><label
-                            for="chokladlakrits"> Chokladlakrits</label>
+                        <input type="radio" name="category" value="lakrits" id="lakrits"><label for="lakrits"> Lakrits</label>
+                        <input type="radio" name="category" value="chokladlakrits" id="chokladlakrits"><label for="chokladlakrits"> Chokladlakrits</label>
                     </th>
-                    <th style="display: none;"><input type="text" name="createdByAdmin"
-                            value="<%=updateCandy.createdByAdmin%>"></th>
-                    <th class="rowImg2"><input type="text" name="img" value="<%=updateCandy.img%>" class="inputAdd"
-                            required></th>
-                    <th class="rowColor"><input type="color" name="color" value="<%=updateCandy.color%>"
-                            class="inputAdd"></th>
+                    <th style="display: none;"><input type="text" name="createdByAdmin" value="<%=updateCandy.createdByAdmin%>"></th>
+                    <th class="rowImg2"><input type="text" name="img" value="<%=updateCandy.img%>" class="inputAdd" required></th>
+                    <th class="rowColor"><input type="color" name="color" value="<%=updateCandy.color%>" class="inputAdd"></th>
                 </tr>
             </table>
 

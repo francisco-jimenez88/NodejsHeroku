@@ -5,20 +5,15 @@
         <form method="POST">
             <table>
                 <tr id="addProduct">
-                    <th class="rowName"><input type="text" name="name" placeholder="Namn" class="inputAdd" required>
-                    </th>
-                    <th class="rowPrice"><input type="text" name="price" placeholder="Pris" class="inputAdd" required>
-                    </th>
-                    <th class="rowDescription"><textarea name="description" placeholder="Beskrivning"
-                            class="inputDescription" required></textarea></th>
+                    <th class="rowName"><input type="text" name="name" placeholder="Namn" class="inputAdd" required></th>
+                    <th class="rowPrice"><input type="text" name="price" placeholder="Pris" class="inputAdd" required></th>
+                    <th class="rowDescription"><textarea name="description" placeholder="Beskrivning" class="inputDescription" required></textarea></th>
                     <th class="rowCategoryRadio">
                         <input type="radio" name="category" value="lakrits"><label for="lakrits"> Lakrits</label>
-                        <input type="radio" name="category" value="chokladlakrits"><label for="chokladlakrits">
-                            Chokladlakrits</label>
+                        <input type="radio" name="category" value="chokladlakrits"><label for="chokladlakrits"> Chokladlakrits</label>
                     </th>
                     <th style="display: none;"><input type="text" name="createdByAdmin" value="<%= user.name %>"></th>
-                    <th class="rowImg2"><input type="text" name="img" placeholder="BildURL" class="inputAdd" required>
-                    </th>
+                    <th class="rowImg2"><input type="text" name="img" placeholder="BildURL" class="inputAdd" required></th>
                     <th class="rowColor"><input type="color" name="color" value="#ffce54" class="inputAdd"></th>
                     <th style="display: none;"><input type="text" id="hidden" name="user" value="<%= user._id %>"></th>
                 </tr>
@@ -32,13 +27,11 @@
     <div>
         <table class="productList">
             <tr>
-                <th class="rowName rowNameTable">Namn<a href="?name=1"><i class="fas fa-caret-up fa-2x"></i></a> <a
-                        href="?name=-1"><i class="fas fa-caret-down fa-2x"></i></a></th>
+                <th class="rowName rowNameTable">Namn<a href="?name=1"><i class="fas fa-caret-up fa-2x"></i></a> <a href="?name=-1"><i class="fas fa-caret-down fa-2x"></i></a></th>
                 <th class="rowPrice">Pris<a href="?price=1"></a> <a href="?price=-1"></a></th>
                 <th class="rowDescription">Beskrivning</th>
                 <th class="rowCategory">Kategori<a href="?category=1"></a> <a href="?category=-1"></a></th>
-                <th class="rowCreatedBy textTransformInitial">Skapad av<a href="?createdBy=1"></a> <a
-                        href="?createdBy=-1"></a></th>
+                <th class="rowCreatedBy textTransformInitial">Skapad av<a href="?createdBy=1"></a> <a href="?createdBy=-1"></a></th>
                 <th class="rowImg">Bild</th>
                 <th class="rowChange">Ändra</th>
                 <th class="rowDelete textTransformInitial">Ta bort</th>
@@ -52,12 +45,9 @@
                 <td class="textTransformInitial"><%= candy.description %></td>
                 <td><%= candy.category %></td>
                 <td><%= candy.createdByAdmin %></td>
-                <td class="fontAwesomeIcon"><a href="<%=candy.img%>" target="_blank"><i
-                            class="far fa-image fa-lg"></i></a></td>
-                <td class="fontAwesomeIcon"><a href="/update/<%=candy._id%>"><i class="far fa-file-alt fa-lg"></i></a>
-                </td>
-                <td class="fontAwesomeIcon"><a href="/delete/<%=candy._id%>"><i class="far fa-trash-alt fa-lg"></i></a>
-                </td>
+                <td class="fontAwesomeIcon"><a href="<%=candy.img%>" target="_blank"><i class="far fa-image fa-lg"></i></a></td>
+                <td class="fontAwesomeIcon"><a href="/update/<%=candy._id%>"><i class="far fa-file-alt fa-lg"></i></a></td>
+                <td class="fontAwesomeIcon"><a href="/delete/<%=candy._id%>"><i class="far fa-trash-alt fa-lg"></i></a></td>
             </tr>
 
             <% }); %>
@@ -75,24 +65,12 @@
         <% } %>
 
 
-        <!-- Half opacity when no earlier page exists (|| queryExist == null //removed after fix) REMOVED completely after added else statement in code under
-        <% if (page === 1) { %>
-        <i class="fas fa-chevron-left fa-lg hidden"></i>
-        <% } %> -->
-
-
         <!-- Full opacity when earlier page exists else half opacity -->
         <% if (page > 1) { %>
         <a href=<%= "?page=" + (page - 1) %>> <i class="fas fa-chevron-left fa-lg"></i> </a>
         <% } else { %>
         <i class="fas fa-chevron-left fa-lg hidden"></i>
         <% } %>
-
-
-        <!-- Shows all existing pages -->
-        <!-- <% for (i = 0; i < pageQuantity; i++) { %>
-        <a class="activePageNumber" href=<%= "?page=" + (i + 1) %>> <%= i+1 %></a>
-        <% } %> -->
 
 
         <!-- Shows all existing pages with CSS on active page -->
@@ -111,13 +89,6 @@
         <% } else { %>
         <i class="fas fa-chevron-right fa-lg hidden"></i>
         <% } %>
-
-
-        <!-- Half opacity when no next page exists REMOVED completely after added else statement in code above
-        <% if (pageQuantity <= page) { %>
-        <i class="fas fa-chevron-right fa-lg hidden"></i>
-        <% } %> -->
-
 
         <!-- Show go to end page if not next or second to last else half opacity -->
         <% if (page != pageQuantity && page != pageQuantity - 1) { %>
