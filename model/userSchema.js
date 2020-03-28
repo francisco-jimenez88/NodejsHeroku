@@ -5,6 +5,8 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
+    resetToken: String,
+    expirationToken: Date,
     wishlist: [{
         candyId: {
             type: mongoose.Schema.Types.ObjectId,
