@@ -9,9 +9,9 @@ const schemaProduct = new mongoose.Schema({
     createdByAdmin: { type: String, required: true },
     img: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    user:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", 
+        ref: "User",
         required: true
     }
 });

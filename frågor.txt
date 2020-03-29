@@ -1,2 +1,0 @@
-1. Fråga om hur vi ska branch i GIT
-3. Kan man routa till en modal?

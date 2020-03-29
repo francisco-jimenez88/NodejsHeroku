@@ -70,16 +70,16 @@ router.route("/signup")
 
             if (token) {
                 const cookie = req.cookies.jsonwebtoken;
-                    if (!cookie) {
-                        res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
-                        res.redirect("/mypage");
-                    }
+                if (!cookie) {
+                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
+                    res.redirect("/mypage");
+                }
             }
         })
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
-        if (req.body.email == alreadyRegistered) 
+        if (req.body.email == alreadyRegistered)
             return res.redirect("/signup");
     })
 
@@ -144,20 +144,16 @@ router.post("/resetPassword", async (req, res) => {
     })
 });
 
-
-
-// html: <p>Reset password link: <a href="http://localhost:8000/reset/${resetToken}">Klicka här</a> </p>
-
 //Kollar ifall användare har token, då skickas man till sidan med formulär
 router.get("/resetpassword/:token", async (req, res) => {
-    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() }})
+    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
     console.log(user)
     if (!user) return res.redirect("/signUp");
     res.render("resetform", { title: "Lasses Lakrits" }, { user })
 });
 
 router.post("/resetpassword/:token", async (req, res) => {
-    const user = await User.findOne({_id: req.body.userId })
+    const user = await User.findOne({ _id: req.body.userId })
 
     user.password = await bcrypt.hash(req.body.password, 10);
     user.resetToken = undefined;
@@ -169,7 +165,7 @@ router.post("/resetpassword/:token", async (req, res) => {
 
 //Mypage
 router.get("/mypage", verifyToken, async (req, res) => {
-    const user = await User.findOne({_id: req.user.user._id});
+    const user = await User.findOne({ _id: req.user.user._id });
     res.render("userprofile/mypage", { token: req.cookies.jsonwebtoken, user, title: "Medlemssida - Lasses Lakrits" });
 });
 

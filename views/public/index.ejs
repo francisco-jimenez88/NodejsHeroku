@@ -1,11 +1,9 @@
-<% if(token) { %> 
-    <%- include("userprofile/headermember.ejs") %> 
-  <% } else { %> 
-    <%- include("header.ejs") %> <% } %> 
-
+<% if(token) { %>
+<%- include("userprofile/headermember.ejs") %>
+<% } else { %>
+<%- include("header.ejs") %> <% } %>
 
 <div class="parallax"></div>
-
 <div id="carousel" class="carousel slide mx-auto" data-interval="3500" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -78,5 +76,4 @@
     </p>
   </div>
 </div>
-
 <%- include("footer.ejs") %>
