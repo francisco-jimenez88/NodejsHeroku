@@ -69,16 +69,17 @@ router.route("/signup")
 
             if (token) {
                 const cookie = req.cookies.jsonwebtoken;
-                if (!cookie) {
-                    res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
-                    res.redirect("/mypage");
-                }
+                    if (!cookie) {
+                        res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true });
+                        res.redirect("/mypage");
+                    }
             }
         })
 
         const alreadyRegistered = await User.findOne({ email: req.body.email });
 
-        if (req.body.email == alreadyRegistered) return res.redirect("/signup");
+        if (req.body.email == alreadyRegistered) 
+            return res.redirect("/signup");
     })
 
 //Login sida
@@ -186,8 +187,6 @@ router.get("/deleteuser/:id", verifyToken, async (req, res) => {
     await User.deleteOne({ _id: req.user.user._id }, (err, data) => {
 
         if (!err) {
-            console.log("Deleted");
-            const message = "Din användare är nu avregistrerad"
             res.clearCookie("jsonwebtoken").redirect("/login")
         }
     });
@@ -196,7 +195,6 @@ router.get("/deleteuser/:id", verifyToken, async (req, res) => {
 //Wishlist
 router.get("/wishlist", verifyToken, async (req, res) => {
     const user = await User.findOne({ _id: req.user.user._id }).populate("wishlist.candyId");
-
     res.render("userprofile/wishlist", { token: req.cookies.jsonwebtoken, user, title: "Wishlist - Lasses" });
 });
 
