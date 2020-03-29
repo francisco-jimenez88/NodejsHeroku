@@ -136,7 +136,7 @@ router.post("/resetPassword", async (req, res) => {
             to: user.email,
             from: "<no-reply>lasses@lakrits.se",
             subject: "Återställning av lösenord",
-            html: `Följ denna länk för att återställa lösenord: <a href="http://localhost:8000/resetpassword/${resetToken}">Klicka här!</a>`
+            html: `Följ denna länk för att återställa lösenord: http://localhost:8000/resetpassword/${resetToken}`
         })
         res.redirect("/login")
     })
@@ -148,8 +148,8 @@ router.post("/resetPassword", async (req, res) => {
 
 //Kollar ifall användare har token, då skickas man till sidan med formulär
 router.get("/resetpassword/:token", async (req, res) => {
-    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() } })
-    console.log(user);
+    const user = await User.findOne({ resetToken: req.params.token, expirationToken: { $gt: Date.now() }})
+    console.log(user)
     if (!user) return res.redirect("/signUp");
     res.render("resetform", { title: "Lasses Lakrits" }, { user })
 });
