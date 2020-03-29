@@ -13,9 +13,10 @@ const router = express.Router();
 
 const transport = nodemailer.createTransport(sendGridTransport({
     auth: {
-        api_key: config.key
+        api_key: config.mail
     }
-}))
+}));
+
 // För att komma till förstasidan 
 router.route("/")
     .get(async (req, res) => {
@@ -136,7 +137,7 @@ router.post("/resetPassword", async (req, res) => {
             to: user.email,
             from: "<no-reply>lasses@lakrits.se",
             subject: "Återställning av lösenord",
-            html: `Följ denna länk för att återställa lösenord: <a href="http://localhost:8000/resetpassword/${resetToken}">Klicka här!</a>`
+            html: `Följ denna länk för att återställa lösenord: <a href="http://localhost:8000/resetpassword/${resetToken}"> Klicka här!</a>`
         })
         res.redirect("/login")
     })
