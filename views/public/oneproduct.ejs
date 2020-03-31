@@ -1,8 +1,7 @@
 <% if(token) { %> <%- include("userprofile/headermember.ejs") %> <% } 
- else { %> <%- include("header.ejs") %> <% } %> 
+ else { %> <%- include("header.ejs") %> <% } %>
 
 <body>
-    <!-- Product header and image -->
     <div class="container-fluid" id="one-product-container">
         <canvas class="oneProductHeader"
             style="background-color: <%= selectedCandy.color %>; background-image: linear-gradient(to top left, <%= selectedCandy.color %> , white 99%);">
@@ -10,7 +9,6 @@
         <div class="row lakritsMainDiv">
             <img class="lakritsImg" src="<%= selectedCandy.img %>">
         </div>
-        <!-- Product title, price and description -->
         <div class="row oneProductInfo m-0">
             <div class="oneProductTitle col-sm-12 col-md-6 col-lg-6">
                 <h2><%= selectedCandy.name %></h2> <br>

@@ -9,17 +9,13 @@
                 <img src="<%= item.img %>" alt="Bild på lakrits" class="hover">
                 <br>
             </a>
-
             <a href="/allproducts/<%= item.name %>"><%= item.name %></a>
-            <!--<p><%= item.description %> </p>-->
             <p><%= item.price %> SEK</p>
             <button type="button" class="btn btn-outline-dark">Lägg i varukorg</button>
         </div>
         <% }); %>
     </div>
 </div>
-</div>
-
 <div id="pagination">
     <% for (let page = 1; page <= pageCount; page++ ) { %>
     <% if (currentPage == page) { %>
