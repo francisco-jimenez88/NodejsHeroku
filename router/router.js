@@ -153,7 +153,7 @@ router.get("/resetpassword/:token", async (req, res) => {
 });
 
 router.post("/resetpassword/:token", async (req, res) => {
-    const user = await User.findOne({ _id: req.body.userId })
+    const user = await User.findOne({ _id: req.user.user.userId })
 
     user.password = await bcrypt.hash(req.body.password, 10);
     user.resetToken = undefined;
