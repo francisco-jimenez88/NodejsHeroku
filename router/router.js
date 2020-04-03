@@ -10,6 +10,7 @@ const verifyToken = require("./verifyToken")
 const config = require("../config/config");
 const Candy = require("../model/productSchema");
 const router = express.Router();
+const stripe = require('stripe')('sk_test_skohSlb5oj4JTKqa6yr30xpJ00ZoP71fqc');
 
 const transport = nodemailer.createTransport(sendGridTransport({
     auth: {
@@ -209,11 +210,58 @@ router.get("/deleteWishlist/:id", verifyToken, async (req, res) => {
     res.redirect("/wishlist");
 })
 
+
+router.get("/cart", verifyToken, async (req, res) => {
+    const user = await User.findOne({ _id: req.user.user._id }).populate("cart.candyId");
+
+    return stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: user.cart.map((candy)=> {
+            return {
+                name: candy.candyId.name,
+                amount: candy.candyId.price*100,
+                quantity: 1,
+                currency: 'sek'
+            }
+        }),
+        success_url: 'http://localhost/8000',
+        cancel_url: 'http://localhost/8000/allproducts'
+    }).then((session) => {
+        res.render("userprofile/cart", { token: req.cookies.jsonwebtoken, user, title: "Cart - Lasses", sessionId:session.id });
+    })
+
+});
+
+router.get("/cart/:id", verifyToken, async (req, res) => {
+    const candy = await Candy.findOne({ _id: req.params.id });
+    const user = await User.findOne({ _id: req.user.user._id });
+
+    await user.addTocart(candy);
+    res.redirect("/cart");
+});
+
+router.get("/deletecart/:id", verifyToken, async (req, res) => {
+    const user = await User.findOne({ _id: req.user.user._id });
+    user.removeFromList(req.params.id);
+    res.redirect("/cart");
+})
+
+
+
 // För att komma till checkout
 router.route("/checkout")
     .get(async (req, res) => {
         const shoppingBag = await Candy.find();
         res.render("checkout.ejs", { token: req.cookies.jsonwebtoken, shoppingBag, title: "Checkout" });
     })
+
+
+router.get('/order', verifyToken, async(req, res) => {
+    const user = await User.findOne({_id: req.body.user._id}).populate("cart.candyId")  
+
+    res.render('checkout.ejs', {user})
+})
+
+
 
 module.exports = router;

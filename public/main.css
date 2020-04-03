@@ -242,4 +242,28 @@ h6 {
   color: black; }
 
 .wishlistImg {
-  height: 100px; }
+  height: 250px; }
+
+.sidebar-mypage {
+  margin-top: 25px; }
+  .sidebar-mypage a, .sidebar-mypage a:link, .sidebar-mypage a:visited {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter; }
+  .sidebar-mypage a:hover {
+    color: black;
+    font-weight: bold; }
+  .sidebar-mypage a:active, .sidebar-mypage a:focus {
+    color: black;
+    font-weight: bold; }
+
+.cart {
+  list-style-type: none;
+  padding: 0; }
+
+h6 {
+  font-weight: bold;
+  color: black; }
+
+.cartImg {
+  height: 250px; }

@@ -13,6 +13,12 @@ const userSchema = new mongoose.Schema({
             ref: "Candy"
         }
     }],
+    cart: [{
+        candyId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Candy"
+        }
+    }],
     userinfo: [{
         lastname: { type: String },
         phonenumber: { type: Number },
@@ -39,6 +45,25 @@ userSchema.methods.removeFromList = function (candyId) {
         candy.candyId.toString() !== candyId.toString()
     );
     this.wishlist = restOftheProducts;
+    return this.save();
+}
+
+userSchema.methods.addTocart = function (candy) {
+    this.cart.push({ candyId: candy._id })
+    const newcart = this.cart.filter(function ({ candyId }) {
+
+        return !this.has(`${candyId}`) && this.add(`${candyId}`)
+    }, new Set)
+    this.cart = [...newcart]
+    return this.save();
+}
+
+// Ta bort produkt från cart
+userSchema.methods.removeFromList = function (candyId) {
+    const restOftheProducts = this.cart.filter(candy =>
+        candy.candyId.toString() !== candyId.toString()
+    );
+    this.cart = restOftheProducts;
     return this.save();
 }
 
